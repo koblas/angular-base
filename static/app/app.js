@@ -1,32 +1,14 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var gearApp = angular.module('geartrackerApp', ['restangular', 'ui.router']);
+var app = angular.module('geartrackerApp', ['restangular', 'ui.router']);
 
-gearApp.service('AuthService', 
-    function () {
-        this.authenticated = false;
-        this.name = null;
-        return {
-            isAuthenticated: function() {
-                return this.authenticated;
-            },
-            getName: function() {
-                return this.name;
-            },
-            login: function() {
-                console.log("CALL LOGIN");
-                this.authenticated = true;
-            },
-            logout: function() {
-                console.log("CALL LOGOUT");
-                this.authenticated = false;
-            }
-        }
-    }
-);
+require('./common/services');
+require('./modules/main');
+require('./modules/todo');
+require('./modules/auth');
 
-
-gearApp.config(function(RestangularProvider, $stateProvider, $urlRouterProvider) {
+app.config(function(RestangularProvider, $stateProvider, $urlRouterProvider) {
     RestangularProvider.setBaseUrl('/api/v1');
 
     RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
@@ -43,6 +25,54 @@ gearApp.config(function(RestangularProvider, $stateProvider, $urlRouterProvider)
       return newResponse;
     });
 
+    //  Unmatched URL state
+    $urlRouterProvider.otherwise("/");
+});
+
+//
+//  Authentication requirement handler
+//
+app.run(function($rootScope, $state, $location, AuthService) {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+        if (toState.authenticate && !AuthService.isAuthenticated()) {
+            // User isn’t authenticated
+            var href = $state.href(toState, toParams);
+            $state.transitionTo("login", { next: $location.path() });
+            event.preventDefault(); 
+        }
+    });
+});
+
+},{"./common/services":2,"./modules/auth":3,"./modules/main":4,"./modules/todo":5}],2:[function(require,module,exports){
+'use strict';
+
+angular.module('geartrackerApp').service('AuthService',
+    function () {
+        this.authenticated = false;
+        this.name = null;
+        return {
+            isAuthenticated: function() {
+                return this.authenticated;
+            },
+            getName: function() {
+                return this.name;
+            },
+            login: function() {
+                this.authenticated = true;
+            },
+            logout: function() {
+                this.authenticated = false;
+            }
+        }
+    }
+);
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+var app = angular.module('geartrackerApp');
+
+app.config(function($stateProvider) {
     // States
     $stateProvider
         .state('login', {
@@ -58,47 +88,9 @@ gearApp.config(function(RestangularProvider, $stateProvider, $urlRouterProvider)
             controller: "LogoutController",
             authenticate: false
         });
-
-    $stateProvider
-        .state('todo', {
-            url: '/todo',
-            templateUrl: '/static/partials/todo.html',
-            controller: "TodoController",
-            authenticate: true
-        });
-
-    $stateProvider
-        .state('index_', {
-            url: '',
-            templateUrl: '/static/partials/index.html',
-            controller: "IndexController",
-            authenticate: false
-        });
-    $stateProvider
-        .state('index', {
-            url: '/',
-            templateUrl: '/static/partials/index.html',
-            controller: "IndexController",
-            authenticate: false
-        });
-
-    //  Unmatched URL state
-    $urlRouterProvider.otherwise("/");
 });
 
-
-gearApp.run(function($rootScope, $state, $location, AuthService) {
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-        if (toState.authenticate && !AuthService.isAuthenticated()) {
-            // User isn’t authenticated
-            var href = $state.href(toState, toParams);
-            $state.transitionTo("login", { next: $location.path() });
-            event.preventDefault(); 
-        }
-    });
-});
-
-gearApp.controller('LoginController', ['$scope', '$location', 'Restangular', 'AuthService', '$state', function($scope, $location, Restangular, AuthService, $stateProvider) {
+app.controller('LoginController', ['$scope', '$location', 'Restangular', 'AuthService', '$state', function($scope, $location, Restangular, AuthService, $stateProvider) {
     var Auth = Restangular.all('auth');
 
     $scope.email = "";
@@ -119,20 +111,58 @@ gearApp.controller('LoginController', ['$scope', '$location', 'Restangular', 'Au
             if (auth.token) {
                 AuthService.login();
                 // $stateProvider.transitionTo('todo');
-                console.log("NEXT = ", $scope.next);
                 $location.path($scope.next);
             }
         }, function(err) {
-            console.log("ERROR");
         });
     }
 }])
 
-gearApp.controller('IndexController', function($scope, Restangular) {
-    console.log("IndexController");
+},{}],4:[function(require,module,exports){
+'use strict';
+
+var app = angular.module('geartrackerApp');
+
+app.config(function($stateProvider) {
+    $stateProvider
+        .state('index_', {
+            url: '',
+            templateUrl: '/static/partials/index.html',
+            controller: "IndexController",
+            authenticate: false
+        });
+    $stateProvider
+        .state('index', {
+            url: '/',
+            templateUrl: '/static/partials/index.html',
+            controller: "IndexController",
+            authenticate: false
+        });
 });
 
-gearApp.controller('TodoController', function($scope, Restangular) {
+angular.module('geartrackerApp').controller('IndexController', function($scope, Restangular) {
+});
+
+angular.module('geartrackerApp').controller('MainController', function($scope, Restangular, AuthService) {
+    $scope.auth = AuthService;
+});
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+var app = angular.module('geartrackerApp');
+
+app.config(function($stateProvider) {
+    $stateProvider
+        .state('todo', {
+            url: '/todo',
+            templateUrl: '/static/partials/todo.html',
+            controller: "TodoController",
+            authenticate: true
+        });
+});
+
+app.controller('TodoController', function($scope, Restangular) {
     $scope.todos = [];
     $scope.loaded = false;
 
@@ -175,7 +205,4 @@ gearApp.controller('TodoController', function($scope, Restangular) {
     }
 });
 
-gearApp.controller('MainController', function($scope, Restangular, AuthService) {
-    console.log("MainController");
-    $scope.auth = AuthService;
-});
+},{}]},{},[1])
