@@ -1,0 +1,50 @@
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+.*.swp
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+.DS_store
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+tests/cover
+
+coverage.xml
+nosetests.xml
+
+#Translations
+*.mo
+
+#Mr Developer
+.mr.developer.cfg
+
+#Sass
+.sass-cache
+
+#Local Settings
+local_settings.yaml
+
+built.js
+built.css
+all.css
+
+.idea
+nohup.out
+preload_cache.json
+
+#Grunt
+/static/dist
+/static/node_modules
