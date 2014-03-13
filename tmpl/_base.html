@@ -1,0 +1,62 @@
+<html ng-app="{% try %}{{ ngapp }}App{% except %}project{% end %}">
+ <head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="/static/js/underscore.js"></script>
+
+  <!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <script type="text/javascript" src="http://cdn.jsdelivr.net/restangular/latest/restangular.min.js"></script>
+
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+  <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+ </head>
+ <body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Edit</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      {% if current_user %}
+        <li><a class="active" href="/user">User</a></li>
+        <li><a class="active" href="/crawl">Crawl</a></li>
+        <li><a class="active" href="/channel">Channel</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-5 col-sm-4 pull-right">
+        <form class="navbar-form" role="search" method="POST" action="/search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="User/Channel/Video" name="term" id="search"/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+          </div>
+        </form>
+      </div>
+      {% end %}
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div>
+
+  <div class="container">
+    {% block body %}{% end %}
+  </div>
+ </body>
+</html>

@@ -1,0 +1,7628 @@
+@charset "UTF-8"
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, menu, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  outline: 0
+  font-size: 100%
+  vertical-align: baseline
+  background: transparent
+
+body
+  line-height: 1
+
+ol, ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+    content: none
+
+q
+  &:before, &:after
+    content: ''
+    content: none
+
+ins
+  text-decoration: none
+
+del
+  text-decoration: line-through
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+
+article, aside, figure, footer, header, hgroup, nav, section
+  display: block
+
+html
+  -ms-text-size-adjust: 100%
+  -webkit-text-size-adjust: 100%
+  height: 100%
+
+body
+  height: 100%
+
+@-webkit-keyframes in-from-top
+  0%
+    -webkit-transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    -webkit-transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes rotation
+  0%
+    -moz-transform: rotate(0deg)
+  8.2%
+    -moz-transform: rotate(0deg)
+  8.3%
+    -moz-transform: rotate(30deg)
+  16.3%
+    -moz-transform: rotate(30deg)
+  16.4%
+    -moz-transform: rotate(60deg)
+  24.8%
+    -moz-transform: rotate(60deg)
+  24.9%
+    -moz-transform: rotate(90deg)
+  33.1%
+    -moz-transform: rotate(90deg)
+  33.2%
+    -moz-transform: rotate(120deg)
+  41.4%
+    -moz-transform: rotate(120deg)
+  41.5%
+    -moz-transform: rotate(150deg)
+  49.7%
+    -moz-transform: rotate(150deg)
+  49.8%
+    -moz-transform: rotate(180deg)
+  58%
+    -moz-transform: rotate(180deg)
+  58.1%
+    -moz-transform: rotate(210deg)
+  66.3%
+    -moz-transform: rotate(210deg)
+  66.4%
+    -moz-transform: rotate(240deg)
+  74.6%
+    -moz-transform: rotate(240deg)
+  74.7%
+    -moz-transform: rotate(270deg)
+  82.9%
+    -moz-transform: rotate(270deg)
+  83%
+    -moz-transform: rotate(300deg)
+  91.2%
+    -moz-transform: rotate(300deg)
+  91.3%
+    -moz-transform: rotate(330deg)
+  99.9%
+    -moz-transform: rotate(330deg)
+  100%
+    -moz-transform: rotate(360deg)
+
+
+@-webkit-keyframes rotation
+  0%
+    -webkit-transform: rotate(0deg)
+  8.2%
+    -webkit-transform: rotate(0deg)
+  8.3%
+    -webkit-transform: rotate(30deg)
+  16.3%
+    -webkit-transform: rotate(30deg)
+  16.4%
+    -webkit-transform: rotate(60deg)
+  24.8%
+    -webkit-transform: rotate(60deg)
+  24.9%
+    -webkit-transform: rotate(90deg)
+  33.1%
+    -webkit-transform: rotate(90deg)
+  33.2%
+    -webkit-transform: rotate(120deg)
+  41.4%
+    -webkit-transform: rotate(120deg)
+  41.5%
+    -webkit-transform: rotate(150deg)
+  49.7%
+    -webkit-transform: rotate(150deg)
+  49.8%
+    -webkit-transform: rotate(180deg)
+  58%
+    -webkit-transform: rotate(180deg)
+  58.1%
+    -webkit-transform: rotate(210deg)
+  66.3%
+    -webkit-transform: rotate(210deg)
+  66.4%
+    -webkit-transform: rotate(240deg)
+  74.6%
+    -webkit-transform: rotate(240deg)
+  74.7%
+    -webkit-transform: rotate(270deg)
+  82.9%
+    -webkit-transform: rotate(270deg)
+  83%
+    -webkit-transform: rotate(300deg)
+  91.2%
+    -webkit-transform: rotate(300deg)
+  91.3%
+    -webkit-transform: rotate(330deg)
+  99.9%
+    -webkit-transform: rotate(330deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+  8.2%
+    transform: rotate(0deg)
+  8.3%
+    transform: rotate(30deg)
+  16.3%
+    transform: rotate(30deg)
+  16.4%
+    transform: rotate(60deg)
+  24.8%
+    transform: rotate(60deg)
+  24.9%
+    transform: rotate(90deg)
+  33.1%
+    transform: rotate(90deg)
+  33.2%
+    transform: rotate(120deg)
+  41.4%
+    transform: rotate(120deg)
+  41.5%
+    transform: rotate(150deg)
+  49.7%
+    transform: rotate(150deg)
+  49.8%
+    transform: rotate(180deg)
+  58%
+    transform: rotate(180deg)
+  58.1%
+    transform: rotate(210deg)
+  66.3%
+    transform: rotate(210deg)
+  66.4%
+    transform: rotate(240deg)
+  74.6%
+    transform: rotate(240deg)
+  74.7%
+    transform: rotate(270deg)
+  82.9%
+    transform: rotate(270deg)
+  83%
+    transform: rotate(300deg)
+  91.2%
+    transform: rotate(300deg)
+  91.3%
+    transform: rotate(330deg)
+  99.9%
+    transform: rotate(330deg)
+  100%
+    transform: rotate(360deg)
+
+
+.ui-loading
+  background-color: #fff
+  bottom: 0
+  left: 0
+  margin-bottom: 0
+  opacity: 1
+  overflow: hidden
+  position: absolute
+  right: 0
+  text-indent: -1000em
+  -ms-transition: opacity 0.25s ease-in-out
+  -moz-transition: opacity 0.25s ease-in-out
+  -o-transition: opacity 0.25s ease-in-out
+  -webkit-transition: opacity 0.25s ease-in-out
+  transition: opacity 0.25s ease-in-out
+  top: 0
+  z-index: 100
+  span
+    -moz-animation: rotation infinite 1s linear
+    -webkit-animation: rotation infinite 1s linear
+    animation: rotation infinite 1s linear
+    background-position: 50% 50%
+    height: 40px
+    left: 50%
+    margin-left: -20px
+    margin-top: -20px
+    position: absolute
+    text-indent: -1000em
+    top: 50%
+    width: 40px
+  &.hidden
+    display: block
+    opacity: 0
+    pointer-events: none
+    span
+      -moz-animation: none
+      -webkit-animation: none
+      animation: none
+
+.editor-drawer .ui-loading
+  background-color: #FCFCFD
+
+body
+  background: #FCFCFC
+  color: #555
+  font: normal 100%/1.5 "jaf-facitweb", "Lucida Grande", "Lucida Sans", Arial, sans-serif
+  font-weight: 400
+
+.wf-loading
+  .ed-mast, .hed, .main-content, .ed-aside, .tmpl-doc .ed-page
+    opacity: 0
+
+.wf-active
+  .ed-mast, .hed, .main-content, .ed-aside
+    opacity: 1
+
+.wf-loading .tmpl-doc .ed-page
+  opacity: 1
+
+p, ol, ul
+  margin-bottom: 1em
+
+a
+  -webkit-transition: color 0.1s linear,background-color 0.1s linear
+  -moz-transition: color 0.1s linear,background-color 0.1s linear
+  -o-transition: color 0.1s linear,background-color 0.1s linear
+  transition: color 0.1s linear,background-color 0.1s linear
+  &:link, &:visited
+    color: #999
+    text-decoration: none
+  &:hover, &:focus
+    color: #3d9ecf
+    text-decoration: underline
+
+table
+  font-size: inherit
+  font: 100%
+
+th, td
+  text-align: left
+
+button, select, input, textarea
+  font-size: 100%
+  font-family: inherit
+
+abbr[title], dfn[title]
+  border-bottom: none
+  cursor: help
+
+a abbr[title]
+  cursor: pointer
+
+img
+  max-width: 100%
+
+.squelch
+  left: -1000em
+  overflow: hidden
+  position: absolute
+  top: 0
+  width: 0
+
+.enhanced
+  hr, .a11y
+    left: -1000em
+    overflow: hidden
+    position: absolute
+    top: 0
+    width: 0
+
+code
+  color: #666
+  font: normal 0.9em Menlo, Consolas, Inconsolata, "Lucida Console", Monaco, Courier, monospace
+
+strike, del
+  color: #999
+
+pre
+  line-height: 1.8em
+  margin-bottom: 1em
+  margin-left: 3em
+
+sup
+  font-size: 16px
+  font-size: 1rem
+  vertical-align: super
+
+\:-moz-placeholder, ::-moz-placeholder, ::-webkit-input-placeholder
+  font-style: italic
+
+input[type="search"]
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  -webkit-box-sizing: content-box
+  -moz-box-sizing: content-box
+  box-sizing: content-box
+  &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-search-results-button, &::-webkit-search-results-decoration
+    display: none
+
+.hidden
+  display: none
+
+.collapsible-heading
+  position: relative
+
+.collapsible-heading-status
+  text-indent: -99999px
+
+.enhanced
+  .collapsible-content
+    display: block
+  .collapsible-content-collapsed
+    display: none
+
+@-webkit-keyframes in-from-top
+  0%
+    -webkit-transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    -webkit-transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes rotation
+  0%
+    -moz-transform: rotate(0deg)
+  8.2%
+    -moz-transform: rotate(0deg)
+  8.3%
+    -moz-transform: rotate(30deg)
+  16.3%
+    -moz-transform: rotate(30deg)
+  16.4%
+    -moz-transform: rotate(60deg)
+  24.8%
+    -moz-transform: rotate(60deg)
+  24.9%
+    -moz-transform: rotate(90deg)
+  33.1%
+    -moz-transform: rotate(90deg)
+  33.2%
+    -moz-transform: rotate(120deg)
+  41.4%
+    -moz-transform: rotate(120deg)
+  41.5%
+    -moz-transform: rotate(150deg)
+  49.7%
+    -moz-transform: rotate(150deg)
+  49.8%
+    -moz-transform: rotate(180deg)
+  58%
+    -moz-transform: rotate(180deg)
+  58.1%
+    -moz-transform: rotate(210deg)
+  66.3%
+    -moz-transform: rotate(210deg)
+  66.4%
+    -moz-transform: rotate(240deg)
+  74.6%
+    -moz-transform: rotate(240deg)
+  74.7%
+    -moz-transform: rotate(270deg)
+  82.9%
+    -moz-transform: rotate(270deg)
+  83%
+    -moz-transform: rotate(300deg)
+  91.2%
+    -moz-transform: rotate(300deg)
+  91.3%
+    -moz-transform: rotate(330deg)
+  99.9%
+    -moz-transform: rotate(330deg)
+  100%
+    -moz-transform: rotate(360deg)
+
+
+@-webkit-keyframes rotation
+  0%
+    -webkit-transform: rotate(0deg)
+  8.2%
+    -webkit-transform: rotate(0deg)
+  8.3%
+    -webkit-transform: rotate(30deg)
+  16.3%
+    -webkit-transform: rotate(30deg)
+  16.4%
+    -webkit-transform: rotate(60deg)
+  24.8%
+    -webkit-transform: rotate(60deg)
+  24.9%
+    -webkit-transform: rotate(90deg)
+  33.1%
+    -webkit-transform: rotate(90deg)
+  33.2%
+    -webkit-transform: rotate(120deg)
+  41.4%
+    -webkit-transform: rotate(120deg)
+  41.5%
+    -webkit-transform: rotate(150deg)
+  49.7%
+    -webkit-transform: rotate(150deg)
+  49.8%
+    -webkit-transform: rotate(180deg)
+  58%
+    -webkit-transform: rotate(180deg)
+  58.1%
+    -webkit-transform: rotate(210deg)
+  66.3%
+    -webkit-transform: rotate(210deg)
+  66.4%
+    -webkit-transform: rotate(240deg)
+  74.6%
+    -webkit-transform: rotate(240deg)
+  74.7%
+    -webkit-transform: rotate(270deg)
+  82.9%
+    -webkit-transform: rotate(270deg)
+  83%
+    -webkit-transform: rotate(300deg)
+  91.2%
+    -webkit-transform: rotate(300deg)
+  91.3%
+    -webkit-transform: rotate(330deg)
+  99.9%
+    -webkit-transform: rotate(330deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+  8.2%
+    transform: rotate(0deg)
+  8.3%
+    transform: rotate(30deg)
+  16.3%
+    transform: rotate(30deg)
+  16.4%
+    transform: rotate(60deg)
+  24.8%
+    transform: rotate(60deg)
+  24.9%
+    transform: rotate(90deg)
+  33.1%
+    transform: rotate(90deg)
+  33.2%
+    transform: rotate(120deg)
+  41.4%
+    transform: rotate(120deg)
+  41.5%
+    transform: rotate(150deg)
+  49.7%
+    transform: rotate(150deg)
+  49.8%
+    transform: rotate(180deg)
+  58%
+    transform: rotate(180deg)
+  58.1%
+    transform: rotate(210deg)
+  66.3%
+    transform: rotate(210deg)
+  66.4%
+    transform: rotate(240deg)
+  74.6%
+    transform: rotate(240deg)
+  74.7%
+    transform: rotate(270deg)
+  82.9%
+    transform: rotate(270deg)
+  83%
+    transform: rotate(300deg)
+  91.2%
+    transform: rotate(300deg)
+  91.3%
+    transform: rotate(330deg)
+  99.9%
+    transform: rotate(330deg)
+  100%
+    transform: rotate(360deg)
+
+
+.ui-loading
+  background-color: #fff
+  bottom: 0
+  left: 0
+  margin-bottom: 0
+  opacity: 1
+  overflow: hidden
+  position: absolute
+  right: 0
+  text-indent: -1000em
+  -ms-transition: opacity 0.25s ease-in-out
+  -moz-transition: opacity 0.25s ease-in-out
+  -o-transition: opacity 0.25s ease-in-out
+  -webkit-transition: opacity 0.25s ease-in-out
+  transition: opacity 0.25s ease-in-out
+  top: 0
+  z-index: 100
+  span
+    -moz-animation: rotation infinite 1s linear
+    -webkit-animation: rotation infinite 1s linear
+    animation: rotation infinite 1s linear
+    background-position: 50% 50%
+    height: 40px
+    left: 50%
+    margin-left: -20px
+    margin-top: -20px
+    position: absolute
+    text-indent: -1000em
+    top: 50%
+    width: 40px
+  &.hidden
+    display: block
+    opacity: 0
+    pointer-events: none
+    span
+      -moz-animation: none
+      -webkit-animation: none
+      animation: none
+
+.editor-drawer .ui-loading
+  background-color: #FCFCFD
+
+.is-icon
+  background-position: 0 0
+  background-repeat: no-repeat
+  display: inline-block
+  height: 16px
+  padding-left: 0
+  text-indent: -1000em
+  -webkit-transition: background-color 0.1s linear
+  -moz-transition: background-color 0.1s linear
+  -o-transition: background-color 0.1s linear
+  transition: background-color 0.1s linear
+  width: 16px
+
+.has-icon
+  display: inline-block
+  background-repeat: no-repeat
+  background-position: 0 0
+  padding-left: 25px
+
+.has-arrow
+  background-position: right 50%
+  width: 100%
+  display: block
+
+.tool-last .is-icon
+  border-width: 0 1px 0 0
+
+.ico
+  background-position: 4px 10px
+  background-repeat: no-repeat
+  padding-left: 15px
+
+.ico-tide:hover
+  background-position: 50% 9px
+
+.tool-menu
+  &:hover
+    .ico-tide
+      background-position: 50% 9px
+    .top
+      background-color: #000
+      background-position: 50% -92px
+  &:focus .top
+    background-color: #000
+    background-position: 50% -92px
+  .top-active, &:hover .top-active
+    border-bottom: 1px solid #000
+    background-color: #000
+    background-position: 50% -92px
+
+.view-discuss .ed-tools .ico-discussion
+  border-bottom: 1px solid #000
+  background-color: #000
+  background-position: 50% -92px
+
+img.ico-dismiss
+  margin-bottom: -3px
+
+.ico-round
+  background-color: #333
+  background-color: rgba(0, 0, 0, 0.3)
+  background-position: 50% 50%
+  -webkit-border-radius: 1em
+  -moz-border-radius: 1em
+  -ms-border-radius: 1em
+  -o-border-radius: 1em
+  border-radius: 1em
+  padding: 0
+
+a
+  &:hover .ico-round, &:focus .ico-round
+    background-color: #222
+    background-color: rgba(0, 0, 0, 0.6)
+
+.ico-round:hover
+  background-color: #222
+  background-color: rgba(0, 0, 0, 0.6)
+
+@-webkit-keyframes in-from-top
+  0%
+    -webkit-transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    -webkit-transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes rotation
+  0%
+    -moz-transform: rotate(0deg)
+  8.2%
+    -moz-transform: rotate(0deg)
+  8.3%
+    -moz-transform: rotate(30deg)
+  16.3%
+    -moz-transform: rotate(30deg)
+  16.4%
+    -moz-transform: rotate(60deg)
+  24.8%
+    -moz-transform: rotate(60deg)
+  24.9%
+    -moz-transform: rotate(90deg)
+  33.1%
+    -moz-transform: rotate(90deg)
+  33.2%
+    -moz-transform: rotate(120deg)
+  41.4%
+    -moz-transform: rotate(120deg)
+  41.5%
+    -moz-transform: rotate(150deg)
+  49.7%
+    -moz-transform: rotate(150deg)
+  49.8%
+    -moz-transform: rotate(180deg)
+  58%
+    -moz-transform: rotate(180deg)
+  58.1%
+    -moz-transform: rotate(210deg)
+  66.3%
+    -moz-transform: rotate(210deg)
+  66.4%
+    -moz-transform: rotate(240deg)
+  74.6%
+    -moz-transform: rotate(240deg)
+  74.7%
+    -moz-transform: rotate(270deg)
+  82.9%
+    -moz-transform: rotate(270deg)
+  83%
+    -moz-transform: rotate(300deg)
+  91.2%
+    -moz-transform: rotate(300deg)
+  91.3%
+    -moz-transform: rotate(330deg)
+  99.9%
+    -moz-transform: rotate(330deg)
+  100%
+    -moz-transform: rotate(360deg)
+
+
+@-webkit-keyframes rotation
+  0%
+    -webkit-transform: rotate(0deg)
+  8.2%
+    -webkit-transform: rotate(0deg)
+  8.3%
+    -webkit-transform: rotate(30deg)
+  16.3%
+    -webkit-transform: rotate(30deg)
+  16.4%
+    -webkit-transform: rotate(60deg)
+  24.8%
+    -webkit-transform: rotate(60deg)
+  24.9%
+    -webkit-transform: rotate(90deg)
+  33.1%
+    -webkit-transform: rotate(90deg)
+  33.2%
+    -webkit-transform: rotate(120deg)
+  41.4%
+    -webkit-transform: rotate(120deg)
+  41.5%
+    -webkit-transform: rotate(150deg)
+  49.7%
+    -webkit-transform: rotate(150deg)
+  49.8%
+    -webkit-transform: rotate(180deg)
+  58%
+    -webkit-transform: rotate(180deg)
+  58.1%
+    -webkit-transform: rotate(210deg)
+  66.3%
+    -webkit-transform: rotate(210deg)
+  66.4%
+    -webkit-transform: rotate(240deg)
+  74.6%
+    -webkit-transform: rotate(240deg)
+  74.7%
+    -webkit-transform: rotate(270deg)
+  82.9%
+    -webkit-transform: rotate(270deg)
+  83%
+    -webkit-transform: rotate(300deg)
+  91.2%
+    -webkit-transform: rotate(300deg)
+  91.3%
+    -webkit-transform: rotate(330deg)
+  99.9%
+    -webkit-transform: rotate(330deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+  8.2%
+    transform: rotate(0deg)
+  8.3%
+    transform: rotate(30deg)
+  16.3%
+    transform: rotate(30deg)
+  16.4%
+    transform: rotate(60deg)
+  24.8%
+    transform: rotate(60deg)
+  24.9%
+    transform: rotate(90deg)
+  33.1%
+    transform: rotate(90deg)
+  33.2%
+    transform: rotate(120deg)
+  41.4%
+    transform: rotate(120deg)
+  41.5%
+    transform: rotate(150deg)
+  49.7%
+    transform: rotate(150deg)
+  49.8%
+    transform: rotate(180deg)
+  58%
+    transform: rotate(180deg)
+  58.1%
+    transform: rotate(210deg)
+  66.3%
+    transform: rotate(210deg)
+  66.4%
+    transform: rotate(240deg)
+  74.6%
+    transform: rotate(240deg)
+  74.7%
+    transform: rotate(270deg)
+  82.9%
+    transform: rotate(270deg)
+  83%
+    transform: rotate(300deg)
+  91.2%
+    transform: rotate(300deg)
+  91.3%
+    transform: rotate(330deg)
+  99.9%
+    transform: rotate(330deg)
+  100%
+    transform: rotate(360deg)
+
+
+.ui-loading
+  background-color: #fff
+  bottom: 0
+  left: 0
+  margin-bottom: 0
+  opacity: 1
+  overflow: hidden
+  position: absolute
+  right: 0
+  text-indent: -1000em
+  -ms-transition: opacity 0.25s ease-in-out
+  -moz-transition: opacity 0.25s ease-in-out
+  -o-transition: opacity 0.25s ease-in-out
+  -webkit-transition: opacity 0.25s ease-in-out
+  transition: opacity 0.25s ease-in-out
+  top: 0
+  z-index: 100
+  span
+    -moz-animation: rotation infinite 1s linear
+    -webkit-animation: rotation infinite 1s linear
+    animation: rotation infinite 1s linear
+    background-position: 50% 50%
+    height: 40px
+    left: 50%
+    margin-left: -20px
+    margin-top: -20px
+    position: absolute
+    text-indent: -1000em
+    top: 50%
+    width: 40px
+  &.hidden
+    display: block
+    opacity: 0
+    pointer-events: none
+    span
+      -moz-animation: none
+      -webkit-animation: none
+      animation: none
+
+.editor-drawer .ui-loading
+  background-color: #FCFCFD
+
+.ico-avatar, .avatar-sm, .avatar-med, .avatar-lg
+  border: 1px solid #27282A
+  border-color: rgba(0, 0, 0, 0.2)
+
+.ico-avatar
+  position: relative
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  -ms-border-radius: 2px
+  -o-border-radius: 2px
+  border-radius: 2px
+  width: 16px
+
+.avatar-sm
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  -ms-border-radius: 2px
+  -o-border-radius: 2px
+  border-radius: 2px
+  width: 16px
+
+.avatar-med
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  width: 32px
+
+.avatar-lg
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  -ms-border-radius: 5px
+  -o-border-radius: 5px
+  border-radius: 5px
+  width: 48px
+
+.sub-menu
+  display: inline
+  font-size: 14px
+  font-size: 0.875rem
+  line-height: 1.7142857142
+  li
+    border-bottom: 1px solid #303030
+    border-color: rgba(255, 255, 255, 0.2)
+    padding: 4px
+    &:last-child
+      border-bottom: none
+
+.menu-widget
+  color: #999
+
+.has-cues
+  .menu-widget
+    a, label
+      padding-right: 6em
+      position: relative
+  .cue
+    color: #666
+    position: absolute
+    right: 0.4em
+    text-align: right
+    width: 6em
+
+.is-mac .has-cues
+  .menu-widget
+    a, label
+      padding-right: 4em
+  .cue
+    width: 4em
+
+.sub-menu .hed
+  color: #fff
+
+.menu
+  position: relative
+
+.sub-menu, .collapsible-collapsed .sub-menu
+  left: -1000em
+  position: absolute
+  margin-top: -5px
+  white-space: nowrap
+  opacity: 0
+  -webkit-transition: margin-top 0.15s ease-out,opacity 0.15s ease-out
+  -moz-transition: margin-top 0.15s ease-out,opacity 0.15s ease-out
+  -o-transition: margin-top 0.15s ease-out,opacity 0.15s ease-out
+  transition: margin-top 0.15s ease-out,opacity 0.15s ease-out
+
+.menu
+  &:hover .sub-menu, .sub-menu:target
+    left: auto
+    margin-top: 0
+    opacity: 1
+    padding-top: 1em
+    right: -2.2em
+    top: 2em
+    z-index: 1000
+
+.collapsible-expanded .sub-menu
+  left: auto
+  margin-top: 0
+  opacity: 1
+  padding-top: 1em
+  right: -2.2em
+  top: 2em
+  z-index: 1000
+
+.ed-mast .menu:hover .sub-menu
+  top: 1.5em
+
+.touch .collapsible-expanded .sub-menu
+  top: 2.5em
+
+.menu-last
+  &:hover .sub-menu, .sub-menu:target, &.collapsible-expanded .sub-menu
+    left: 0
+    right: auto
+
+.menu-widget, .select-menu .sub-menu
+  background: #191919
+  background: rgba(0, 0, 0, 0.95)
+  border: 2px solid #fff
+  -webkit-border-radius: 7px
+  -moz-border-radius: 7px
+  -ms-border-radius: 7px
+  -o-border-radius: 7px
+  border-radius: 7px
+  -webkit-box-shadow: 0 0 9px rgba(0, 0, 0, 0.4)
+  -moz-box-shadow: 0 0 9px rgba(0, 0, 0, 0.4)
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.4)
+  white-space: nowrap
+
+.menu-widget
+  ul
+    margin-bottom: 0
+  a, label
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    -ms-border-radius: 3px
+    -o-border-radius: 3px
+    border-radius: 3px
+    cursor: pointer
+    display: block
+    line-height: 1.1
+    padding: 0.7em 0.5em
+  a
+    &:hover, &:focus
+      background-color: #454545
+      background-color: rgba(255, 255, 255, 0.15)
+      color: #fff
+      text-decoration: none
+  label:hover
+    background-color: #454545
+    background-color: rgba(255, 255, 255, 0.15)
+    color: #fff
+    text-decoration: none
+
+.ed-tools .menu-widget code
+  color: #3CF
+
+.menu-widget
+  &:before, &:after
+    border-style: solid
+    content: ""
+    position: absolute
+    display: block
+    width: 0
+  &:before
+    border-color: #fff transparent
+    border-width: 0 8px 8px
+    right: 40px
+    top: 8px
+
+.menu-last .menu-widget:before
+  left: 14px
+
+.menu-widget:after
+  border-color: #191919 transparent
+  border-width: 0 5px 5px
+  right: 44px
+  top: 12px
+
+.menu-last .menu-widget:after
+  left: 17px
+
+.tooltipped
+  display: inline-block
+  position: relative
+
+.tooltip
+  font-size: 12px
+  font-size: 0.75rem
+  left: -1000em
+  line-height: 1.38461538461538461538
+  opacity: 0
+  position: absolute
+  -webkit-transition: margin 0.15s,opacity 0.15s
+  -moz-transition: margin 0.15s,opacity 0.15s
+  -o-transition: margin 0.15s,opacity 0.15s
+  transition: margin 0.15s,opacity 0.15s
+  z-index: 10
+  &.delay
+    -webkit-transition-delay: 0.5s,0.5s
+    -moz-transition-delay: 0.5s,0.5s
+    -o-transition-delay: 0.5s,0.5s
+    transition-delay: 0.5s,0.5s
+
+\:hover > .tooltip, :focus > .tooltip, .tooltip.view.visible
+  opacity: 1.0
+  z-index: 9999
+
+.touch
+  \:hover > .tooltip, :focus > .tooltip
+    opacity: 0
+
+@media screen and (max-width: 50em)
+  .no-tooltip-small
+    display: none
+
+.tooltip.view.hidden
+  display: block
+  opacity: 0
+
+.tooltip-inner
+  margin-top: 5px
+  background: #000
+  background: rgba(0, 0, 0, 0.9)
+  -webkit-border-radius: 0.4em
+  -moz-border-radius: 0.4em
+  -ms-border-radius: 0.4em
+  -o-border-radius: 0.4em
+  border-radius: 0.4em
+  border: 2px solid #fff
+  color: #ccc
+  display: block
+  padding: 0.5em 0.76923076923076923076em
+  position: relative
+  text-indent: 0
+  z-index: 100
+  &.constrain
+    width: 14em
+  &.small
+    width: auto
+
+.tooltip
+  p
+    margin-bottom: 0
+    + p
+      margin-top: 0.5em
+  strong
+    font-weight: 600
+
+.tooltip-inner
+  &:before, &:after
+    border-style: solid
+    content: ""
+    display: block
+    height: 0
+    position: absolute
+    width: 0
+
+.tooltip-pointer
+  border-style: solid
+  content: ""
+  display: block
+  height: 0
+  position: absolute
+  width: 0
+
+.help-tip .tooltip-inner
+  white-space: pre-wrap
+  min-width: 10em
+
+.dir-low-left .tooltip, .dir-low-center .tooltip, .dir-low-right .tooltip
+  bottom: 100%
+  margin-bottom: -0.5em
+
+.dir-low-left
+  &:hover .tooltip, &:focus .tooltip
+    margin-bottom: 0
+
+.dir-low-center
+  &:hover .tooltip, &:focus .tooltip
+    margin-bottom: 0
+
+.dir-low-right
+  &:hover .tooltip, &:focus .tooltip
+    margin-bottom: 0
+
+.dir-top-left .tooltip, .dir-top-center .tooltip, .dir-top-right .tooltip
+  margin-top: -0.5em
+  top: 100%
+
+.dir-top-left
+  &:hover .tooltip, &:focus .tooltip
+    margin-top: 0
+
+.dir-top-center
+  &:hover .tooltip, &:focus .tooltip
+    margin-top: 0
+
+.dir-top-right
+  &:hover .tooltip, &:focus .tooltip
+    margin-top: 0
+
+.dir-low-left
+  &:hover .tooltip, &:focus .tooltip
+    left: 0
+
+.dir-top-left:hover .tooltip, .dir-low-left:focus .tooltip
+  left: 0
+
+.dir-mid-left
+  &:hover .tooltip, &:focus .tooltip
+    left: 100%
+    margin-left: 0.75em
+    right: auto
+
+.dir-mid-right
+  &:hover .tooltip, &:focus .tooltip
+    left: auto
+    margin-right: 0.75em
+    right: 100%
+
+.help-tip
+  &.dir-mid-left .tooltip, &.dir-mid-right .tooltip
+    margin-top: -1em
+  &.dir-mid-left
+    &:hover .tooltip, &:focus .tooltip
+      top: -50%
+  &.dir-mid-right
+    &:hover .tooltip, &:focus .tooltip
+      top: -50%
+
+.dir-low-right
+  &:hover .tooltip, &:focus .tooltip
+    left: auto
+    right: 0
+
+.dir-top-right:hover .tooltip, .dir-low-right:focus .tooltip
+  left: auto
+  right: 0
+
+.dir-low-center
+  &:hover .tooltip, &:focus .tooltip
+    left: 50%
+
+.dir-top-center:hover .tooltip
+  left: 50%
+
+.dir-low-center
+  &:focus .tooltip
+    left: 50%
+  &:hover .tooltip-inner, &:focus .tooltip-inner
+    left: -50%
+
+.dir-top-center:hover .tooltip-inner, .dir-low-center:focus .tooltip-inner
+  left: -50%
+
+.dir-low-left .tooltip-inner, .dir-low-center .tooltip-inner, .dir-low-right .tooltip-inner
+  bottom: 0.5em
+
+.dir-low-left .tooltip-inner:before, .dir-low-center .tooltip-inner:before, .dir-low-right .tooltip-inner:before
+  border-color: #fff transparent
+  border-color: rgba(255, 255, 255, 0.95) transparent
+  border-width: 7px 7px 0 7px
+  bottom: -8px
+
+.dir-low-left .tooltip-inner:after, .dir-low-center .tooltip-inner:after, .dir-low-right .tooltip-inner:after, .tooltip-pointer.bottom
+  border-color: #000 transparent
+  border-color: rgba(0, 0, 0, 0.95) transparent
+  border-width: 5px 5px 0 5px
+  bottom: -5px
+
+.dir-top-left .tooltip-inner:before, .dir-top-center .tooltip-inner:before, .dir-top-right .tooltip-inner:before, .tooltip.view .tooltip-inner:before, .tooltip-pointer.top
+  border-color: #fff transparent
+  border-color: rgba(255, 255, 255, 0.95) transparent
+  border-width: 0 7px 7px 7px
+  top: -8px
+
+.dir-top-left .tooltip-inner:after, .dir-top-center .tooltip-inner:after, .dir-top-right .tooltip-inner:after, .tooltip-pointer.top
+  border-color: #000 transparent
+  border-color: rgba(0, 0, 0, 0.95) transparent
+  border-width: 0 5px 5px 5px
+  top: -5px
+
+.dir-mid-left .tooltip-inner
+  &:before
+    border-color: transparent #fff
+    border-color: transparent rgba(255, 255, 255, 0.95)
+    border-width: 7px 7px 7px 0
+    left: -8px
+    margin-top: 1px
+  &:after
+    border-color: transparent #000
+    border-color: transparent rgba(0, 0, 0, 0.95)
+    border-width: 5px 5px 5px 0
+    left: -5px
+
+.tooltip-pointer.left
+  border-color: transparent #000
+  border-color: transparent rgba(0, 0, 0, 0.95)
+  border-width: 5px 5px 5px 0
+  left: -5px
+
+.dir-mid-right .tooltip-inner
+  &:before
+    border-color: transparent #fff
+    border-color: transparent rgba(255, 255, 255, 0.95)
+    border-width: 7px 0 7px 7px
+    margin-top: 1px
+    right: -8px
+  &:after
+    border-color: transparent #000
+    border-color: transparent rgba(0, 0, 0, 0.95)
+    border-width: 5px 0 5px 5px
+    right: -5px
+
+.tooltip-pointer.right
+  border-color: transparent #000
+  border-color: transparent rgba(0, 0, 0, 0.95)
+  border-width: 5px 0 5px 5px
+  right: -5px
+
+.dir-mid-left .tooltip-inner:before, .dir-mid-right .tooltip-inner:before
+  margin-top: -7px
+  top: 50%
+
+.dir-mid-left .tooltip-inner:after, .dir-mid-right .tooltip-inner:after
+  margin-top: -5px
+  top: 50%
+
+.dir-low-left .tooltip-inner:before, .dir-top-left .tooltip-inner:before
+  left: 7px
+
+.dir-low-left .tooltip-inner:after, .dir-top-left .tooltip-inner:after
+  left: 9px
+
+.dir-low-center .tooltip-inner:before, .dir-top-center .tooltip-inner:before
+  left: 50%
+  margin-left: -7px
+
+.dir-low-center .tooltip-inner:after, .dir-top-center .tooltip-inner:after
+  left: 50%
+  margin-left: -5px
+
+.dir-low-right .tooltip-inner:before, .dir-top-right .tooltip-inner:before
+  right: 7px
+
+.dir-low-right .tooltip-inner:after, .dir-top-right .tooltip-inner:after
+  right: 9px
+
+.top
+  &:hover .tooltip, &:focus .tooltip
+    margin-top: 0.5em
+
+.tool-last
+  .tooltip
+    margin-left: 5px
+  .ico-activity .tooltip span:after
+    left: 6px
+
+.tooltipped .tooltip
+  &:hover, &:focus
+    left: -1000em
+    right: auto
+
+.ico-hover-help.tooltipped
+  top: 2px
+  margin-left: 5px
+  background-position: 50% 0
+  &:hover
+    background-position: 50% -100px
+
+.btn
+  border-style: solid
+  &:before, &:after
+    border-style: solid
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  background-repeat: no-repeat
+  border-width: 1px
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25)
+  color: #fff
+  cursor: pointer
+  display: inline-block
+  line-height: 1.33333333333333333333
+  text-align: center
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15)
+  -webkit-transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  -moz-transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  -o-transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  padding: 0.4em 0.6em 0.4em 0.7em
+  position: relative
+  overflow: hidden
+
+a.btn
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  background-repeat: no-repeat
+  border-width: 1px
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25)
+  color: #fff
+  cursor: pointer
+  display: inline-block
+  line-height: 1.33333333333333333333
+  text-align: center
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15)
+  -webkit-transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  -moz-transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  -o-transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  transition: background-color 0.2s,box-shadow 0.2s ease,text-shadow 0.2s
+  padding: 0.4em 0.6em 0.4em 0.7em
+  position: relative
+  overflow: hidden
+
+.btn-important
+  text-transform: uppercase
+  letter-spacing: 0.02em
+
+.btn
+  &:hover, &:focus
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.25)
+    text-decoration: none
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3)
+
+.btn-focused
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.25)
+  text-decoration: none
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3)
+
+.btn
+  input, button
+    position: absolute
+    left: -1000em
+  &:before, &:after
+    content: ""
+    position: absolute
+    left: 0
+    right: 0
+  &:before
+    border-color: rgba(255, 255, 255, 0.3)
+    -webkit-border-radius: 3px 3px 0 0
+    -moz-border-radius: 3px 3px 0 0
+    -ms-border-radius: 3px 3px 0 0
+    -o-border-radius: 3px 3px 0 0
+    border-radius: 3px 3px 0 0
+    border-width: 1px 1px 0
+    top: 0
+    height: 2px
+  &:after
+    border-color: rgba(0, 0, 0, 0.2)
+    border-width: 0 0 1px
+    bottom: 0
+    height: 1px
+
+.ieold .btn
+  &:before, &:after
+    display: none
+
+.btn
+  background-color: #3d9ecf
+  border-color: #3385AD
+  border-bottom-color: #1472A1
+  &:hover, &:focus
+    background-color: #2E8CBC
+
+.btn-focused
+  background-color: #2E8CBC
+
+.btn[disabled]
+  opacity: 0.5
+  cursor: default
+
+.btn-type-secondary
+  background-color: #999
+  border-color: #858585
+  border-bottom-color: #5B5B5B
+  &.btn-history:before
+    background-color: #999
+    border-color: #858585
+    border-bottom-color: #5B5B5B
+  &:hover, &:focus, &:hover.btn-history:before, &:focus.btn-history:before
+    background-color: #888
+
+.btn-type-inverse
+  background-color: #4d4d4d
+  border-color: #333333
+  border-bottom-color: #333333
+  &.btn-history:before
+    background-color: #4d4d4d
+    border-color: #333333
+    border-bottom-color: #333333
+  &:hover, &:focus, &:hover.btn-history:before, &:focus.btn-history:before, &.btn-focused
+    background-color: #404040
+
+.btn-type-alert
+  background-color: #dd4b39
+  border-color: #AD3333
+  border-bottom-color: #A11414
+  &.btn-history:before
+    background-color: #dd4b39
+    border-color: #AD3333
+    border-bottom-color: #A11414
+  &:hover, &:focus, &:hover.btn-history:before, &:focus.btn-history:before, &.btn-focused
+    background-color: #d03724
+
+.btn-type-discussion
+  background-color: #eab550
+  border-color: #C19947
+  border-bottom-color: #A97A1C
+  &.btn-history:before
+    background-color: #eab550
+    border-color: #C19947
+    border-bottom-color: #A97A1C
+  &:hover, &:focus, &:hover.btn-history:before, &:focus.btn-history:before, &.btn-focused
+    background-color: #e6a832
+
+a.btn-green-gloss
+  background-color: #88b716
+  color: #fff
+  border-color: #88b716
+  border-bottom-color: #78a213
+
+.btn-green-gloss
+  background-color: #88b716
+  color: #fff
+  border-color: #88b716
+  border-bottom-color: #78a213
+  &:hover, &:focus, &:hover.btn-history:before, &:focus.btn-history:before, &.btn-focused
+    background-color: #78a213
+
+.btn-sm
+  font-size: 12px
+  font-size: 0.75rem
+
+.btn-med
+  font-size: 14px
+  font-size: 0.875rem
+  padding-bottom: 0.45em
+  padding-right: 0.7em
+
+.btn-lg
+  font-size: 18px
+  font-size: 1.125rem
+  padding-right: 0.8em
+  padding-left: 0.8em
+  &:before
+    border-width: 1px 0 0
+  &:after
+    border-width: 0 0 1px
+
+.btn-nav, .btn-simple
+  background-color: #2E2E2E
+  background-color: rgba(255, 255, 255, 0.18)
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  color: #999
+  font-size: 14px
+  font-size: 0.875rem
+  padding: 0.2em 0.4em
+  text-decoration: none
+  white-space: nowrap
+
+.btn-nav
+  &:hover, &:focus
+    background-color: #333
+    background-color: rgba(255, 255, 255, 0.3)
+    color: #CCC
+    text-decoration: none
+
+.btn-simple
+  &:hover, &:focus
+    background-color: #333
+    background-color: rgba(255, 255, 255, 0.3)
+    color: #CCC
+    text-decoration: none
+
+.btn-sm.btn-ico
+  background-position: 5px 5px
+  padding-left: 2.1em
+
+.btn-med.btn-ico
+  background-position: 6px 8px
+  padding-left: 1.85em
+  &:hover, &:focus
+    background-position: 6px -92px
+
+.btn-lg.btn-ico
+  background-position: 8px 11px
+  padding-left: 1.6em
+  &:hover, &:focus
+    background-position: 8px -53px
+
+a.btn-flat, .btn-flat
+  background-color: #D9D9D9
+  background-repeat: no-repeat
+  background-position: 5px 50%
+  color: #666
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  font-size: 14px
+  font-size: 0.875rem
+  padding: 0.2em 0.4em
+  text-decoration: none
+  white-space: nowrap
+
+a.btn-flat
+  &:hover, &:focus
+    background-color: #C8C8C8
+    cursor: pointer
+
+.btn-flat
+  &:hover, &:focus
+    background-color: #C8C8C8
+    cursor: pointer
+
+a.btn-green, .btn-green
+  background-color: #88b716
+  color: #fff
+
+a.btn-green
+  &:hover, &:focus
+    background-color: #78a213
+
+.btn-green
+  &:hover, &:focus
+    background-color: #78a213
+
+@media screen and (min-width: 37.5em)
+  .group
+    clear: left
+    float: left
+  .group-alt
+    clear: right
+    float: right
+  .grid
+    overflow: hidden
+  .grid-clearfix:after
+    clear: both
+    content: ""
+    display: table
+  .grid-col
+    float: left
+    margin-left: 5%
+  .grid-col-alt
+    float: right
+  .grid .grid-col:first-child, .grid-clearfix .grid-col:first-child
+    margin-left: 0
+  .p-more
+    width: 65.7%
+  .p-less
+    width: 55%
+  .p-eq, .p-tiny
+    width: 47%
+  .p-small
+    width: 29%
+  .nav-col
+    width: 30%
+
+@media screen and (min-width: 50em)
+  .grid-col-sm-margin
+    margin-left: 4%
+  .p-tiny
+    width: 23%
+  .p-less
+    width: 40%
+  .nav-col
+    width: 22%
+
+@media screen and (min-width: 62em)
+  .grid-col-sm-margin
+    margin-left: 3%
+  .p-less
+    width: 35%
+  .nav-col
+    width: 19%
+
+@-webkit-keyframes in-from-top
+  0%
+    -webkit-transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    -webkit-transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes rotation
+  0%
+    -moz-transform: rotate(0deg)
+  8.2%
+    -moz-transform: rotate(0deg)
+  8.3%
+    -moz-transform: rotate(30deg)
+  16.3%
+    -moz-transform: rotate(30deg)
+  16.4%
+    -moz-transform: rotate(60deg)
+  24.8%
+    -moz-transform: rotate(60deg)
+  24.9%
+    -moz-transform: rotate(90deg)
+  33.1%
+    -moz-transform: rotate(90deg)
+  33.2%
+    -moz-transform: rotate(120deg)
+  41.4%
+    -moz-transform: rotate(120deg)
+  41.5%
+    -moz-transform: rotate(150deg)
+  49.7%
+    -moz-transform: rotate(150deg)
+  49.8%
+    -moz-transform: rotate(180deg)
+  58%
+    -moz-transform: rotate(180deg)
+  58.1%
+    -moz-transform: rotate(210deg)
+  66.3%
+    -moz-transform: rotate(210deg)
+  66.4%
+    -moz-transform: rotate(240deg)
+  74.6%
+    -moz-transform: rotate(240deg)
+  74.7%
+    -moz-transform: rotate(270deg)
+  82.9%
+    -moz-transform: rotate(270deg)
+  83%
+    -moz-transform: rotate(300deg)
+  91.2%
+    -moz-transform: rotate(300deg)
+  91.3%
+    -moz-transform: rotate(330deg)
+  99.9%
+    -moz-transform: rotate(330deg)
+  100%
+    -moz-transform: rotate(360deg)
+
+
+@-webkit-keyframes rotation
+  0%
+    -webkit-transform: rotate(0deg)
+  8.2%
+    -webkit-transform: rotate(0deg)
+  8.3%
+    -webkit-transform: rotate(30deg)
+  16.3%
+    -webkit-transform: rotate(30deg)
+  16.4%
+    -webkit-transform: rotate(60deg)
+  24.8%
+    -webkit-transform: rotate(60deg)
+  24.9%
+    -webkit-transform: rotate(90deg)
+  33.1%
+    -webkit-transform: rotate(90deg)
+  33.2%
+    -webkit-transform: rotate(120deg)
+  41.4%
+    -webkit-transform: rotate(120deg)
+  41.5%
+    -webkit-transform: rotate(150deg)
+  49.7%
+    -webkit-transform: rotate(150deg)
+  49.8%
+    -webkit-transform: rotate(180deg)
+  58%
+    -webkit-transform: rotate(180deg)
+  58.1%
+    -webkit-transform: rotate(210deg)
+  66.3%
+    -webkit-transform: rotate(210deg)
+  66.4%
+    -webkit-transform: rotate(240deg)
+  74.6%
+    -webkit-transform: rotate(240deg)
+  74.7%
+    -webkit-transform: rotate(270deg)
+  82.9%
+    -webkit-transform: rotate(270deg)
+  83%
+    -webkit-transform: rotate(300deg)
+  91.2%
+    -webkit-transform: rotate(300deg)
+  91.3%
+    -webkit-transform: rotate(330deg)
+  99.9%
+    -webkit-transform: rotate(330deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+  8.2%
+    transform: rotate(0deg)
+  8.3%
+    transform: rotate(30deg)
+  16.3%
+    transform: rotate(30deg)
+  16.4%
+    transform: rotate(60deg)
+  24.8%
+    transform: rotate(60deg)
+  24.9%
+    transform: rotate(90deg)
+  33.1%
+    transform: rotate(90deg)
+  33.2%
+    transform: rotate(120deg)
+  41.4%
+    transform: rotate(120deg)
+  41.5%
+    transform: rotate(150deg)
+  49.7%
+    transform: rotate(150deg)
+  49.8%
+    transform: rotate(180deg)
+  58%
+    transform: rotate(180deg)
+  58.1%
+    transform: rotate(210deg)
+  66.3%
+    transform: rotate(210deg)
+  66.4%
+    transform: rotate(240deg)
+  74.6%
+    transform: rotate(240deg)
+  74.7%
+    transform: rotate(270deg)
+  82.9%
+    transform: rotate(270deg)
+  83%
+    transform: rotate(300deg)
+  91.2%
+    transform: rotate(300deg)
+  91.3%
+    transform: rotate(330deg)
+  99.9%
+    transform: rotate(330deg)
+  100%
+    transform: rotate(360deg)
+
+
+.ui-loading
+  background-color: #fff
+  bottom: 0
+  left: 0
+  margin-bottom: 0
+  opacity: 1
+  overflow: hidden
+  position: absolute
+  right: 0
+  text-indent: -1000em
+  -ms-transition: opacity 0.25s ease-in-out
+  -moz-transition: opacity 0.25s ease-in-out
+  -o-transition: opacity 0.25s ease-in-out
+  -webkit-transition: opacity 0.25s ease-in-out
+  transition: opacity 0.25s ease-in-out
+  top: 0
+  z-index: 100
+  span
+    -moz-animation: rotation infinite 1s linear
+    -webkit-animation: rotation infinite 1s linear
+    animation: rotation infinite 1s linear
+    background-position: 50% 50%
+    height: 40px
+    left: 50%
+    margin-left: -20px
+    margin-top: -20px
+    position: absolute
+    text-indent: -1000em
+    top: 50%
+    width: 40px
+  &.hidden
+    display: block
+    opacity: 0
+    pointer-events: none
+    span
+      -moz-animation: none
+      -webkit-animation: none
+      animation: none
+
+.editor-drawer .ui-loading
+  background-color: #FCFCFD
+
+.overlay-inner, .modal, .bb-overlay-inner, .bb-modal
+  opacity: 0
+  pointer-events: none
+  -o-transition: opacity 0.3s,      -o-transform 0.3s
+  -ms-transition: opacity 0.3s,     -ms-transform 0.3s
+  -moz-transition: opacity 0.3s,    -moz-transform 0.3s
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s
+  transition: opacity 0.3s,         transform 0.3s
+
+.overlay-open
+  .overlay-inner, .modal
+    opacity: 1
+    pointer-events: auto
+    overflow: auto
+
+.bb-overlay-open
+  .bb-overlay-inner, .bb-modal
+    opacity: 1
+    pointer-events: auto
+    overflow: auto
+
+@media screen and (min-width: 50em)
+  .overlay-open
+    .overlay-inner, .modal
+      overflow: visible
+  .bb-overlay-open
+    .bb-overlay-inner, .bb-modal
+      overflow: visible
+
+.overlay-inner, .bb-overlay-inner
+  background: #202020
+  background: rgba(0, 0, 0, 0.5)
+  height: 100%
+  left: 0
+  position: fixed
+  top: 0
+  right: 0
+  z-index: 1000
+
+.modal, .bb-modal
+  margin: 0 auto
+  top: 50px
+  max-width: 270px
+  max-width: 16.875rem
+  position: relative
+  -webkit-transform: scale(1.2)
+  -moz-transform: scale(1.2)
+  -ms-transform: scale(1.2)
+  -o-transform: scale(1.2)
+  transform: scale(1.2)
+  z-index: 100
+
+@media screen and (min-width: 36em)
+  .modal, .bb-modal
+    margin-top: -12.5%
+    top: 50%
+
+.overlay-open .modal, .bb-overlay-open .bb-modal
+  -webkit-transform: scale(1)
+  -moz-transform: scale(1)
+  -ms-transform: scale(1)
+  -o-transform: scale(1)
+  transform: scale(1)
+
+@media screen and (min-width: 50em)
+  .modal, .bb-modal
+    max-width: 330px
+    max-width: 21.875rem
+
+.modal-full
+  max-width: 37.5em
+
+.modal-close
+  background-color: #333
+  background-position: 50% 50%
+  -webkit-border-radius: 1.5em
+  -moz-border-radius: 1.5em
+  -ms-border-radius: 1.5em
+  -o-border-radius: 1.5em
+  border-radius: 1.5em
+  cursor: pointer
+  height: 36px
+  left: 0
+  position: absolute
+  text-indent: -1000em
+  -webkit-transition: background-color 0.2s
+  -moz-transition: background-color 0.2s
+  -o-transition: background-color 0.2s
+  transition: background-color 0.2s
+  top: 0
+  width: 36px
+  &:hover, &:focus
+    background-color: #111
+
+@media screen and (min-width: 50em)
+  .modal-close
+    top: -13px
+    left: -13px
+
+.modal .content-outer, .bb-modal .content-outer
+  border: 0.625em solid #1E1F20
+  border-color: rgba(0, 0, 0, 0.2)
+  -webkit-border-radius: 14px
+  -moz-border-radius: 14px
+  -ms-border-radius: 14px
+  -o-border-radius: 14px
+  border-radius: 14px
+  margin-bottom: 1em
+
+.modal .content, .bb-modal .content
+  background: #FCFCFD
+  -webkit-border-radius: 6px
+  -moz-border-radius: 6px
+  -ms-border-radius: 6px
+  -o-border-radius: 6px
+  border-radius: 6px
+  color: #666
+  padding: 1.5em 9.09090909% 0.5em
+
+.modal-full .content
+  padding: 1.5em 5% 0.5em
+
+.modal-export
+  ul > li
+    margin-bottom: 1em
+  h2
+    font-weight: normal
+    padding-bottom: .5em
+    border-bottom: 1px solid #ddd
+    margin-bottom: 1em
+
+@-webkit-keyframes in-from-top
+  0%
+    -webkit-transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    -webkit-transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@keyframes in-from-top
+  0%
+    transform: translateY(-300px)
+    opacity: 0
+  75%
+    opacity: 0.25
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+
+@-moz-keyframes rotation
+  0%
+    -moz-transform: rotate(0deg)
+  8.2%
+    -moz-transform: rotate(0deg)
+  8.3%
+    -moz-transform: rotate(30deg)
+  16.3%
+    -moz-transform: rotate(30deg)
+  16.4%
+    -moz-transform: rotate(60deg)
+  24.8%
+    -moz-transform: rotate(60deg)
+  24.9%
+    -moz-transform: rotate(90deg)
+  33.1%
+    -moz-transform: rotate(90deg)
+  33.2%
+    -moz-transform: rotate(120deg)
+  41.4%
+    -moz-transform: rotate(120deg)
+  41.5%
+    -moz-transform: rotate(150deg)
+  49.7%
+    -moz-transform: rotate(150deg)
+  49.8%
+    -moz-transform: rotate(180deg)
+  58%
+    -moz-transform: rotate(180deg)
+  58.1%
+    -moz-transform: rotate(210deg)
+  66.3%
+    -moz-transform: rotate(210deg)
+  66.4%
+    -moz-transform: rotate(240deg)
+  74.6%
+    -moz-transform: rotate(240deg)
+  74.7%
+    -moz-transform: rotate(270deg)
+  82.9%
+    -moz-transform: rotate(270deg)
+  83%
+    -moz-transform: rotate(300deg)
+  91.2%
+    -moz-transform: rotate(300deg)
+  91.3%
+    -moz-transform: rotate(330deg)
+  99.9%
+    -moz-transform: rotate(330deg)
+  100%
+    -moz-transform: rotate(360deg)
+
+
+@-webkit-keyframes rotation
+  0%
+    -webkit-transform: rotate(0deg)
+  8.2%
+    -webkit-transform: rotate(0deg)
+  8.3%
+    -webkit-transform: rotate(30deg)
+  16.3%
+    -webkit-transform: rotate(30deg)
+  16.4%
+    -webkit-transform: rotate(60deg)
+  24.8%
+    -webkit-transform: rotate(60deg)
+  24.9%
+    -webkit-transform: rotate(90deg)
+  33.1%
+    -webkit-transform: rotate(90deg)
+  33.2%
+    -webkit-transform: rotate(120deg)
+  41.4%
+    -webkit-transform: rotate(120deg)
+  41.5%
+    -webkit-transform: rotate(150deg)
+  49.7%
+    -webkit-transform: rotate(150deg)
+  49.8%
+    -webkit-transform: rotate(180deg)
+  58%
+    -webkit-transform: rotate(180deg)
+  58.1%
+    -webkit-transform: rotate(210deg)
+  66.3%
+    -webkit-transform: rotate(210deg)
+  66.4%
+    -webkit-transform: rotate(240deg)
+  74.6%
+    -webkit-transform: rotate(240deg)
+  74.7%
+    -webkit-transform: rotate(270deg)
+  82.9%
+    -webkit-transform: rotate(270deg)
+  83%
+    -webkit-transform: rotate(300deg)
+  91.2%
+    -webkit-transform: rotate(300deg)
+  91.3%
+    -webkit-transform: rotate(330deg)
+  99.9%
+    -webkit-transform: rotate(330deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+  8.2%
+    transform: rotate(0deg)
+  8.3%
+    transform: rotate(30deg)
+  16.3%
+    transform: rotate(30deg)
+  16.4%
+    transform: rotate(60deg)
+  24.8%
+    transform: rotate(60deg)
+  24.9%
+    transform: rotate(90deg)
+  33.1%
+    transform: rotate(90deg)
+  33.2%
+    transform: rotate(120deg)
+  41.4%
+    transform: rotate(120deg)
+  41.5%
+    transform: rotate(150deg)
+  49.7%
+    transform: rotate(150deg)
+  49.8%
+    transform: rotate(180deg)
+  58%
+    transform: rotate(180deg)
+  58.1%
+    transform: rotate(210deg)
+  66.3%
+    transform: rotate(210deg)
+  66.4%
+    transform: rotate(240deg)
+  74.6%
+    transform: rotate(240deg)
+  74.7%
+    transform: rotate(270deg)
+  82.9%
+    transform: rotate(270deg)
+  83%
+    transform: rotate(300deg)
+  91.2%
+    transform: rotate(300deg)
+  91.3%
+    transform: rotate(330deg)
+  99.9%
+    transform: rotate(330deg)
+  100%
+    transform: rotate(360deg)
+
+
+.ui-loading
+  background-color: #fff
+  bottom: 0
+  left: 0
+  margin-bottom: 0
+  opacity: 1
+  overflow: hidden
+  position: absolute
+  right: 0
+  text-indent: -1000em
+  -ms-transition: opacity 0.25s ease-in-out
+  -moz-transition: opacity 0.25s ease-in-out
+  -o-transition: opacity 0.25s ease-in-out
+  -webkit-transition: opacity 0.25s ease-in-out
+  transition: opacity 0.25s ease-in-out
+  top: 0
+  z-index: 100
+  span
+    -moz-animation: rotation infinite 1s linear
+    -webkit-animation: rotation infinite 1s linear
+    animation: rotation infinite 1s linear
+    background-position: 50% 50%
+    height: 40px
+    left: 50%
+    margin-left: -20px
+    margin-top: -20px
+    position: absolute
+    text-indent: -1000em
+    top: 50%
+    width: 40px
+  &.hidden
+    display: block
+    opacity: 0
+    pointer-events: none
+    span
+      -moz-animation: none
+      -webkit-animation: none
+      animation: none
+
+.editor-drawer .ui-loading
+  background-color: #FCFCFD
+
+.account
+  max-width: 400px
+
+.nav-account > li a
+  display: inline-block
+  padding: 5px
+  margin-bottom: 5px
+  &:hover, &.active
+    text-decoration: none
+    color: #4d4d4d
+    background-color: #ccc
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    -ms-border-radius: 3px
+    -o-border-radius: 3px
+    border-radius: 3px
+
+.tab-content
+  padding-bottom: 2em
+
+.tab
+  position: absolute
+  left: -99999em
+  height: 0
+  width: 0
+  &.delete-account, &.export, &.personal, &.notifications, &.publishing, &.password, &.billing
+    position: relative
+    left: 0
+    height: auto
+    width: auto
+
+a.blue
+  color: #3d9ecf
+
+.avatar-group
+  display: table
+  img
+    margin-right: 15px
+
+.avatar-link
+  display: table-cell
+  vertical-align: middle
+
+.upgrade-hdg
+  font-size: 1.375em
+  font-weight: normal
+  line-height: 1.5
+  margin-bottom: 1em
+
+.upgrade-explain
+  color: #666
+
+.upgrade-box
+  border: 1px solid #ebebeb
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  -ms-border-radius: 5px
+  -o-border-radius: 5px
+  border-radius: 5px
+  padding: 1em
+  margin: 1em 0
+  overflow: hidden
+
+.upgrade-left
+  padding: 0
+  margin: 0
+
+.upgrade-right
+  padding: 0
+  margin: 10px 0 0 0
+
+@media screen and (min-width: 25em)
+  .upgrade-left
+    float: left
+  .upgrade-right
+    float: right
+    margin-left: 1%
+
+.upgrade-price
+  color: #999
+  sup
+    vertical-align: top
+    color: #666
+
+.upgrade-big
+  font-size: 3.125em
+  color: #88b716
+  line-height: 1
+
+.upgrade-intro
+  font-style: italic
+  color: #666
+  font-size: .875em
+
+.integrations-illustrated > li
+  color: #666
+  margin: 1em 0
+
+.ico-wordpress-account, .ico-dropbox-account
+  display: block
+
+.ico-wordpress-account
+  height: 60px
+  width: 60px
+
+.ico-dropbox-account
+  height: 57px
+  width: 60px
+  margin-bottom: 3px
+
+.integrations-illustrated .coming-soon
+  color: #999
+  padding-top: 15px
+  font-size: .875em
+
+@media screen and (min-width: 37.5em)
+  .integrations-illustrated > li
+    text-align: center
+  .ico-wordpress-account
+    margin: 0 auto
+  .ico-dropbox-account
+    margin: 0 auto
+    margin-bottom: 3px
+
+a.btn-connect
+  background-color: #ebebeb
+  color: #999
+
+.btn-connect.ico-hover-new
+  background-position: 32% 14px
+
+@media screen and (min-width: 37.5em)
+  .btn-connect.ico-hover-new
+    background-position: 37% 14px
+
+a.btn-connect
+  &:hover, &:focus
+    color: #4d4d4d
+
+.int-list
+  input.is-icon
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    background-color: #FFF
+    border: none
+    cursor: pointer
+    margin-top: 5px
+  > li
+    overflow: hidden
+    padding: 1em 0
+    border-bottom: 1px solid #ebebeb
+
+.int-left
+  float: left
+  display: inline-block
+
+.int-right
+  float: right
+  display: inline-block
+
+.int-options
+  > li
+    border: 1px solid #ebebeb
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    -ms-border-radius: 3px
+    -o-border-radius: 3px
+    border-radius: 3px
+    margin-bottom: .5em
+    padding: .5em
+    color: #666
+    &:hover
+      background-color: #f2f2f2
+      border-color: #3d9ecf
+      color: #4d4d4d
+      cursor: pointer
+  a
+    display: block
+    width: 100%
+    &:hover
+      text-decoration: none
+
+.hdg-card
+  margin-bottom: 1em
+
+.fake-label
+  font-weight: normal
+
+.margin-bottom-form
+  margin-bottom: 1em
+
+.cc-form
+  margin-bottom: 2em
+  border-bottom: 1px solid #ddd
+
+.tooltip-holder
+  clear: both
+  content: ""
+  display: table
+
+.cvv-label
+  width: 86%
+  float: left
+
+.touch .cvv-label
+  width: 100%
+
+.billing-help
+  width: 10%
+  float: left
+
+.cvv-input
+  position: relative
+  z-index: 1
+
+.touch .billing .ico-hover-help
+  display: none
+
+.content p
+  margin-bottom: 1.2em
+
+.label-primary
+  display: block
+  padding-bottom: 0.3em
+
+.input-text
+  background: #fff
+  color: #555
+  border: 1px solid #CCC
+  -webkit-border-radius: 0.25em
+  -moz-border-radius: 0.25em
+  -ms-border-radius: 0.25em
+  -o-border-radius: 0.25em
+  border-radius: 0.25em
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1)
+  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1)
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1)
+  display: block
+  font-size: 1em
+  font-family: inherit
+  padding: 0.4em
+  -webkit-transition: box-shadow 0.1s linear,border-color 0.25s linear
+  -moz-transition: box-shadow 0.1s linear,border-color 0.25s linear
+  -o-transition: box-shadow 0.1s linear,border-color 0.25s linear
+  transition: box-shadow 0.1s linear,border-color 0.25s linear
+  width: 95%
+  &:focus
+    border-color: #AFAFAF
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    outline: none
+
+.label-primary a
+  background: none
+  color: #999
+  font-size: 0.8em
+  cursor: pointer
+  text-transform: none
+  text-decoration: underline
+  &:visited
+    background: none
+    color: #999
+    font-size: 0.8em
+    cursor: pointer
+    text-transform: none
+    text-decoration: underline
+  margin-left: 0.5em
+  &:hover, &:focus
+    color: #3CF
+    text-decoration: underline
+
+a.cancel
+  color: #999
+  font-size: 0.875em
+  margin-right: 1em
+  text-decoration: underline
+  &:hover
+    color: #3CF
+    text-decoration: underline
+    color: #3CF
+    text-decoration: underline
+
+.manage-gravatar
+  font-size: 12px
+  font-size: 0.75rem
+  img
+    margin-right: 0.75em
+    vertical-align: middle
+  a
+    text-decoration: underline
+    &:hover, &:focus
+      color: #3CF
+
+.load-more
+  background-color: #F7F7F7
+  color: #7F7F7F
+  display: block
+  font-size: 14px
+  font-size: 0.875rem
+  text-align: center
+  text-decoration: none
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  padding: 0.7em
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  &:hover, &:focus
+    background-color: #CCC
+    color: #666
+    text-decoration: none
+
+.text, .comment-shim
+  background: #fff
+  border: 1px solid #D8D8D8
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  -ms-border-radius: 4px
+  -o-border-radius: 4px
+  border-radius: 4px
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  padding: 0.4em 0
+
+.comment-holder
+  position: relative
+  display: block
+
+.comment-shim, .comment-holder .text
+  display: block
+  min-height: 2.2em
+  -webkit-transition: min-height 0.5s
+  -moz-transition: min-height 0.5s
+  -o-transition: min-height 0.5s
+  transition: min-height 0.5s
+  white-space: pre-wrap
+  word-wrap: break-word
+  width: 100%
+
+.comment-shim
+  visibility: hidden
+  z-index: -1
+
+.comment-holder .text
+  height: 100%
+  left: 0
+  overflow: hidden
+  padding-left: 0.4em
+  padding-top: 0.3em
+  position: absolute
+  resize: none
+  top: 0
+  width: 100%
+
+.modal-overlay .has-icon
+  background-position: 0 0.15em
+  color: #999
+  font-size: 0.9em
+  margin-top: 0.4em
+  padding-left: 23px
+  text-indent: 0
+
+.overlay .ico-close-dark
+  background-position: 3px 50%
+
+#login-file
+  max-width: 100%
+  width: 100%
+
+.import
+  margin-bottom: 0.5em
+  label
+    margin-bottom: 0.5em
+    display: block
+    font-style: italic
+  border-bottom: 1px solid #E2E2E3
+  padding-bottom: 1em
+
+.scrolltest
+  height: 100px
+  left: -1000em
+  overflow: scroll
+  position: absolute
+  width: 100px
+
+.h-list > li
+  display: inline-block
+
+.ed-page
+  background: #FCFCFC
+
+.tmpl-doc .ed-page
+  overflow: hidden
+
+.doc-alert
+  font-size: 14px
+  font-size: 0.875rem
+  position: absolute
+  left: 50%
+  top: 2.75em
+  z-index: 50
+
+.touch .doc-alert
+  top: 2.75em
+
+@media screen and (min-width: 48em)
+  .doc-alert
+    top: 2.3em
+
+.top-bar-visible .doc-alert
+  margin-top: 54px
+
+.doc-alert
+  span
+    background-color: #8FBE30
+    background-repeat: no-repeat
+    -webkit-border-radius: 0 0 0.4em 0.4em
+    -moz-border-radius: 0 0 0.4em 0.4em
+    -ms-border-radius: 0 0 0.4em 0.4em
+    -o-border-radius: 0 0 0.4em 0.4em
+    border-radius: 0 0 0.4em 0.4em
+    color: #fff
+    display: block
+    left: -50%
+    padding: 0.9em 1em 0.5em 1em
+    font-size: 13px
+    font-size: 0.8125rem
+    position: relative
+    white-space: nowrap
+  &.saved span
+    background-position: 0.9em 55%
+    padding-left: 2.5em
+  &.save-failed span
+    background-color: #dd4b39
+  cite
+    font-style: normal
+    font-weight: 600
+
+@media screen and (min-width: 37.5em)
+  .group-tool
+    float: right
+    margin: 0
+    .tool
+      float: right
+  .tool-last
+    float: left
+    margin-left: 1px
+
+@media screen and (min-width: 48em)
+  .ed-tool
+    float: left
+    padding: 0 0.4em
+
+.the-tide
+  font-family: inherit
+  line-height: inherit
+  margin: 0 auto
+  max-width: 36em
+  word-wrap: break-word
+
+.tmpl-editor .main
+  padding-bottom: 1px
+
+.the-tide
+  font-family: inherit
+  line-height: inherit
+
+.editor-loading
+  .baseline, .the-tide
+    visibility: hidden
+
+.editor-loaded .the-tide
+  visibility: visible
+
+.baseline, .enhanced .the-tide
+  min-height: 15em
+  width: 100%
+
+.editor-loaded .the-tide
+  min-height: 100%
+  visibility: visible
+
+@media screen and (min-height: 20em)
+  .baseline, .enhanced .main
+    min-height: 22em
+
+@media screen and (min-height: 25em)
+  .baseline, .enhanced .main
+    min-height: 29em
+
+@media screen and (min-height: 20em)
+  .baseline, .editor-loaded .the-tide
+    min-height: 22em
+
+@media screen and (min-height: 25em)
+  .baseline, .editor-loaded .the-tide
+    min-height: 29em
+
+.tmpl-doc
+  pre, code
+    color: inherit
+    font-family: inherit
+  pre
+    white-space: pre-wrap
+
+.the-tide
+  white-space: pre-wrap
+
+.tmpl-doc pre
+  line-height: inherit
+  margin-bottom: 0
+  margin-left: 0
+
+.enhanced .basic-form
+  position: absolute
+  left: -1000em
+
+.editor-loaded .basic-form
+  display: none
+
+.the-tide
+  display: block
+  font-size: 1em
+
+.ed-page:before
+  content: ""
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4)
+  width: 100%
+  height: 5px
+  position: absolute
+  top: -5px
+  z-index: 2
+
+.ed-page-content
+  position: relative
+
+.page-inner
+  margin: 0 auto
+  max-width: 1000px
+  max-width: 62.5rem
+
+.ed-page, .touch .ed-page
+  margin-top: 3em
+  margin-bottom: 1.5em
+
+.overthrow-enabled
+  .ed-page
+    bottom: 1px
+    left: 0
+    right: 0
+    margin: 0
+    max-width: inherit
+    position: absolute
+    top: 2em
+    z-index: 45
+    &:after
+      background: transparent
+      content: ""
+      position: absolute
+      top: 0
+      right: 0
+  .ed-page-container
+    height: 100%
+    overflow-x: hidden
+    overflow-y: auto
+    position: relative
+    -webkit-overflow-scrolling: touch
+    z-index: 1
+
+.touch.overthrow-enabled
+  .main, .doc-rename
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+  .ed-page
+    top: 2.75em
+
+.overthrow-enabled .ed-page
+  top: 2.75em
+
+@media screen and (min-width: 50em)
+  .overthrow-enabled .ed-page
+    top: 2em
+
+.doc-rename p
+  text-align: center
+  margin-bottom: 1em
+
+.enhanced .doc-rename
+  p
+    margin-bottom: 0
+  .submit
+    position: absolute
+    left: -1000em
+
+.doc-rename .comment-shim
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  font-size: 20px
+  font-size: 1.25rem
+  font-weight: normal
+  margin-bottom: 0
+  padding: 0.5em 0
+  width: 100%
+
+.doc-title
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  font-size: 20px
+  font-size: 1.25rem
+  font-weight: normal
+  margin-bottom: 0
+  padding: 0.5em 0
+  width: 100%
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  background: #fff
+  border: 1px solid #B3B3B3
+  color: #555
+  display: block
+  padding: 1em
+  min-height: auto
+  text-align: center
+  -webkit-transition: background-color 0.2s
+  -moz-transition: background-color 0.2s
+  -o-transition: background-color 0.2s
+  transition: background-color 0.2s
+
+.comment-holder
+  margin: 0 auto
+
+.doc-rename .comment-shim
+  min-height: 3.5em
+
+@media screen and (min-width: 37.5em)
+  .doc-rename .comment-shim
+    min-height: 3.25em
+
+.comment-holder .doc-title
+  margin-top: 0
+  padding: 1em 1em 0.5em
+  height: 100%
+  left: 0
+  max-width: inherit
+  overflow: hidden
+  position: absolute
+  resize: none
+  top: 0
+  width: 100%
+
+@media screen and (min-width: 48em)
+  .doc-rename .comment-shim, .doc-title
+    font-size: 26px
+    font-size: 1.625rem
+  .comment-holder .doc-title
+    padding-top: 0.75em
+
+.enhanced .doc-title
+  background: none
+  border: none
+  border-bottom: 2px solid #B3B3B3
+
+.doc-rename .doc-title
+  &:focus, &:hover
+    background: #EEE
+  cursor: text
+
+@media screen and (min-width: 37.5em)
+  .doc-title
+    padding: 0.85em 1em
+  .doc-rename
+    .comment-shim
+      padding: 0.5em 0
+    .doc-title
+      padding: 0.75em 1em 0.5em
+  .top-bar-visible .ed-page
+    padding-top: 51px
+    &:before
+      top: 46px
+
+@media screen and (min-width: 48em)
+  .doc-rename .doc-rename .doc-title
+    max-width: inherit
+  .touch .top-bar-visible .ed-page
+    &:before
+      top: -5px
+    padding-top: 0
+
+.main
+  background: #fff
+  border: 1px solid #F4F4F4
+  font-size: 0.9em
+  font-size: 0.9rem
+  line-height: 1.7
+  min-height: 100%
+
+.enhanced .main
+  border-top: none
+
+.the-tide
+  padding-top: 1em
+
+@media screen and (min-width: 37.5em)
+  .main
+    font-size: 1em
+    font-size: 1rem
+    line-height: 1.8
+  .the-tide
+    padding-top: 4em
+
+@media screen and (min-width: 48em)
+  .main
+    font-size: 18px
+    font-size: 1.125rem
+
+.menu-first
+  &:hover .sub-menu, .sub-menu:target, &.collapsible-expanded .sub-menu
+    right: 10px
+  .menu-widget
+    &:before
+      right: 10px
+    &:after
+      right: 13px
+
+.editor-tools
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+  z-index: 50
+  .inner
+    background: #3C3C3F
+    background: url("/assets/mast-px-low-2c2fd96c7edff96add2410824a4f1cb9.gif") 0 100% repeat-x, url("/assets/mast-px-low-2c2fd96c7edff96add2410824a4f1cb9.gif") repeat-x, #3c3c3f
+    color: #999
+    min-height: 2em
+    zoom: 1
+    &:before, &:after
+      clear: both
+      content: ""
+      display: table
+  ul, li
+    margin: 0
+  .nav
+    float: left
+    width: 2.5em
+
+.nav-3up .nav
+  width: 33.333333333%
+
+.nav-4up .nav
+  width: 25%
+
+.nav-5up .nav
+  width: 20%
+
+.nav-6up .nav
+  width: 16.66666666666666666666%
+
+.nav-7up .nav
+  width: 14.28571428571428571428%
+
+.editor-tools .ico-hover-info, .touch .editor-tools .ico-hover-info
+  background-position: 50% 14px
+
+.top-bar-visible .show-versions, .touch .editor-tools .collapsible-heading-expanded
+  background-color: #000
+
+.editor-tools .icon-hover
+  &:hover, &.collapsible-heading-expanded
+    background-position: 50% -86px
+
+.editor-panel .menu:hover .icon-hover, .top-bar-visible .ico-hover-versions, .view-discuss .ico-hover-discuss, .touch .editor-tools .icon-hover.collapsible-heading-expanded
+  background-position: 50% -86px
+
+.editor-tools .ico-hover-hamburger:hover
+  background-position: 50% -85px
+
+.touch
+  .editor-tools .icon-hover:hover
+    background-position: 50% 14px
+  .editor-panel
+    .icon-hover:hover, .menu:hover .icon-hover
+      background-position: 50% 14px
+  .top-bar-visible .ico-hover-versions, .view-discuss .ico-hover-discuss
+    background-position: 50% 14px
+  .editor-tools .nav .icon-hover.ico-hover-hamburger
+    background-position: 50% 15px
+    &:hover
+      background-position: 50% 15px
+
+.editor-tools .ico-hover-info:hover
+  background-position: 50% -86px
+
+.touch .editor-tools
+  .ico-hover-versions.collapsible-heading-expanded, .ico-hover-info.collapsible-heading-expanded
+    background-position: 50% -86px
+
+.editor-tools
+  .ico-hover-info.collapsible-heading-expanded, .ico-hover-versions.collapsible-heading-expanded
+    background-position: 50% -86px
+
+.touch
+  .editor-panel .menu:hover .icon-hover-info
+    background-position: 50% -86px
+  .editor-tools .nav-activity .primary.collapsible-heading-expanded
+    background-color: #FCFCFD
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+  .view-discuss .editor-tools .nav-discuss .primary
+    background-color: #FCFCFD
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+
+.editor-tools .nav-people .primary.collapsible-heading-expanded
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-people .editor-tools .nav-people .primary
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-activity .editor-tools .nav-activity .primary
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-discuss .editor-tools .nav-discuss .primary
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-activity .editor-tools .nav-activity
+  .primary
+    background-color: #FCFCFD
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+  &.unread .primary
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+
+.touch
+  .editor-tools .nav-people .primary.collapsible-heading-expanded
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-position: 50% -186px
+  .view-people .editor-tools .nav-people .primary
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-position: 50% -186px
+
+@media screen and (min-width: 50em)
+  .editor-tools .nav.unread .ico-hover-activity
+    background-position: 50% -294px
+  .touch .editor-tools .nav.unread .ico-hover-activity
+    background-position: 50% -289px
+  .editor-tools .nav.unread .ico-hover-discuss
+    background-position: 50% -293px
+  .touch .editor-tools .nav.unread .ico-hover-discuss
+    background-position: 50% -285px
+  .editor-tools .primary.ico-hover-hamburger
+    background-position: 12px 8px
+
+.editor-tools .primary
+  border: 1px solid #27282A
+  border-color: rgba(0, 0, 0, 0.4)
+  border-width: 0 0 0 1px
+  display: block
+  width: auto
+  &.ico-hover-hamburger
+    border-left: 0
+  height: 2.75em
+
+.touch .editor-tools .primary
+  height: 2.75em
+
+.editor-tools .primary, .touch .editor-tools .primary, .editor-tools .ico-hover-info, .touch .editor-tools .ico-hover-info
+  background-position: 50% 14px
+
+.top-bar-visible .show-versions
+  background-color: #000
+
+.touch
+  .editor-tools .nav-activity .primary.collapsible-heading-expanded
+    background-color: #FCFCFD
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+  .view-discuss .editor-tools .nav-discuss .primary
+    background-color: #FCFCFD
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+
+.editor-tools .nav-people .primary.collapsible-heading-expanded
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-people .editor-tools .nav-people .primary
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-activity .editor-tools .nav-activity .primary
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-discuss .editor-tools .nav-discuss .primary
+  background-color: #FCFCFD
+  background-position: 50% -186px
+  &:hover, &:focus
+    background-color: #FCFCFD
+    background-position: 50% -186px
+
+.view-activity .editor-tools .nav-activity
+  .primary
+    background-color: #FCFCFD
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+  &.unread .primary
+    &:hover, &:focus
+      background-color: #FCFCFD
+      background-position: 50% -186px
+
+@media screen and (min-width: 50em)
+  .editor-tools .nav-activity .primary.collapsible-heading-expanded
+    background-position: 50% -193px
+    &:hover, &:focus
+      background-position: 50% -193px
+  .view-discuss .editor-tools .nav-discuss .primary
+    background-position: 50% -193px
+    &:hover, &:focus
+      background-position: 50% -193px
+  .editor-tools .nav-people .primary.collapsible-heading-expanded
+    background-position: 50% -193px
+    &:hover, &:focus
+      background-position: 50% -193px
+  .view-people .editor-tools .nav-people .primary
+    background-position: 50% -193px
+    &:hover, &:focus
+      background-position: 50% -193px
+  .view-activity .editor-tools .nav-activity
+    .primary
+      background-position: 50% -192px
+      &:hover, &:focus
+        background-position: 50% -192px
+    &.unread .primary
+      &:hover, &:focus
+        background-position: 50% -192px
+  .touch .view-activity .editor-tools .nav-activity .primary
+    background-position: 50% -186px
+    &:hover, &:focus
+      background-position: 50% -186px
+
+.editor-panel
+  background: #000
+  color: #999
+
+.enhanced .editor-panel
+  position: absolute
+  left: -1000em
+
+.editor-panel
+  &.collapsible-expanded, &.collapsible-collapsed
+    top: 44px
+    right: 0
+    left: 0
+    z-index: 100
+
+@media screen and (min-width: 50em)
+  .editor-panel
+    &.collapsible-expanded, &.collapsible-collapsed
+      top: 2em
+  .menu
+    &.collapsible .sub-menu
+      display: block
+      opacity: 0
+    &.collapsible-expanded .sub-menu
+      opacity: 1
+    &.collapsible-collapsed
+      .sub-menu, &:hover .sub-menu
+        left: -1000em
+        opacity: 0
+        right: auto
+
+.editor-panel-content
+  font-size: 14px
+  font-size: 0.875rem
+
+@media screen and (max-width: 49.999em)
+  .editor-panel .squelch
+    position: static
+    width: auto
+  .editor-panel-content
+    a.top
+      position: absolute
+      left: -1000em
+    .sect
+      border-bottom: none
+  .editor-panel
+    .sub-menu, &.collapsible-expanded .sub-menu
+      position: static
+      margin-top: 0
+      padding-top: 0
+      opacity: 1
+    .menu-widget
+      border: none
+      background: inherit
+      box-shadow: none
+      &:before, &:after
+        opacity: 0
+    &.collapsible-expanded
+      .collapsible-content-collapsed
+        display: block
+      .account-menu
+        display: none
+
+.editor-panel
+  .is-icon
+    text-indent: 0
+    background-position: 0 -1000em
+    width: auto
+  .ico-avatar
+    margin-top: 0.25em
+    top: 0
+    width: 22px
+
+@media screen and (min-width: 50em)
+  .touch .editor-panel .ico-avatar
+    margin-top: 0.55em
+
+.info-menu li:last-child
+  border-bottom: 1px solid #303030
+  border-color: rgba(255, 255, 255, 0.2)
+
+.doc-info
+  padding: 0.8em 0.9em
+
+.collapsible-expanded .info-menu .sub-menu
+  padding-top: 0
+
+.saved-status
+  background-position: 0 0
+  text-indent: -10000em
+  position: relative
+  left: 5px
+  top: 11px
+  display: inline-block
+
+.nav-header .saved-status
+  top: 8px
+
+.touch
+  .saved-status
+    top: 12px
+  .nav-header .saved-status
+    top: 21px
+
+.readonly-view .saved-status, .nav-home
+  display: none
+
+.nav-versions, .nav-people, .nav-activity, .nav-discuss
+  display: block
+
+.editor-tools .nav.nav-info
+  display: none
+
+.touch .editor-tools .nav.nav-info
+  width: 20%
+
+.preview-nav
+  a
+    padding-left: 28px
+  .selected a
+    background-position: 6px 13px
+    padding-left: 28px
+
+@media screen and (min-width: 50em)
+  .nav-hamburger
+    width: 2.5em
+    position: absolute
+    left: 0
+    top: 0
+    z-index: 50
+  .nav-people, .nav-activity, .nav-discuss
+    display: block
+  .nav-home
+    display: block
+    position: absolute
+    left: 2.5em
+    border-right: 1px solid #27282A
+    z-index: 50
+  .editor-panel
+    z-index: 100
+  .editor-tools .nav, .editor-panel .top
+    width: 2.5em
+  .editor-tools
+    .nav.nav-info
+      position: absolute
+      left: 0
+      width: 100%
+      z-index: 1
+      display: block
+    .nav-people, .nav-activity, .nav-discuss
+      z-index: 50
+  .tools-hed .hed
+    top: 3px
+  .touch
+    .editor-tools .nav
+      &.nav-info
+        width: 75%
+        float: left
+        margin: 0 150px
+      width: 3.25em
+      min-height: 2.75em
+    .editor-panel .top
+      width: 3.25em
+      min-height: 2.75em
+  .editor-panel .top
+    border: 1px solid #27282A
+    border-color: rgba(0, 0, 0, 0.4)
+    border-width: 0 0 0 1px
+    display: block
+  .exit-menu .top
+    border-left: none
+  .touch
+    .editor-tools .primary, .editor-panel .top
+      background-position: 50% 14px
+  .editor-panel-content
+    font-size: 1em
+  .editor-panel .is-icon
+    text-indent: -1000em
+  .editor-tools .primary
+    height: 2em
+    background-position: 50% 7px
+  .editor-panel .top
+    height: 2em
+    background-position: 50% 7px
+    &:hover
+      background-color: #000
+  .touch
+    .editor-panel .top:hover
+      background-color: #3c3c3f
+    .menu.collapsible-expanded
+      .logo-sm.collapsible-heading-expanded
+        background-color: #000
+      .ico-hover-versions.collapsible-heading-expanded
+        background-color: #000
+        background-position: 50% -86px
+  .editor-tools .icon-hover:hover, .editor-panel .icon-hover:hover, .editor-tools .icon-hover.collapsible-heading-expanded, .editor-panel .menu:hover .icon-hover, .top-bar-visible .ico-hover-versions, .view-discuss .ico-hover-discuss
+    background-position: 50% -93px
+  .editor-tools .nav
+    &.unread .icon-hover:hover, .ico-hover-home:hover
+      background-position: 50% -93px
+    .icon-hover.ico-hover-hamburger:hover
+      background-position: 12px -91px
+  .touch .editor-tools .nav .icon-hover.ico-hover-hamburger:hover
+    background-position: 12px 15px
+  .editor-tools .icon-hover:hover, .editor-panel .icon-hover:hover
+    background-color: #000
+  .touch
+    .editor-tools .icon-hover:hover, .editor-panel .icon-hover:hover
+      background-color: #3c3c3f
+  .view-discuss
+    .ico-hover-discuss
+      background-color: #fff
+      background-position: 50% -193px
+      &:hover, &:focus
+        background-color: #fff
+        background-position: 50% -193px
+    .nav.unread .ico-hover-discuss
+      &:hover, &:focus
+        background-color: #fff
+        background-position: 50% -193px
+  .edit-pane .editor-panel-content, .info-pane .editor-panel-content, .preview-pane .editor-panel-content, .versions-pane .editor-panel-content
+    display: block
+  .tools-hed
+    width: 100%
+  .touch .tools-hed
+    top: -2em
+  .nav-versions
+    display: none
+  .editor-tools .inner
+    padding-left: 2.5em
+  .touch .editor-tools .inner
+    min-height: 2.75em
+  .nav-discuss
+    position: absolute
+    right: 0
+  .nav-activity
+    position: absolute
+    right: 0
+    right: 2.53em
+  .touch .nav-activity
+    right: 3.25em
+  .exit-menu, .account-menu, .versions-menu
+    position: absolute
+    top: -2em
+    z-index: 100
+  .touch
+    .exit-menu, .account-menu, .preview-menu, .versions-menu
+      top: -2em
+  .exit-menu
+    left: 0
+  .editor-panel:after
+    content: ""
+    height: 1px
+    left: 0
+    position: fixed
+    top: 0
+    width: 1px
+    z-index: 1
+  .preview-menu
+    display: none
+  .versions-menu
+    left: 5em
+  .touch .versions-menu
+    left: 5.5em
+  .versions-menu .top, .preview-menu .top
+    border-width: 0 1px
+  .account-menu
+    right: 0
+    .top
+      text-align: center
+  .info-menu
+    display: inline-block
+    margin-top: 7px
+    vertical-align: top
+    .menu-widget
+      position: relative
+    .help-link
+      border: none
+      height: 18px
+      width: 18px
+      background-position: 50% 2px
+  .touch .help-link
+    top: -0.75em
+  .info-menu
+    .help-link
+      &:hover, &:focus
+        background-color: inherit
+        background-position: 50% -98px
+    &.collapsible-expanded .help-link.collapsible-heading-expanded
+      background-color: inherit
+      background-position: 50% -98px
+    .sub-menu
+      text-align: left
+    &:hover .sub-menu, .sub-menu:target, &.collapsible-expanded .sub-menu
+      top: 0
+      padding-top: 2.2em
+      right: -2.9em
+  .touch .info-menu
+    &:hover .sub-menu, .sub-menu:target, &.collapsible-expanded .sub-menu
+      right: -26px
+  .info-menu .menu-widget
+    &:before
+      right: 41px
+      top: -8px
+    &:after
+      right: 44px
+      top: -5px
+  .nav-people
+    position: absolute
+    right: 5em
+  .touch
+    .nav-people
+      right: 6.5em
+    .editor-tools .icon-hover:hover
+      background-position: 50% 14px
+    .editor-panel
+      .icon-hover:hover, .menu:hover .icon-hover
+        background-position: 50% 14px
+    .view-discuss .ico-hover-discuss:hover
+      background-position: 50% 14px
+    .editor-tools .nav.unread
+      .ico-hover-activity:hover, .ico-hover-discuss:hover
+        background-position: 50% 14px
+    .editor-panel
+      .info-menu.collapsible-expanded .ico-hover-info.collapsible-heading-expanded, .menu.collapsible-expanded .ico-hover-versions.collapsible-heading-expanded
+        background-position: 50% -86px
+
+.tools-hed
+  .action-link
+    vertical-align: top
+  height: 32px
+  .hed
+    font-weight: normal
+    vertical-align: middle
+    display: inline-block
+    position: relative
+
+.touch .tools-hed .hed
+  top: 10px
+
+.tools-hed .ico-round, .status-document .ico-round
+  position: relative
+  top: 2px
+
+.ico-revert
+  background-position: 50% 4px
+
+.tools-hed
+  cite
+    background: #2A2A2C
+    -webkit-border-radius: 0.2em
+    -moz-border-radius: 0.2em
+    -ms-border-radius: 0.2em
+    -o-border-radius: 0.2em
+    border-radius: 0.2em
+    color: #999
+    font-size: 13px
+    font-size: 0.8125rem
+    padding: 0.1em 0.5em
+    margin: 0 0.2em
+    font-style: normal
+  .active
+    background: #2A2A2C
+    -webkit-border-radius: 0.2em
+    -moz-border-radius: 0.2em
+    -ms-border-radius: 0.2em
+    -o-border-radius: 0.2em
+    border-radius: 0.2em
+    color: #999
+    font-size: 13px
+    font-size: 0.8125rem
+    padding: 0.1em 0.5em
+    margin: 0 0.2em
+    font-style: normal
+    background: #3d9ecf
+    color: #fff
+  a.active
+    &:hover, &:focus
+      background: #00ABE8
+      text-decoration: none
+  .revert
+    margin-left: 1em
+    &:hover, &:focus
+      color: #fff
+      text-decoration: none
+
+@media screen and (min-width: 50em)
+  .tools-hed
+    font-size: 14px
+    font-size: 0.875rem
+    text-align: center
+    height: 32px
+    .hed
+      border: none
+      display: inline-block
+  .touch .tools-hed
+    .hed
+      padding-top: 3px
+    .saved-status
+      top: 19px
+
+.doc-info
+  p
+    display: inline
+    &:first-child:after
+      color: #AAA
+      content: " • "
+      margin: 0 0.25em
+  b
+    color: #999
+    font-weight: normal
+  .number
+    color: #CCC
+    font-weight: 600
+
+.export-link
+  span
+    color: #CCC
+    font-weight: 600
+  &:hover span
+    color: #fff
+
+a
+  &.ico-wordpress, &.ico-dropbox, &.siteleaf
+    display: block
+    background-position: 0 1px
+    background-repeat: no-repeat
+    padding-left: 23px
+    margin-bottom: .2em
+
+@media screen and (min-width: 50em)
+  .doc-info
+    line-height: 1.4
+    padding: 1em 0.9em
+    p
+      margin: 0
+      &:first-child
+        margin-bottom: 1.6em
+    b
+      color: #999
+
+.page-loading
+  .menu-container, .menu-panel
+    display: none
+
+.menu-container
+  background-color: #000
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  width: 280px
+  z-index: 24
+  height: 100%
+  overflow-x: hidden
+  overflow-y: scroll
+
+.menu-panel
+  position: absolute
+  display: block
+  width: 280px
+  -webkit-transition: left 0.3s
+  -moz-transition: left 0.3s
+  -o-transition: left 0.3s
+  transition: left 0.3s
+  left: 0
+  top: 0
+  z-index: 25
+
+.sub-menu-panel
+  background-color: #000
+  position: absolute
+  top: 0
+  left: 280px
+  z-index: 5
+  height: 100%
+  width: 280px
+  overflow-y: scroll
+  -webkit-transition: left 0.3s
+  -moz-transition: left 0.3s
+  -o-transition: left 0.3s
+  transition: left 0.3s
+  &.open
+    left: 0
+    z-index: 75
+
+.ed-outer
+  &.ed-menu-open
+    overflow-x: hidden
+  .editor-tools, .ed-page, .editor-drawer
+    -webkit-transition: -webkit-transform 0.3s
+    -moz-transition: -moz-transform 0.3s
+    -o-transition: -o-transform 0.3s
+    transition: transform 0.3s
+  &.ed-menu-open
+    .editor-tools, .ed-page, .editor-drawer
+      -webkit-transform: translate3d(280px, 0, 0)
+      -moz-transform: translate3d(280px, 0, 0)
+      -ms-transform: translate3d(280px, 0, 0)
+      -o-transform: translate3d(280px, 0, 0)
+      transform: translate3d(280px, 0, 0)
+    .editor-tools .nav-hamburger
+      background-color: #262626
+      height: 100%
+
+.menu-container
+  &.submenu-focused .menu-panel
+    left: -280px
+    z-index: 5
+  &.menu-focused .sub-menu-panel
+    left: 280px
+
+@media screen and (min-width: 50em)
+  .ed-outer
+    &.ed-menu-open
+      overflow-x: visible
+    .editor-tools, .ed-page
+      -webkit-transition: left 0.3s
+      -moz-transition: left 0.3s
+      -o-transition: left 0.3s
+      transition: left 0.3s
+    &.ed-menu-open
+      .editor-tools, .ed-page
+        left: 280px
+        -webkit-transform: none
+        -moz-transform: none
+        -ms-transform: none
+        -o-transform: none
+        transform: none
+      .editor-drawer
+        -webkit-transform: none
+        -moz-transform: none
+        -ms-transform: none
+        -o-transform: none
+        transform: none
+    .versions-menu
+      -webkit-transition: left 0.3s
+      -moz-transition: left 0.3s
+      -o-transition: left 0.3s
+      transition: left 0.3s
+    &.ed-menu-open .versions-menu
+      left: 22.5em
+
+.nav-header
+  background-color: #262626
+  padding: 2.375em 1em 1em
+  color: #f2f2f2
+  position: relative
+
+.nav-back-header
+  background-color: #262626
+  position: relative
+  a
+    width: 100%
+    display: block
+    height: 49px
+
+@media screen and (min-width: 50em)
+  .nav-header
+    padding: 2.375em 1.5em 1em
+  .nav-back-header a
+    height: 32px
+
+.nav-border
+  border-top: 1px solid #404040
+
+.counts
+  font-size: 13px
+  font-size: 0.8125rem
+  margin-bottom: 0
+  width: 100%
+  span
+    color: #999
+  li:first-child::after
+    color: gray
+    content: "\2022"
+    margin: 0 0.3em 0 0.6em
+  .number
+    color: #e6e6e6
+
+.nav-header h3, .nav-border h4
+  font-weight: normal
+  font-size: 14px
+  font-size: 0.875rem
+
+.nav-header h3
+  margin-bottom: .5em
+  span
+    color: #ccc
+    font-size: 12px
+    font-size: 0.75rem
+
+.autocomplete-suggestions
+  border: 1px solid #ccc
+  background-color: #fff
+  overflow: auto
+  max-width: 24em
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+
+.autocomplete-suggestion
+  padding: 2px 5px
+  white-space: nowrap
+  overflow: hidden
+  font-size: 12px
+  font-size: 0.75rem
+  color: #999
+  cursor: pointer
+
+.autocomplete-selected
+  background-color: #e6e6e6
+
+.autocomplete-suggestions strong
+  font-weight: normal
+  color: #4d4d4d
+
+.cell-tags
+  display: none
+
+.can-haz-tags .cell-tags
+  display: block
+  background: #f7f7f7
+  padding: 9px
+  position: relative
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  font-size: 11px
+  font-size: 0.6875rem
+  -webkit-transition: all 0.3s
+  -moz-transition: all 0.3s
+  -o-transition: all 0.3s
+  transition: all 0.3s
+
+.cell-tags .toggle-tagging
+  float: right
+  width: 20px
+  height: 20px
+  text-indent: -1000em
+  overflow: hidden
+  -webkit-border-radius: 3em
+  -moz-border-radius: 3em
+  -ms-border-radius: 3em
+  -o-border-radius: 3em
+  border-radius: 3em
+  background-color: #fff
+  -webkit-transition: background-color 0.3s
+  -moz-transition: background-color 0.3s
+  -o-transition: background-color 0.3s
+  transition: background-color 0.3s
+  position: relative
+
+.tagging .cell-tags .toggle-tagging
+  background-color: #999
+
+.cell-tags .toggle-tagging
+  .icon-content
+    position: absolute
+    left: 0
+    top: 0
+    width: 20px
+    height: 20px
+    background-size: 8px 8px
+    background-position: 50% 50%
+    -webkit-transition: opacity 0.3s
+    -moz-transition: opacity 0.3s
+    -o-transition: opacity 0.3s
+    transition: opacity 0.3s
+  .ico-arrow-down-white
+    opacity: 0
+    background-size: 8px 4px
+
+.tagging .cell-tags .toggle-tagging
+  .ico-arrow-down-white
+    opacity: 1
+  .ico-add-sm
+    opacity: 0
+
+.cell-tags
+  .tags-onboarding
+    display: none
+    font-style: italic
+    color: #b7b7b7
+    font-size: 11px
+    font-size: 0.6875rem
+    padding: 0 0 0 .4em
+    overflow: hidden
+    position: relative
+    margin-bottom: 6px
+  &.empty .tags-onboarding
+    display: inline-block
+    float: left
+    margin-top: -1px
+
+.tagging .cell-tags .tags-onboarding
+  display: none
+
+.cell-tags
+  ul
+    display: inline
+    margin-bottom: 0
+  li
+    display: inline-block
+    padding: .1em .6em .3em .45em
+    background-color: #fff
+    -webkit-border-radius: 1em
+    -moz-border-radius: 1em
+    -ms-border-radius: 1em
+    -o-border-radius: 1em
+    border-radius: 1em
+    color: #999
+    font-size: 11px
+    font-size: 0.6875rem
+    margin-right: 0.2em
+    margin-bottom: 5px
+    word-break: break-word
+    overflow: hidden
+    position: relative
+    max-width: 80%
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+.tagging .cell-tags li
+  padding-right: .1em
+
+.cell-tags li a
+  display: none
+  color: #999
+  margin: 1px 0 0
+
+.tagging .cell-tags li a
+  display: inline-block
+
+.cell-tags li a:hover
+  text-decoration: none
+  color: #999
+
+.ico-remove-tag
+  float: right
+  height: 6px
+  width: 1em
+  text-indent: -1000em
+  position: relative
+  background-position: center center
+  padding: .4em
+
+.cell-tags
+  .new-tag-input-wrapper
+    display: inline-block
+    padding: 0 0 .7em
+    overflow: hidden
+    font-size: 11px
+    font-size: 0.6875rem
+  input
+    background: transparent
+    border: none
+    font-size: 11px
+    font-size: 0.6875rem
+    width: 1em
+    color: #666
+    padding: 0
+    margin: 0
+    &:focus
+      outline: none
+  .new-tag-measure
+    font-size: 11px
+    font-size: 0.6875rem
+    padding: 4px
+    position: absolute
+    left: -1000em
+
+.tags-clipping-indicator
+  display: none
+  position: absolute
+  top: 0.6em
+  right: 3em
+  font-size: 11px
+  font-size: 0.6875rem
+  color: #999
+
+.tags-clipped .tags-clipping-indicator
+  display: block
+
+.tagging .tags-clipping-indicator
+  display: none
+
+.menu-panel .cell-tags
+  height: 4.5em
+  overflow: hidden
+  -webkit-transition: all 0.3s
+  -moz-transition: all 0.3s
+  -o-transition: all 0.3s
+  transition: all 0.3s
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  background-color: #262626
+  padding: 15px 10px 6px 20px
+
+.tagging .menu-panel .cell-tags
+  height: auto
+
+.menu-panel .cell-tags li
+  margin-bottom: 15px
+  max-width: 72%
+  white-space: nowrap
+  text-overflow: ellipsis
+
+.tagging .menu-panel .cell-tags li
+  margin-bottom: 5px
+  max-width: 80%
+  white-space: normal
+  text-overflow: none
+
+.menu-panel
+  .tags-clipping-indicator
+    top: 1.5em
+  .cell-tags
+    &.empty .tags-onboarding
+      margin-top: 1px
+    .tag
+      background-color: #404040
+    .toggle-tagging
+      background-color: #404040
+      -webkit-transform: rotate(180deg)
+      -moz-transform: rotate(180deg)
+      -ms-transform: rotate(180deg)
+      -o-transform: rotate(180deg)
+      transform: rotate(180deg)
+
+.tagging .menu-panel .cell-tags .toggle-tagging
+  background-color: #404040
+  -webkit-transform: rotate(180deg)
+  -moz-transform: rotate(180deg)
+  -ms-transform: rotate(180deg)
+  -o-transform: rotate(180deg)
+  transform: rotate(180deg)
+
+.status-document
+  display: inline-block
+  font-weight: normal
+  font-size: 14px
+  font-size: 0.875rem
+  color: #999
+  margin-bottom: 10px
+  .active
+    background-color: #3d9ecf
+    color: #fff
+    -webkit-border-radius: 0.2em
+    -moz-border-radius: 0.2em
+    -ms-border-radius: 0.2em
+    -o-border-radius: 0.2em
+    border-radius: 0.2em
+    font-size: 13px
+    font-size: 0.8125rem
+    padding: 0.1em 0.5em
+    margin: 0 0.2em
+    font-style: normal
+  cite
+    color: #999
+    font-size: 13px
+    font-size: 0.8125rem
+    font-style: normal
+    font-weight: normal
+    background: #1a1a1a
+    -webkit-border-radius: 0.2em
+    -moz-border-radius: 0.2em
+    -ms-border-radius: 0.2em
+    -o-border-radius: 0.2em
+    border-radius: 0.2em
+    padding: 0.1em 0.5em
+    margin: 0 0.2em
+  a
+    &:hover, &:active, &:focus
+      color: #fff
+      background: #00ABE8
+      text-decoration: none
+
+.doc-status-hdg
+  background-color: #262626
+  border-bottom: 1px solid #404040
+
+.doc-status
+  display: block
+  cursor: pointer
+  padding: 1em 1.5em 1em 1em
+  background-color: #262626
+  color: #f2f2f2
+  position: relative
+
+@media screen and (min-width: 50em)
+  .doc-status
+    padding-left: 1.5em
+
+a
+  &.doc-status
+    text-decoration: none
+    color: #ccc
+    width: 238px
+    cursor: default
+  &:hover.doc-status, &:active.doc-status, &:focus.doc-status
+    color: #fff
+  &.doc-status.has-arrow
+    background-position: 260px 50%
+    cursor: pointer
+
+.doc-status
+  &:before
+    content: " "
+    height: 1em
+    width: 1em
+    -webkit-border-radius: 2px
+    -moz-border-radius: 2px
+    -ms-border-radius: 2px
+    -o-border-radius: 2px
+    border-radius: 2px
+    display: inline-block
+    margin-right: 11px
+    position: relative
+    top: 2px
+    margin-left: 2px
+  &.status-draft:before
+    background-color: #3d9ecf
+  &.status-reviewing:before
+    background-color: #826699
+  &.status-revising:before
+    background-color: #d1a613
+  &.status-copyediting:before
+    background-color: #C33
+  &.status-final:before
+    background-color: #88b716
+
+@media screen and (min-width: 50em)
+  .doc-status:before
+    margin-left: 4px
+
+.doc-tags
+  margin-bottom: 0
+  margin-left: -.4em
+  li
+    color: #999
+    background-color: #404040
+    font-size: 11px
+    font-size: 0.6875rem
+    -webkit-border-radius: 3em
+    -moz-border-radius: 3em
+    -ms-border-radius: 3em
+    -o-border-radius: 3em
+    border-radius: 3em
+    padding: .2em .5em .4em
+
+.add-tags
+  position: absolute
+  right: 5px
+  bottom: 13px
+
+.status-selection-menu li, .checked-menu li, .sub-menu-panel .tag-list li
+  border-top: 1px solid #404040
+
+.status-selection-menu li:last-child, .checked-menu li:last-child, .sub-menu-panel .tag-list li:last-child
+  border-bottom: 1px solid #404040
+
+.status-selection-menu li label, .checked-menu li label
+  padding: 1em 1em 1em 1em
+  margin: 0
+  display: block
+  color: #ccc
+  font-size: 14px
+  font-size: 0.875rem
+  background-position: .5em .5em
+  position: relative
+  width: 80%
+  cursor: pointer
+
+.status-selection-menu li label
+  padding-left: 3em
+  &:hover
+    color: #fff
+
+.checked-menu li label:hover
+  color: #fff
+
+.status-selection-menu input, .checked-menu input
+  position: absolute
+  left: -1000em
+
+.status-selection-menu input:checked + label, .checked-menu .selected label
+  background-position: 250px 50%
+  color: #fff
+
+.selected .filter-your-docs
+  background-position: 255px 50%
+  color: #fff
+
+.status-selection-menu label:before
+  background-color: #fff
+  content: " "
+  height: 1em
+  width: 1em
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  -ms-border-radius: 2px
+  -o-border-radius: 2px
+  border-radius: 2px
+  display: block
+  margin-right: 11px
+  position: absolute
+  top: 36%
+  left: 1em
+
+.status-draft-menu label:before
+  background-color: #3d9ecf
+
+.status-reviewing-menu label:before
+  background-color: #826699
+
+.status-revising-menu label:before
+  background-color: #d1a613
+
+.status-copyediting-menu label:before
+  background-color: #C33
+
+.status-final-menu label:before
+  background-color: #88b716
+
+.sub-menu-panel
+  .tag-header
+    border-top: 1px solid #404040
+    border-bottom: none
+    padding: 1.25em 1em 1em 1em
+  .manage-tags
+    top: 2.1em
+    right: 1.75em
+  .tag-list
+    .tag-name
+      width: 75%
+    .count
+      width: 12%
+      padding-right: 20px
+    li
+      a
+        padding: 1em
+      &.active a
+        background-color: transparent
+        border: none
+        color: #fff
+        background-position: right 50%
+        .tag-name
+          background-color: transparent
+          border: none
+          color: #fff
+          background-position: right 50%
+        .count
+          background-color: transparent
+          border: none
+          color: #fff
+          background-position: right 50%
+          background-position: right 50%
+      a:hover
+        background-color: transparent
+        color: #fff
+        text-decoration: none
+        .tag-name, .count
+          background-color: transparent
+          color: #fff
+          text-decoration: none
+    font-size: 14px
+    font-size: 0.875rem
+  .tag-list-edit li
+    &:after
+      clear: both
+      display: table
+      content: ""
+    padding: 1em
+  .icon-changes
+    left: 1em
+    top: 1.5em
+  .save-tags
+    position: absolute
+    right: 1.7em
+    top: 2.25em
+  a.btn-flat
+    background: #404040
+    color: #999
+    &:hover, &:active, &:focus
+      background: #595959
+      color: #ccc
+
+.nav-desktop
+  display: none
+
+.small-copy
+  font-size: 12px
+  font-size: 0.75rem
+
+.nav-group
+  border-top: 1px solid #404040
+  padding: 1em 1em 0em
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+.nav-group-no-border
+  &:after
+    content: ""
+    display: table
+    clear: both
+  padding: .5em 1em
+
+.nav-hdg-1, .sub-menu-panel .tag-header h2
+  color: #e6e6e6
+  font-weight: 600
+  font-size: 16px
+  font-size: 1rem
+
+.nav-hdg-2
+  font-size: 12px
+  font-size: 0.75rem
+  text-transform: uppercase
+  letter-spacing: 2px
+  color: #999
+  margin-bottom: .5em
+  font-weight: 400
+
+.nav-hdg-3
+  font-size: 13px
+  font-size: 0.8125rem
+  color: #e6e6e6
+  font-weight: 400
+  margin-bottom: .5em
+
+.hdg-margin
+  margin: 1.25em 1em 1em 1em
+
+.nav-group a
+  color: #ccc
+  font-size: 14px
+  font-size: 0.875rem
+  &:hover, &:active, &:focus
+    color: #fff
+    text-decoration: none
+
+.nav-group-left
+  float: left
+
+.nav-group-right
+  float: right
+  width: 50%
+
+.full-width-links
+  margin-bottom: 0
+  li a
+    width: 85%
+    padding-left: 26px
+    margin: .5em 0
+    display: block
+  .has-icon
+    background-position: 0 48%
+  .ico-nav-delete
+    background-position-x: 2px
+
+.align-right
+  text-align: right
+
+.nav-mobile-list
+  li
+    border-top: 1px solid #404040
+    &:first-child
+      border-top: none
+    a
+      padding: 1em 1em 1em 3em
+      margin: 0
+      display: block
+      color: #ccc
+      font-size: 14px
+      font-size: 0.875rem
+      background-position: .5em .5em
+      position: relative
+      width: 80%
+      &.account
+        padding-left: 1em
+    .ico-avatar
+      float: left
+      margin: 1px 10px 0 0
+    a
+      &:hover, &:active, &:focus
+        color: #fff
+        text-decoration: none
+    &:last-child
+      border-bottom: 1px solid #404040
+  .has-icon
+    background-position: 15px 1.2em
+  .ico-nav-integrations
+    background-position: 17px 1.3em
+  .ico-nav-leave
+    background-position-y: 1.3em
+  .ico-nav-delete
+    background-position-x: 17px
+  .ico-nav-next-arrow
+    position: absolute
+    right: 4px
+    top: 18px
+
+.views-group
+  padding-bottom: 1em
+
+.views-list
+  margin-bottom: 0
+  a
+    display: block
+    float: left
+    margin-right: 15px
+    font-size: 12px
+    font-size: 0.75rem
+    color: #999
+    text-align: center
+
+.icon-wrapper
+  background-color: #333
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  display: block
+  width: 28px
+  height: 28px
+  margin: 0 auto 5px auto
+  &:hover
+    background-color: #e6e6e6
+
+.ico-hover-view-html
+  width: 19px
+
+.icon-wrapper
+  .is-icon
+    margin: 0 auto
+    background-position: center -95px
+    width: 28px
+    height: 28px
+  &:hover .is-icon
+    background-position-y: 6px
+  .ico-hover-view-editor, .ico-hover-view-html
+    background-position: center -94px
+
+.ico-back-arrow
+  position: relative
+  margin: 0
+  display: block
+  background-position: 1em center
+
+.selected .icon-wrapper
+  background-color: #e6e6e6
+  .is-icon
+    background-position-y: 6px
+  .ico-hover-view-preview
+    background-position-y: 5px
+
+.icon-wrapper:hover .ico-hover-view-preview
+  background-position-y: 5px
+
+.integrations-list li a
+  margin: .5em 0
+
+.export-list
+  li label
+    padding: 1em 1em 1em 1em
+    color: #e6e6e6
+    display: block
+    font-size: 14px
+    font-size: 0.875rem
+  input
+    position: absolute
+    left: 10000em
+  li label span
+    color: #999
+
+.menu-panel .unread
+  .ico-hover-activity
+    background-position-y: -285px
+  .ico-hover-discuss
+    background-position-y: -284px
+
+.cheat-sheet
+  font-size: 13px
+  font-size: 0.8125rem
+  color: #999
+  margin-top: 1em
+  code
+    color: #3d9ecf
+    font-family: "jaf-facitweb", "Lucida Grande", "Lucida Sans", Arial, sans-serif
+  .mono
+    font-family: Menlo, Consolas, Inconsolata, "Lucida Console", Monaco, Courier, monospace
+
+.cheat-sheet-bold
+  margin-left: 1em
+
+.code-block
+  margin-top: 6px
+
+.format-more
+  margin-top: 4px
+  a
+    font-size: 12px
+    font-size: 0.75rem
+
+@media screen and (min-width: 50em)
+  .nav-group
+    border-top: 1px solid #404040
+    padding: 1.25em 1.5em
+  .nav-group-no-border
+    padding: 1em 1.5em
+  .nav-desktop
+    display: block
+  .nav-mobile
+    display: none
+  .export-list li
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    -ms-border-radius: 0
+    -o-border-radius: 0
+    border-radius: 0
+    background-color: transparent
+    label
+      display: inline-block
+      font-size: 13px
+      font-size: 0.8125rem
+      margin-bottom: .6em
+      margin-right: .2em
+      background-color: #333
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+      -ms-border-radius: 3px
+      -o-border-radius: 3px
+      border-radius: 3px
+      padding: .2em .4em
+      &:hover
+        background-color: #4d4d4d
+        cursor: pointer
+        span
+          color: #b3b3b3
+  .ed-outer.ed-menu-open .doc-label
+    margin-left: 25px
+    left: auto
+
+@media screen and (min-width: 83em)
+  .ed-outer.ed-menu-open .doc-label
+    margin-left: -20px
+    left: auto
+
+.no-border
+  border-top: none
+
+.mobile-none
+  display: none
+
+@media screen and (min-width: 50em)
+  .mobile-none
+    display: block
+  .desktop-none
+    display: none
+
+.ed-outer.ed-menu-open .versions-pane
+  left: 280px
+
+@media screen and (min-width: 50em)
+  .ed-outer.ed-menu-open .versions-pane
+    left: 0
+
+.clipping
+  display: none
+
+.active-entry span.clipping:after
+  border: none
+
+@media screen and (min-width: 56.25em)
+  .clipping
+    display: inline
+
+.code, .pre
+  color: #666
+  font: normal 0.9em Menlo, Consolas, Inconsolata, "Lucida Console", Monaco, Courier, monospace
+
+.editor-drawer
+  pre, code
+    color: #666
+    font: normal 0.9em Menlo, Consolas, Inconsolata, "Lucida Console", Monaco, Courier, monospace
+
+.bq, .br, .h1, .h2, .h3, .h4, .h5, .h6, .li, .pre, .p, .linkdef
+  clear: left
+  display: block
+
+.pre
+  line-height: 1.8
+  margin-left: 1.8em
+
+.bq
+  color: #777
+  margin: 0 2em
+
+.a .md-text, .linkref .md-text
+  color: inherit
+
+@media screen and (min-width: 37.5em)
+  .bq
+    margin-left: 1.1em
+    text-indent: -2.3em
+    .md-bq
+      display: inline-block
+      min-width: 2em
+      text-align: right
+      white-space: pre
+
+.h1, .h2, .h3, .h4, .h5, .h6
+  font-weight: 600
+
+.h1 .md-hed, .h2 .md-hed, .h3 .md-hed, .h4 .md-hed, .h5 .md-hed, .h6 .md-hed
+  color: #CCC
+
+@media screen and (min-width: 37.5em)
+  .h1, .h2, .h3, .h4, .h5, .h6
+    text-indent: -4em
+  .md-hed
+    display: inline-block
+    text-align: right
+    white-space: pre
+    width: 4em
+
+.url, .email
+  color: #AAA
+
+.discuss
+  background: #FFF1AE
+  padding: 0.23em 0.1em
+  &:hover
+    outline: 1px solid #E9B459
+
+.md
+  color: #AAA
+  font-style: normal
+  font-weight: 400
+
+.em
+  font-style: italic
+  .md
+    font-style: italic
+
+.strong
+  font-weight: 600
+  .md
+    font-weight: 600
+
+.md-strike-text
+  text-decoration: line-through
+
+.li
+  margin-left: 1.2em
+  text-indent: -2em
+
+.md-li, .md-li2, .md-li3, .md-li4, .md-li5, .md-li6, .md-li7, .md-li8, .md-li9, .md-li10, .md-li11
+  display: inline-block
+  text-align: right
+  white-space: pre
+  width: 2em
+
+.md-li2
+  width: 4em
+
+.md-li3
+  width: 6em
+
+.md-li4
+  width: 8em
+
+.md-li5
+  width: 10em
+
+.md-li6
+  width: 12em
+
+.md-li7
+  width: 14em
+
+.md-li8
+  width: 16em
+
+.md-li9
+  width: 18em
+
+.md-li10
+  width: 20em
+
+.md-li11
+  width: 22em
+
+.hr
+  background-image: url("/assets/hr-dash-f635b85dadf59e0cbeb517afd0219962.gif")
+  background-repeat: repeat-x
+  background-position: 0 0.65em
+  display: inline-block
+  width: 100%
+  .md-hr
+    background: #fff
+    padding-right: 10px
+
+.img, .img-full, .img-preview
+  background: #F7F7F7
+
+.img
+  padding: 0.2em 0.4em
+  padding-right: 0
+
+.img-full
+  padding: 0.2em 0.4em
+  padding-right: 0
+  -webkit-border-radius: 0.5em
+  -moz-border-radius: 0.5em
+  -ms-border-radius: 0.5em
+  -o-border-radius: 0.5em
+  border-radius: 0.5em
+  display: block
+  padding-right: 0.4em
+
+.md-bang, .md-alt, .md-title
+  color: #666
+
+.img-preview
+  -webkit-border-radius: 0 0 0.5em 0.5em
+  -moz-border-radius: 0 0 0.5em 0.5em
+  -ms-border-radius: 0 0 0.5em 0.5em
+  -o-border-radius: 0 0 0.5em 0.5em
+  border-radius: 0 0 0.5em 0.5em
+  display: block
+  min-height: 4em
+  padding: 1em
+  text-align: center
+  img
+    display: inline-block
+    margin: 0 auto
+    max-width: 100%
+
+.the-tide
+  .diff
+    display: none
+  .del, .delblock, .del .code
+    text-decoration: line-through
+    color: #c2c2c2
+    background: rgba(210, 210, 210, 0.1)
+  .delblock
+    .code, .li, .md-li
+      text-decoration: line-through
+      color: #c2c2c2
+      background: rgba(210, 210, 210, 0.1)
+  .ins, .insblock, .ins .md, .insblock .md, .ins .code, .insblock .code
+    color: #3d9ecf
+    background: rgba(211, 239, 246, 0.2)
+  .delblock, .insblock
+    display: block
+  .delblock .li
+    display: block
+    margin-bottom: -1.75em
+
+.timeline-outer
+  background: black url("/assets/bg-timeline-8b2ebfa5d36aeaf94caaeb8533c0183c.gif") repeat-y 28px 0
+  top: 0
+  left: 0
+  color: #D9D9D9
+  float: left
+  font-size: 12px
+  font-size: 0.75rem
+  padding-top: 1em
+  position: absolute
+  width: 100%
+  z-index: 3
+
+.touch
+  .timeline-outer, .view-discuss .timeline-outer
+    background: black url("/assets/bg-timeline-8b2ebfa5d36aeaf94caaeb8533c0183c.gif") repeat-y 28px 0
+    top: 0
+    left: 0
+    color: #D9D9D9
+    float: left
+    font-size: 12px
+    font-size: 0.75rem
+    padding-top: 1em
+    position: absolute
+    width: 100%
+    z-index: 3
+
+.enhanced .timeline-outer
+  left: 0
+
+.overthrow-enabled
+  &.timeline-outer
+    bottom: 0
+    overflow-x: hidden
+    overflow-y: auto
+  &.touch
+    .timeline-outer, .view-discuss .timeline-outer
+      bottom: 0
+      overflow-x: hidden
+      overflow-y: auto
+
+@media screen and (min-width: 50em)
+  .timeline-outer, .overthrow-enabled.timeline-outer
+    background-position: 0 23px
+    background-repeat: repeat-x
+    bottom: auto
+    overflow: visible
+    padding-top: 0
+  .touch .timeline-outer
+    border: 2px solid #fff
+    border-width: 0 2px 2px
+    -webkit-border-radius: 0 0 1em 1em
+    -moz-border-radius: 0 0 1em 1em
+    -ms-border-radius: 0 0 1em 1em
+    -o-border-radius: 0 0 1em 1em
+    border-radius: 0 0 1em 1em
+    -webkit-box-shadow: 0 0 9px rgba(0, 0, 0, 0.4)
+    -moz-box-shadow: 0 0 9px rgba(0, 0, 0, 0.4)
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.4)
+    left: 4em
+    width: 33em
+  .overthrow-enabled.touch .timeline-outer
+    bottom: 3.5em
+
+.timeline
+  margin: 0
+  padding: 0
+  position: relative
+
+.timeline-entries
+  left: 0
+  position: relative
+  top: 0
+  -webkit-transition: left 0.5s ease-in-out
+  -moz-transition: left 0.5s ease-in-out
+  -o-transition: left 0.5s ease-in-out
+  transition: left 0.5s ease-in-out
+
+.touch .timeline-entries
+  left: auto !important
+  margin: 0
+  padding: 0
+  width: 100% !important
+
+@media screen and (max-width: 49.999em)
+  .timeline-entries, .touch .timeline-entries
+    position: static
+    width: 100% !important
+
+@media screen and (min-width: 50em)
+  .timeline-entries
+    margin: 0 0 0 15px
+    padding: 0 3px 0 6px
+
+.timeline-entry, .touch .timeline-entry
+  float: none
+  height: auto
+  padding: 0 10px 10px 55px
+  position: relative
+
+@media screen and (min-width: 50em)
+  .timeline-entry
+    padding: 0
+
+.diff-cat, .touch .diff-cat
+  display: block
+  height: 50px
+  left: 0
+  line-height: 1
+  padding: 0 5px
+  position: absolute
+  text-align: center
+  top: 0
+  width: 45px
+
+@media screen and (min-width: 50em)
+  .diff-cat
+    position: relative
+    text-align: left
+    width: auto
+    padding: 1px 5px 0
+  .touch .diff-cat
+    padding: 1px 5px 0
+
+.diff-cat span, .touch .diff-cat span
+  background: #2c2c2c
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+  -ms-border-radius: 50%
+  -o-border-radius: 50%
+  border-radius: 50%
+  display: inline-block
+  text-indent: -1000em
+  border: 2px solid #555
+  -webkit-transition: background-color 0.2s,height 0.4s,margin-top 0.4s,width 0.4s
+  -moz-transition: background-color 0.2s,height 0.4s,margin-top 0.4s,width 0.4s
+  -o-transition: background-color 0.2s,height 0.4s,margin-top 0.4s,width 0.4s
+  transition: background-color 0.2s,height 0.4s,margin-top 0.4s,width 0.4s
+  height: 10px
+  margin-top: 16px
+  width: 10px
+
+.diff-cat
+  &:hover span, &:focus span
+    background: #fff
+
+.timeline-entry:hover .diff-cat span
+  background: #fff
+
+.named-entry
+  span.diff-circle
+    background: #CCC
+    border-color: #CCC
+  &:hover span.diff-circle, &:focus span.diff-circle
+    background: #fff
+    border-color: #fff
+
+.timeline-entry:hover .named-entry span.diff-circle
+  background: #fff
+  border-color: #fff
+
+.active-entry
+  .diff-cat span.diff-circle, &:hover .diff-cat span.diff-circle, &:focus .diff-cat span.diff-circle
+    background: #3d9ecf
+    border-color: #3d9ecf
+
+.timeline-entry:hover .active-entry .diff-cat span.diff-circle
+  background: #3d9ecf
+  border-color: #3d9ecf
+
+.active-entry span.diff-circle:after, .touch .active-entry span.diff-circle:after
+  border: 2px solid #3d9ecf
+  border-width: 2px 0 0
+  bottom: 50%
+  content: ""
+  height: 1px
+  left: 0
+  margin-top: -1px
+  position: absolute
+  width: 25px
+
+@media screen and (min-width: 50em)
+  .active-entry span.diff-circle:after
+    border-width: 0 0 0 2px
+    bottom: 0
+    height: 25px
+    left: 50%
+    margin-top: 0
+    margin-left: -1px
+    width: 1px
+
+.diff-cat-2 > span
+  height: 16px
+  margin-top: 13px
+  width: 16px
+
+.diff-cat-3 > span
+  height: 22px
+  margin-top: 10px
+  width: 22px
+
+.diff-cat-4 > span
+  height: 28px
+  margin-top: 7px
+  width: 28px
+
+.diff-cat-5 > span
+  height: 34px
+  margin-top: 4px
+  width: 34px
+
+.tooltipped
+  display: inline-block
+  position: relative
+
+.tooltip-versions
+  font-size: 12px
+  font-size: 0.75rem
+  left: -1000em
+  line-height: 1.38461538461538461538
+  opacity: 0
+  position: absolute
+  -webkit-transition: margin 0.15s,opacity 0.15s
+  -moz-transition: margin 0.15s,opacity 0.15s
+  -o-transition: margin 0.15s,opacity 0.15s
+  transition: margin 0.15s,opacity 0.15s
+  z-index: 10
+  margin-top: 0
+  position: static
+  opacity: 1
+
+.touch .tooltip-versions
+  margin-top: 0
+  position: static
+  opacity: 1
+
+\:hover > .tooltip-versions, :focus > .tooltip-versions
+  opacity: 1.0
+  z-index: 9999
+
+.tooltip-versions.view
+  &.visible
+    opacity: 1.0
+    z-index: 9999
+  &.hidden
+    display: block
+    opacity: 0
+
+.tooltip-versions-inner
+  background: #fff
+  margin-top: 5px
+  -webkit-border-radius: 0.4em
+  -moz-border-radius: 0.4em
+  -ms-border-radius: 0.4em
+  -o-border-radius: 0.4em
+  border-radius: 0.4em
+  color: #ccc
+  display: block
+  position: relative
+  text-indent: 0
+  z-index: 100
+  white-space: normal
+
+.tooltip-versions
+  p
+    margin-bottom: 0
+    + p
+      margin-top: 0.5em
+  strong
+    font-weight: 600
+
+.tooltip-versions-inner
+  &:before, &:after
+    border-style: solid
+    content: ""
+    display: block
+    height: 0
+    position: absolute
+    width: 0
+    left: -1000em
+
+.touch .tooltip-versions-inner
+  &:before, &:after
+    border-style: solid
+    content: ""
+    display: block
+    height: 0
+    position: absolute
+    width: 0
+    left: -1000em
+
+.timeline-entry
+  float: none
+  height: auto
+  position: relative
+
+.touch .timeline-entry
+  float: none
+  height: auto
+  position: relative
+  padding: 0 10px 10px 55px
+
+@media screen and (min-width: 50em)
+  .timeline-entries
+    &:before, &:after
+      content: ""
+      position: absolute
+  .touch .timeline-entries
+    &:before, &:after
+      display: none
+  .timeline-entries
+    &:before
+      background: #333
+      height: 14px
+      left: -3px
+      top: 17px
+      width: 4px
+      z-index: 1
+    &:after
+      background: #000
+      left: -37px
+      width: 37px
+      height: 40px
+  .timeline-entry
+    float: right
+    position: relative
+    height: 100%
+    vertical-align: top
+  .tooltip-versions
+    left: -1000em
+    position: absolute
+    margin-top: -8px
+    opacity: 0
+  .timeline-entry
+    &:hover .tooltip-versions, .tooltip-versions:target
+      left: -0.8em
+      opacity: 1
+    &:hover
+      .diff-cat-2 + .tooltip-versions
+        left: -0.6em
+      .diff-cat-3 + .tooltip-versions
+        left: -0.3em
+      .diff-cat-4 + .tooltip-versions
+        left: -0.1em
+      .diff-cat-5 + .tooltip-versions
+        left: 0.2em
+  .timeline-entries .timeline-entry
+    &:hover .dir-top-right, .dir-top-right:target
+      left: auto
+  .timeline-entry
+    &:hover .dir-top-right, .dir-top-right:target
+      right: -0.8em
+    &:hover
+      .diff-cat-2 + .dir-top-right
+        right: -0.6em
+      .diff-cat-3 + .dir-top-right
+        right: -0.3em
+      .diff-cat-4 + .dir-top-right
+        right: -0.1em
+      .diff-cat-5 + .dir-top-right
+        right: 0.2em
+  .tooltip-versions-inner
+    -webkit-box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.2)
+    -moz-box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.2)
+    box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.2)
+    width: 23em
+    &:after
+      border-color: #F3F3F3 transparent
+      border-width: 0 4px 4px
+      left: 18px
+      top: -4px
+  .dir-top-right .tooltip-versions-inner:after
+    left: auto
+    right: 18px
+
+.version-info .comment-head
+  background: #F2F2F2
+  border-bottom: 1px solid #CCC
+  -webkit-border-radius: 0.4em 0.4em 0 0
+  -moz-border-radius: 0.4em 0.4em 0 0
+  -ms-border-radius: 0.4em 0.4em 0 0
+  -o-border-radius: 0.4em 0.4em 0 0
+  border-radius: 0.4em 0.4em 0 0
+  zoom: 1
+  &:before, &:after
+    clear: both
+    content: ""
+    display: table
+
+.touch .version-info .version-link
+  display: block
+  padding: 0.6em 8px 0.75em
+
+.version-info
+  .version-link
+    display: block
+    padding: 0.6em 8px 0.75em
+    &:hover, &:focus
+      text-decoration: none
+    &:hover .version-meta, &:focus .version-meta
+      color: #333
+  .owner
+    color: #333
+    font-size: 14px
+    font-size: 0.875rem
+    font-weight: bold
+  .ico-avatar
+    float: left
+    margin-bottom: 7px
+    margin-right: 10px
+    width: 32px
+  cite
+    font-style: normal
+
+@media screen and (min-width: 50em)
+  .version-info .version-link
+    padding: 0.3em 8px 0.75em
+
+.version-meta, .touch .version-meta
+  color: #666
+  margin-left: 34px
+  margin-bottom: 0
+
+.version-meta
+  li
+    display: inline
+  .title
+    font-weight: bold
+    &:after
+      color: #AAA
+      content: " • "
+      font-weight: normal
+      margin: 0 0.25em
+
+.version-info
+  .version-main
+    clear: both
+    padding: 10px 0.833em
+  .comment
+    color: #333
+    font-size: 14px
+    font-size: 0.875rem
+    line-height: 1.5
+    padding-bottom: 0.8em
+    \:last-child
+      margin-bottom: 0
+  .compare
+    background: #F2F2F2
+    background: rgba(204, 204, 204, 0.25)
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    -ms-border-radius: 4px
+    -o-border-radius: 4px
+    border-radius: 4px
+    color: #999
+    display: block
+    font-size: 13px
+    font-size: 0.8125rem
+    padding: 0.5em 0
+    text-align: center
+    &:hover, &:focus
+      background: #D3EFF6
+      background: #d3eff6
+      color: #1B687C
+      text-decoration: none
+    b
+      font-weight: bold
+
+.empty-entry
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  -ms-border-radius: 4px
+  -o-border-radius: 4px
+  border-radius: 4px
+  background: #F2F2F2
+  .comment-head
+    border-bottom: none
+  .version-main
+    padding: 0 0 1px
+
+.timeline-scroll
+  -webkit-transition: opacity 0.5s
+  -moz-transition: opacity 0.5s
+  -o-transition: opacity 0.5s
+  transition: opacity 0.5s
+  cursor: pointer
+  display: block
+  height: 100%
+  pointer-events: none
+  opacity: 0
+  position: absolute
+  top: 0
+  width: 37px
+
+.touch .tmpl-doc .timeline-scroll
+  display: none
+
+@media screen and (min-width: 50em)
+  .scrolling .timeline-scroll
+    display: block
+    pointer-events: auto
+    opacity: 1
+    &.hidden
+      pointer-events: none
+      opacity: 0
+
+.scroll-btn-left
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, black), color-stop(0.65, black), color-stop(1, rgba(0, 0, 0, 0)))
+  background-image: -moz-linear-gradient(90deg, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: -ms-linear-gradient(90deg, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: -o-linear-gradient(90deg, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: -webkit-linear-gradient(0, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: linear-gradient(90deg, black 0%, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-repeat: repeat-y
+  left: 0
+
+.scroll-btn-right
+  background-image: -webkit-gradient(linear, right top, left top, color-stop(0, black), color-stop(0.65, black), color-stop(1, rgba(0, 0, 0, 0)))
+  background-image: -moz-linear-gradient(270deg, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: -ms-linear-gradient(270deg, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: -o-linear-gradient(270deg, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: -webkit-linear-gradient(180deg, black 0, black 65%, rgba(0, 0, 0, 0) 100%)
+  background-image: linear-gradient(270deg, black 0%, black 65%, rgba(0, 0, 0, 0) 100%)
+  right: 0
+
+.timeline-scroll span
+  border: 0 solid transparent
+  border-bottom-width: 9px
+  border-top-width: 9px
+  height: 0
+  -webkit-transition: opacity 0.5s
+  -moz-transition: opacity 0.5s
+  -o-transition: opacity 0.5s
+  transition: opacity 0.5s
+  pointer-events: none
+  position: absolute
+  top: 15px
+  width: 0
+
+.timeline-outer
+  .scroll-btn-left span
+    left: 12px
+    border-right-color: #666
+    border-right-width: 8px
+  .scroll-btn-right span
+    right: 12px
+    border-left-color: #666
+    border-left-width: 8px
+  .scroll-btn-left:hover span
+    border-right-color: #CCC
+  .scroll-btn-right:hover span
+    border-left-color: #CCC
+
+.editor-drawer
+  background: #fff
+  color: #999
+
+.enhanced .editor-drawer
+  position: absolute
+  left: -1000em
+
+.editor-drawer
+  .sub
+    clear: both
+    padding-left: 20px
+    padding-right: 20px
+    zoom: 1
+    &:before, &:after
+      clear: both
+      content: ""
+      display: table
+  &.collapsible-expanded, &.visible
+    bottom: 1px
+    left: 0
+    position: absolute
+    right: 0
+    z-index: 10
+    z-index: 75
+
+.view-discuss .discuss-pane
+  bottom: 1px
+  left: 0
+  position: absolute
+  right: 0
+  z-index: 10
+  z-index: 75
+
+.editor-drawer, .touch .editor-drawer
+  top: 2.75em
+  bottom: 1px
+  overflow: auto
+
+.drawer-open .editor-drawer .comment-shim
+  max-height: 6em
+
+@media screen and (min-width: 50em)
+  .drawer-open .ed-page
+    margin-right: 36%
+  .overthrow-enabled .drawer-open .ed-page
+    right: 36%
+    margin-right: 0
+    &:after
+      background: #D9D9D9
+      bottom: 0
+      content: ""
+      position: absolute
+      right: 0
+      top: 0
+      width: 11px
+  .sbw-0.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 0px
+  .sbw-1.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 1px
+  .sbw-2.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 2px
+  .sbw-3.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 3px
+  .sbw-4.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 4px
+  .sbw-5.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 5px
+  .sbw-6.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 6px
+  .sbw-7.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 7px
+  .sbw-8.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 8px
+  .sbw-9.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 9px
+  .sbw-10.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 10px
+  .sbw-11.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 11px
+  .sbw-12.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 12px
+  .sbw-13.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 13px
+  .sbw-14.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 14px
+  .sbw-15.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 15px
+  .sbw-16.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 16px
+  .sbw-17.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 17px
+  .sbw-18.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 18px
+  .sbw-19.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 19px
+  .sbw-20.overthrow-enabled .drawer-open .ed-page:after
+    margin-right: 20px
+  .overthrow-enabled .drawer-open .ed-page-container
+    padding-right: 11px
+  .editor-drawer
+    border-left: 11px solid #D9D9D9
+    width: 36%
+    top: 2em
+  .overthrow-enabled .editor-drawer
+    border-left: none
+  .editor-drawer
+    &.collapsible-expanded, &.visible
+      left: auto
+      right: 0
+  .view-discuss .discuss-pane
+    left: auto
+    right: 0
+
+@media screen and (min-width: 75em)
+  .drawer-open .ed-page
+    margin-right: 31%
+  .overthrow-enabled .drawer-open .ed-page
+    right: 31%
+  .drawer-open .editor-drawer
+    width: 31%
+
+@media screen and (min-width: 100em)
+  .drawer-open .ed-page
+    margin-right: 25%
+  .overthrow-enabled .drawer-open .ed-page
+    right: 25%
+  .drawer-open .editor-drawer
+    width: 25%
+
+.drawer-head
+  background: #FCFCFD
+  border-bottom: 2px solid #999
+  margin-bottom: 0.25em
+  padding-bottom: 0.5em
+  padding-top: 1em
+  .sub
+    padding: 0
+    margin: 0 20px
+
+.drawer-title
+  background: #fff
+  border-bottom: 2px solid #999
+  color: #333
+  font-size: 18px
+  font-size: 1.125rem
+  font-weight: normal
+  overflow: hidden
+  margin: 0 20px
+  padding-bottom: 0.5em
+  padding-top: 0.5em
+  position: relative
+  text-overflow: ellipsis
+  z-index: 10
+
+.drawer-title-full
+  margin: 0 0 20px 0
+
+.drawer-main
+  padding-bottom: 1em
+
+.activity-entry
+  border-bottom: 1px solid #DDD
+  color: #555
+  padding: 0.75em 5px 0.5em 48px
+  position: relative
+  p
+    margin-bottom: 0
+  .action
+    .is-icon, .ico-avatar
+      position: absolute
+      left: 8px
+
+.discussion-comment .metadata .ico-avatar
+  position: absolute
+  left: 8px
+
+.activity-entry
+  .action, .additional
+    font-size: 13px
+    font-size: 0.8125rem
+
+.discuss-main .discussion-comment .metadata
+  font-size: 13px
+  font-size: 0.8125rem
+
+.activity-entry
+  .action, .metadata, .additional
+    margin-bottom: 0.5em
+  .action
+    a
+      font-size: 12px
+      font-size: 0.75rem
+      margin-left: 0.83333333333333333333em
+      text-decoration: underline
+    cite a
+      font-size: 1em
+      margin-left: 0
+      &:hover, &:focus
+        color: #3d9ecf
+        text-decoration: none
+  .metadata
+    font-size: 12px
+    font-size: 0.75rem
+    img
+      vertical-align: top
+  b
+    color: #555
+    font-style: normal
+    font-weight: bold
+  cite
+    color: #555
+    font-style: normal
+    font-weight: bold
+    a
+      color: #555
+      font-style: normal
+      font-weight: bold
+  time
+    color: #999
+    &:before
+      color: #999
+      content: "•"
+      font-weight: normal
+      margin: 0 0.5em 0 0.25em
+  .additional
+    margin-top: 0.5em
+    overflow: auto
+    p
+      margin-bottom: 0.75em
+  pre
+    margin-bottom: 0.75em
+  .additional p:last-of-type
+    margin-bottom: 0
+  .action a
+    &.activity-disc
+      margin-left: 0
+      text-decoration: none
+      cite.disc-open
+        background: #FFEE8E
+        color: #555
+        font-weight: normal
+        font-style: italic
+        padding: 0 0.2em
+        font-size: 15px
+        font-size: 0.9375rem
+    &:hover cite.disc-open
+      background-color: #FFE868
+    &.activity-disc cite.disc-closed
+      background: #E1E1E1
+      color: #888
+      font-weight: normal
+      font-style: italic
+      padding: 0 0.2em
+      font-size: 15px
+      font-size: 0.9375rem
+  a:hover cite.disc-closed
+    background-color: #bbb
+
+.additional a
+  color: #555
+  text-decoration: none
+  color: #555
+  text-decoration: none
+
+.status-picker
+  border-bottom: 1px solid #BDBDBE
+  padding-bottom: 0.2em
+  .hed
+    border-bottom: 1px solid #BDBDBE
+    padding-bottom: 0.2em
+    color: #333
+    font-size: 18px
+    font-size: 1.125rem
+    font-weight: normal
+    margin-bottom: 0.5em
+  font-size: 16px
+  font-size: 1rem
+  margin-bottom: 1em
+  color: #999
+  ul
+    margin-bottom: 0
+  li
+    width: 100%
+    zoom: 1
+  input
+    position: absolute
+    left: -1000em
+  label
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    -ms-border-radius: 4px
+    -o-border-radius: 4px
+    border-radius: 4px
+    &:after
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      -ms-border-radius: 4px
+      -o-border-radius: 4px
+      border-radius: 4px
+    cursor: pointer
+    display: block
+    position: relative
+    padding: 0.3em 0 0.3em 32px
+    &:hover
+      color: #444
+    &:after
+      background-color: #444
+      content: ""
+      display: block
+      width: 18px
+      height: 18px
+      position: absolute
+      right: 7px
+      top: 50%
+      margin-top: -9px
+  input:checked + label
+    background-position: 10px 12px
+    background-color: #444
+    color: #fff
+
+.select-status
+  position: relative
+  min-width: 10em
+
+.select-status-label
+  margin-top: 0.6em
+
+.select-status
+  .page
+    padding-top: 0.2em
+    padding-bottom: 0.2em
+  .status-picker label:after
+    right: auto
+  .current-page
+    border-bottom: 2px solid #EEE
+    background-position: 42px 20px
+    padding: 1em 20px 0.5em 68px
+    z-index: 1
+  a
+    &:hover, &:focus
+      text-decoration: none
+  .current-status
+    font-size: 14px
+    font-size: 0.875rem
+    letter-spacing: .08em
+    text-transform: uppercase
+  .more
+    background-position: 100% 50%
+    color: #999
+    font-size: 12px
+    font-size: 0.75rem
+    font-weight: normal
+    margin-left: 1em
+    padding-right: 15px
+    text-transform: lowercase
+  .status-picker
+    border-bottom: none
+    font-size: 14px
+    font-size: 0.875rem
+    margin-bottom: 0
+    margin-right: 4px
+  .sub-menu
+    border: 2px solid #DDD
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    background: #fff
+    padding-top: 0
+    top: 3em
+    z-index: 100
+  &.collapsible-expanded .sub-menu
+    left: 30px
+    right: 20px
+  .sub-menu li
+    padding: 2px
+    &:first-child
+      border: none
+  .status-picker
+    label:after
+      left: 5px
+    input:checked + label
+      background-position: 7px 50%
+      &:after
+        display: none
+
+.select-menu .current-page.status-draft
+  border-color: #3d9ecf
+
+.status-draft
+  .current-status
+    color: #3d9ecf
+  label:after, input:checked + label
+    background-color: #3d9ecf
+
+.select-menu .current-page.status-copyediting
+  border-color: #C33
+
+.status-copyediting
+  .current-status
+    color: #C33
+  label:after, input:checked + label
+    background-color: #C33
+
+.select-menu .current-page.status-reviewing
+  border-color: #826699
+
+.status-reviewing
+  .current-status
+    color: #826699
+  label:after, input:checked + label
+    background-color: #826699
+
+.select-menu .current-page.status-revising
+  border-color: #D1A613
+
+.status-revising
+  .current-status
+    color: #D1A613
+  label:after, input:checked + label
+    background-color: #D1A613
+
+.select-menu .current-page.status-final
+  border-color: #88b716
+
+.status-final
+  .current-status
+    color: #88b716
+  label:after, input:checked + label
+    background-color: #88b716
+
+.document-comment
+  .metadata
+    margin-bottom: 0.25em
+  .action .ico-avatar, .metadata .ico-avatar
+    left: 0
+  .additional
+    font-size: 14px
+    font-size: 0.875rem
+    line-height: 1.5
+    margin-top: 0
+    a
+      text-decoration: underline
+      &:hover, &:focus
+        text-decoration: none
+
+@media screen and (min-width: 90em)
+  .document-comment .additional
+    font-size: 16px
+    font-size: 1rem
+    line-height: 1.8
+
+.discuss-pane
+  border-color: #eab550
+
+.discuss-main .sub
+  padding: 0
+  margin: 0 20px
+  position: relative
+  z-index: 1
+
+.discuss-head
+  margin-bottom: 0
+  padding-bottom: 1em
+  position: relative
+  z-index: 50
+  p, ul
+    margin-bottom: 0
+  li
+    display: inline-block
+    vertical-align: top
+  .btn
+    margin: 0
+  a.ico-close
+    background-position: 6px 0.6em
+  .btn-nav
+    background-color: #D9D9D9
+    background-repeat: no-repeat
+    background-position: 5px 50%
+    color: #666
+    display: inline-block
+    padding-left: 17px
+    &:hover, &:focus
+      background-color: #C8C8C8
+  .discuss-prev, .discuss-next
+    padding-left: 0.45em
+    text-indent: -1000em
+    width: 14px
+  .discuss-prev
+    background-position: 9px 50%
+  .discuss-next
+    background-position: 10px 50%
+  .discuss-new
+    display: none
+    padding-left: 0.4em
+  .discuss-cancel
+    background-position: 4px 50%
+  .xtra
+    position: absolute
+    left: -1000em
+
+@media screen and (min-width: 50em) and (max-width: 70em)
+  .discuss-all span
+    position: absolute
+    left: -1000em
+
+@media screen and (min-width: 80em)
+  .discuss-head
+    .discuss-prev, .discuss-next
+      text-indent: 0
+      width: auto
+    .discuss-prev
+      background-position: 4px 50%
+      padding-left: 17px
+    .discuss-next
+      background-position: 90% 50%
+      padding-left: 0.4em
+      padding-right: 17px
+
+@media screen and (min-width: 50em)
+  .discuss-head .discuss-new
+    display: inline-block
+
+@media screen and (min-width: 82em)
+  .discuss-head .xtra
+    position: static
+  .discuss-cancel .xtra
+    position: absolute
+
+@media screen and (min-width: 105em)
+  .discuss-cancel .xtra
+    position: static
+
+.discuss-title
+  border-bottom: 1px solid #DDD
+  margin: 0
+
+a
+  &:hover .discuss-title, &:focus .discuss-title
+    text-decoration: none
+
+.editor-drawer
+  .excerpt
+    display: inline-block
+    font-style: italic
+    font-weight: normal
+    background: #FFEE8E
+    color: #555
+    padding: 0 4px
+    padding: 0 0.25rem
+    overflow: hidden
+    text-decoration: none
+    text-overflow: ellipsis
+    white-space: nowrap
+    max-width: 100%
+  .no-excerpt
+    white-space: normal
+    margin-bottom: .5em
+    overflow: visible
+    padding-bottom: 13px
+  .excerpt
+    &:hover, &:focus
+      background: #FFE868
+  a
+    &:hover .excerpt, &:focus .excerpt
+      background: #FFE868
+    &:hover .comment-count, &:focus .comment-count
+      background: #DDD
+
+.closed
+  .excerpt
+    background: #E1E1E1
+    color: #888
+    &:hover, &:focus
+      background: #BBB
+      color: #555
+  a
+    &:hover .excerpt, &:focus .excerpt
+      background: #BBB
+      color: #555
+
+.discuss-title .excerpt
+  font-size: 24px
+  font-size: 1.5rem
+  vertical-align: bottom
+
+a
+  &.excerpt-expand, &.excerpt-collapse, &.excerpt-expand:focus, &.excerpt-collapse:focus
+    display: block
+    font-style: italic
+    font-size: 24px
+    font-size: 1.5rem
+    color: #555
+    z-index: 50
+    text-decoration: none
+  &.excerpt-expand
+    position: absolute
+    right: 0
+    top: 9px
+    padding-left: 3px
+    background-color: #f9db71
+    width: 22px
+    height: 36px
+  &.excerpt-collapse
+    position: absolute
+    bottom: 0
+    width: 100%
+    height: 35px
+    text-align: center
+    background-color: #f9db71
+    text-decoration: none
+    &:hover
+      background-color: #eab550
+      text-decoration: none
+  &.excerpt-expand:hover
+    background-color: #eab550
+    text-decoration: none
+
+.closed a
+  &.excerpt-expand, &.excerpt-collapse
+    background-color: #d4d4d4
+  &.excerpt-expand:hover, &.excerpt-collapse:hover
+    background-color: #b0b0b0
+
+@media screen and (max-width: 50em)
+  .touch .excerpt-expand
+    padding-left: 0
+    width: 25px
+
+.discuss-main
+  padding: 0 20px
+  margin: 0
+
+.overthrow-enabled
+  .discuss-main
+    overflow: auto
+    -webkit-overflow-scrolling: touch
+    .sub
+      margin: 1em 0
+  .new-discussion .discuss-main
+    position: static
+    overflow: visible
+    padding-top: 1em
+
+@media screen and (min-width: 50em)
+  .overthrow-enabled
+    .view-discuss .ed-page:after
+      background: #eab550
+    .view-discuss-closed .ed-page:after
+      background: #bbb
+    .discuss-main
+      bottom: 0
+      left: 0
+      margin-top: 1px
+      margin: 0
+      padding-top: 3.8em
+      position: absolute
+      right: 0
+      top: 3.75em
+      z-index: 1
+      &.discuss-main-comments
+        top: .75em
+      .sub
+        margin: 0
+        margin-bottom: 4em
+        padding-right: 0
+        padding-left: 0
+    .discussion-thread .discuss-main
+      padding-top: 3.25em
+      bottom: 4.2em
+    .comment-focus .discuss-main
+      bottom: 7em
+    .discussion-thread .discuss-main .sub
+      margin-bottom: 1.5em
+    .comment-focus .discuss-main .sub
+      margin-bottom: 6em
+
+.drawer-main .discussion-activity
+  padding-left: 0
+  padding-top: 0
+  padding-right: 50px
+  margin-bottom: 0.5em
+
+.discussion-activity
+  p
+    margin-bottom: 0
+    + p
+      margin-bottom: 0.5em
+  .title
+    color: #666
+    display: block
+    font-style: italic
+    font-weight: normal
+    font-size: 15px
+    font-size: 0.9375rem
+    margin-bottom: 0.4em
+    overflow: hidden
+    text-decoration: none
+    text-overflow: ellipsis
+
+@media screen and (min-width: 50em)
+  .discussion-activity .title
+    white-space: nowrap
+
+.comment-count
+  background: #EFEFEF
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  -ms-border-radius: 2px
+  -o-border-radius: 2px
+  border-radius: 2px
+  color: #888
+  font-size: 13px
+  font-size: 0.8125rem
+  font-style: normal
+  line-height: 1
+  padding: 4px
+  padding: 0.25rem
+  position: relative
+  min-width: 1em
+  text-align: center
+  -webkit-transition: background-color 0.2s
+  -moz-transition: background-color 0.2s
+  -o-transition: background-color 0.2s
+  transition: background-color 0.2s
+
+.unread .comment-count
+  background-color: #3d9ecf
+  color: #fff
+
+.editor-drawer .unread a:hover .comment-count
+  background-color: #999
+
+.discussion-activity .comment-count
+  position: absolute
+  right: 5px
+  top: 0
+  z-index: 1
+
+.onboard-discussion-bg
+  opacity: 0
+  pointer-events: none
+
+.show-helper > .onboard-discussion-bg
+  opacity: 1
+  pointer-events: auto
+
+.empty-discussions .onboard-discussion-text .btn-flat
+  display: none
+
+.touch .discuss-initial
+  &:after
+    display: none
+  .drawer-title
+    padding-right: 0
+
+.discuss-pane .load-more
+  background: #464646
+  background: rgba(255, 255, 255, 0.15)
+  text-transform: none
+  letter-spacing: 0
+  &:hover, &:focus
+    background: #464646
+    background: rgba(255, 255, 255, 0.2)
+    color: #AAA
+
+.discuss-new-thread
+  .text, .comment-holder .comment-shim
+    height: 15em
+    max-height: 15em
+  .comment-shim
+    font-family: inherit
+    font-size: 1em
+
+.drawer-open
+  .discuss-add-comment
+    padding: 1em 0
+    background: #313131
+    border-top: 1px solid #5A5A5A
+  .new-discussion .discuss-add-comment
+    top: 9em
+
+@media screen and (min-height: 40em)
+  .comment-focus .discuss-add-comment .text
+    height: 7em
+
+@media screen and (min-width: 50em)
+  .drawer-open .discuss-add-comment
+    bottom: 0
+    left: 0
+    position: absolute
+    right: 0
+    z-index: 10
+
+.discuss-add-comment p
+  margin-bottom: 0
+
+.discuss-form
+  margin-right: 11em
+  line-height: 1
+  .entry
+    float: left
+    width: 100%
+  .actions
+    float: right
+    margin-right: -11em
+    text-align: right
+    width: 11em
+  .btn
+    margin-top: 0
+    padding-bottom: 0.5em
+    padding-top: 0.5em
+    text-align: center
+  .discuss-btn-comment
+    position: absolute
+    left: -1000em
+  .choix
+    color: #999
+    display: inline-block
+    font-size: 14px
+    font-size: 0.875rem
+    margin-top: 0.5em
+    padding: 0 0.5em
+    text-align: center
+    vertical-align: top
+  .text
+    display: block
+    height: 2.2em
+    padding: 0.3em
+    resize: none
+    width: 100%
+
+@media screen and (min-width: 50em) and (max-width: 80em)
+  .discuss-form
+    margin-right: 6em
+    .actions
+      margin-right: -6em
+      width: 6em
+  .discuss-btn-close span
+    position: absolute
+    left: -1000em
+  .comment-focus .discuss-btn-close span
+    position: static
+
+.comment-focus
+  .discuss-form
+    .entry
+      float: none
+    .actions
+      float: none
+      margin-right: 0
+      margin-right: 0
+      width: auto
+    margin-right: 0
+    .discuss-btn-comment
+      left: auto
+      position: relative
+    .choix
+      left: -1000em
+      position: absolute
+  .discuss-add-comment .btn
+    float: right
+    margin-left: 0.4em
+    margin-top: 0.4em
+
+.discuss-closed-status
+  font-size: 13px
+  font-size: 0.8125rem
+  .btn-nav
+    font-size: 13px
+    font-size: 0.8125rem
+  color: #CCC
+  cite
+    font-style: normal
+    font-weight: bold
+  .btn-nav
+    background: #242426
+    background: rgba(0, 0, 0, 0.4)
+    float: right
+    margin-top: -0.2em
+    position: relative
+    z-index: 1
+  p
+    margin-right: 7em
+    padding-left: 24px
+    position: relative
+  img
+    left: 0
+    position: absolute
+    top: 0
+    width: 16px
+    z-index: 1
+
+.the-tide mark
+  color: inherit
+  -webkit-transition: background-color 0.2s
+  -moz-transition: background-color 0.2s
+  -o-transition: background-color 0.2s
+  transition: background-color 0.2s
+  &.no-transition
+    -webkit-transition: none
+    -moz-transition: none
+    -o-transition: none
+    transition: none
+    *
+      &:before, &:after
+        -webkit-transition: none
+        -moz-transition: none
+        -o-transition: none
+        transition: none
+
+.view-discuss
+  mark
+    background: #FFF2AA
+    cursor: pointer
+  .bq mark, .p mark, .li mark
+    padding-bottom: 0.23em
+    padding-top: 0.23em
+  .bq .md-code mark, .p .md-code mark, .li .md-code mark, .bq .code mark, .p .code mark, .li .code mark
+    padding-top: .5em
+    padding-bottom: .4em
+  .the-tide mark.empty
+    background: none
+    padding: 0 0.25em 0 0.5em
+    &:hover
+      background: none
+      padding: 0 0.25em 0 0.5em
+  mark
+    &:hover, &.active
+      background: #FFE867
+
+.mark-cap
+  display: none
+  b
+    &:before, &:after
+      content: ""
+
+.view-discuss .mark-cap
+  display: inline-block
+  height: 1.8em
+  text-indent: 0
+  vertical-align: middle
+
+.mark-cap b:before
+  background: #fff
+  border: 2px solid #eab550
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+  -ms-border-radius: 50%
+  -o-border-radius: 50%
+  border-radius: 50%
+  display: inline-block
+  height: 10px
+  line-height: 1
+  -webkit-transition: width 0.2s,height 0.2s,margin-top 0.2s,left 0.2s
+  -moz-transition: width 0.2s,height 0.2s,margin-top 0.2s,left 0.2s
+  -o-transition: width 0.2s,height 0.2s,margin-top 0.2s,left 0.2s
+  transition: width 0.2s,height 0.2s,margin-top 0.2s,left 0.2s
+  width: 10px
+
+b.cap-side:after
+  -webkit-transition: width 0.2s,left 0.2s
+  -moz-transition: width 0.2s,left 0.2s
+  -o-transition: width 0.2s,left 0.2s
+  transition: width 0.2s,left 0.2s
+
+.active > .mark-cap
+  b:before, .cap-in:before
+    background: #eab550
+
+.mark-cap b:after
+  border: 2px solid #eab550
+  border-width: 2px 0 0
+  height: 0
+  left: 100%
+  margin-top: -1px
+  position: absolute
+  top: 50%
+  width: 8px
+
+.cap-side
+  background: #fff
+  height: 1.2em
+  margin-top: 0.35em
+  position: absolute
+  right: 0
+  width: 44px
+  z-index: 5
+  &:before
+    position: absolute
+    left: 10px
+    top: 50%
+    margin-top: -7px
+    z-index: 1
+
+@media screen and (min-width: 95em)
+  .cap-side
+    background: #FCFCFC
+
+.active > .mark-cap b.cap-side:before
+  left: -15px
+
+b.cap-side:after
+  left: 12px
+  width: 32px
+
+.closed b.cap-side:after
+  left: 17px
+  width: 27px
+
+.active > .mark-cap b.cap-side:after
+  left: 9px
+  width: 36px
+
+.closed .cap-side
+  z-index: 1
+
+mark
+  &.active > .mark-cap .cap-side
+    z-index: 10
+    &:before
+      height: 22px
+      margin-top: -13px
+      width: 22px
+  &.empty.active > .mark-cap .cap-side:before, &.active.closed > .mark-cap b.cap-side:before
+    height: 22px
+    margin-top: -13px
+    width: 22px
+
+.cap-in
+  display: none
+
+mark.empty
+  .mark-cap
+    vertical-align: middle
+    margin-top: -1em
+  .cap-in
+    display: inline-block
+    height: 6px
+    margin-left: -8px
+    position: relative
+    vertical-align: middle
+    width: 8px
+  .cap-side
+    margin-top: 1em
+
+b.cap-in
+  &:before
+    height: 6px
+    left: 0
+    right: auto
+    position: absolute
+    top: 0
+    width: 6px
+  &:after
+    border-width: 0 1px
+    height: 5px
+    left: 50%
+    margin-top: 4px
+    position: absolute
+    top: 100%
+    width: 0
+
+.view-discuss mark
+  &.closed
+    background: none
+  &.empty.closed .cap-side
+    display: none
+    cursor: text
+
+.view-discuss-closed mark.closed
+  background: #E1E1E1
+
+.view-discuss mark.closed
+  &:hover, &.active
+    background: none
+    cursor: pointer
+
+.view-discuss-closed mark.closed
+  &:hover, &.active
+    background: #EEE
+
+.view-discuss .closed .mark-cap b
+  &:before, &:after
+    border-color: none
+    cursor: text
+
+.view-discuss-closed .closed .mark-cap b
+  &:before, &:after
+    border-color: #A6A6A6
+
+.closed .cap-side:before
+  height: 4px
+  left: 15px
+  margin-top: -4px
+  width: 4px
+
+.view-discuss
+  .closed .cap-side
+    display: none
+  mark.closed
+    background: none
+    &.empty
+      background: none
+      padding: 0
+  .the-tide mark.empty.closed .mark-cap b.cap-in
+    width: 0
+    height: 0
+    display: none
+    cursor: text
+    &:before, &:after
+      border-color: transparent
+  mark.closed.active > .mark-cap b:before
+    background: none
+
+.view-discuss-closed
+  mark
+    &.closed.active > .mark-cap b:before
+      background: #A6A6A6
+    &.empty
+      .cap-in
+        display: none
+        cursor: text
+      &.closed .cap-side
+        display: block
+  .closed .cap-side
+    display: block
+  mark.empty.closed .cap-in
+    display: inline-block
+  .the-tide mark.empty
+    display: none
+    cursor: text
+    &.closed
+      display: inline-block
+  mark.closed.empty
+    padding: 0 0.25em 0 0.5em
+  .the-tide mark.empty.closed .mark-cap b.cap-in
+    width: 8px
+    height: 6px
+    display: inline-block
+    cursor: pointer
+  mark.text-mark .cap-side
+    &:before, &:after
+      border-color: transparent
+  .the-tide mark.empty
+    .mark-cap b.cap-in
+      &:before, &:after
+        border-color: transparent
+    &.closed .mark-cap b.cap-in
+      &:before, &:after
+        border-color: #a6a6a6
+        cursor: pointer
+  mark.text-mark
+    &.closed
+      .cap-side
+        &:before, &:after
+          border-color: #a6a6a6
+      background: #e1e1e1
+    background: none
+    cursor: text
+    &.empty.closed
+      background: none
+
+@media screen and (min-width: 50em)
+  .discuss-comments
+    padding-top: 0.25em
+
+.discussion-comment
+  .metadata
+    margin-bottom: 0.25em
+  .action .ico-avatar, .metadata .ico-avatar
+    left: 0
+  .additional
+    font-size: 14px
+    font-size: 0.875rem
+    line-height: 1.5
+    margin-top: 0
+
+@media screen and (min-width: 90em)
+  .discussion-comment .additional
+    font-size: 16px
+    font-size: 1rem
+    line-height: 1.8
+
+.discuss-comment
+  .tool-menu
+    position: absolute
+    top: 0
+    right: 6px
+  .sub-menu
+    min-width: 8em
+  .menu
+    &:hover .sub-menu, .sub-menu:target
+      right: -0.4em
+  .menu-widget
+    &:before
+      right: 7px
+    &:after
+      right: 11px
+
+.discussion-comment .additional a
+  text-decoration: underline
+  &:hover, &:focus
+    text-decoration: none
+
+.discussion-comment-edit
+  padding: .5em 0
+
+a.toggle-filter, .discussion-action
+  display: inline-block
+  float: right
+  position: relative
+  top: -34px
+  right: 20px
+  font-size: 14px
+  font-size: 0.875rem
+  text-decoration: underline
+
+a.toggle-filter
+  z-index: 15
+
+.discussion-action
+  top: -14px
+
+.closed-discussion-alert
+  background-color: #e1e1e1
+  color: #bbb
+  padding: 15px 0
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  -ms-border-radius: 3px
+  -o-border-radius: 3px
+  border-radius: 3px
+  p
+    font-size: 14px
+    font-size: 0.875rem
+  a
+    font-weight: 600
+    text-decoration: underline
+
+.comment-action
+  margin: 0
+  padding: 0
+
+.menu.discussion-action
+  .sub-menu
+    top: 0
+    padding-top: 1.8em
+    width: 100px
+  &:hover .sub-menu
+    right: -11px
+
+.discussion-action .menu-widget
+  &:before
+    top: 18px
+    right: 11px
+  &:after
+    top: 22px
+    right: 14px
+
+.discussion-comment-edit
+  padding-left: 0
+  .text
+    height: 8em
+    display: block
+    position: relative
+  .actions
+    margin-top: .5em
+
+.sub
+  .activity-entry.discussion-activity, .discuss-comments .activity-entry
+    border-right: none
+
+.sub-menu-panel .discuss-pane
+  border-right: 3px solid gray
+
+.discuss-btn-cancel-comment
+  position: relative
+  top: 8px
+  font-size: 12px
+  font-size: 0.75rem
+  float: left
+  margin-right: 1.5em
+  cursor: pointer
+  &:hover
+    color: #3d9ecf
+  input
+    position: absolute
+    left: -10000em
+
+.formatted-markdown
+  blockquote
+    color: #777
+    margin: 0 2em 1em
+    position: relative
+    &:before
+      color: #CCC
+      font-weight: normal
+      content: "> "
+      position: absolute
+      left: -1em
+  p
+    margin-bottom: 1em
+  ol
+    margin-bottom: 1em
+    margin-left: .25em
+    list-style: decimal
+    li
+      margin-left: 1.3em
+  ul
+    margin-bottom: 1em
+    margin-left: .25em
+    list-style: disc
+    li
+      margin-left: 1.2em
+  h1
+    font-size: 1em
+    font-weight: normal
+    &:before
+      color: #CCC
+      font-weight: normal
+      content: "# "
+  h2
+    font-size: 1em
+    font-weight: normal
+    &:before
+      color: #CCC
+      font-weight: normal
+      content: "## "
+  h3
+    font-size: 1em
+    font-weight: normal
+    &:before
+      color: #CCC
+      font-weight: normal
+      content: "### "
+  h4
+    font-size: 1em
+    font-weight: normal
+    &:before
+      color: #CCC
+      font-weight: normal
+      content: "#### "
+  h5
+    font-size: 1em
+    font-weight: normal
+    &:before
+      color: #CCC
+      font-weight: normal
+      content: "###### "
+  h6
+    font-size: 1em
+    font-weight: normal
+    &:before
+      color: #CCC
+      font-weight: normal
+      content: "######## "
+
+.people-head
+  border-bottom-color: #e6e6e6
+  margin-bottom: 1em
+  font-size: 16px
+  font-size: 1rem
+  font-weight: normal
+  color: #333
+  a
+    border: 2px solid transparent
+    border-radius: 0.5em 0.5em 0 0
+    border-bottom: none
+    color: #999
+    float: left
+    font-size: 1em
+    margin-bottom: -10px
+    margin-right: 4px
+    padding: 0.5em 0.25em
+    text-decoration: none
+    &:hover, &:active
+      color: #333
+  .collapsible-heading-expanded
+    border-color: #e6e6e6
+    background: #fff
+    color: #333
+
+@media screen and (min-width: 51em)
+  .people-head a
+    padding: 0.5em
+
+.new-member:before
+  content: "+ "
+
+.empty-past-collaborators .drawer-title
+  display: none
+
+.overthrow-enabled .people-content
+  bottom: 0
+  left: 0
+  overflow-x: hidden
+  overflow-y: auto
+  -webkit-overflow-scrolling: touch
+  position: absolute
+  right: 0
+  padding-top: 0
+  padding-bottom: 1em
+  top: 5.1em
+
+@media screen and (min-width: 50em)
+  .overthrow-enabled .people-content
+    top: 4.7em
+
+.team .person
+  border-bottom: 1px solid #DDD
+  margin-bottom: 0.65em
+  position: relative
+  zoom: 1
+  &:before, &:after
+    clear: both
+    content: ""
+    display: table
+
+.person
+  .ico-avatar
+    float: left
+    margin-right: 11px
+  .name, .status, .permissions
+    margin-left: 44px
+  .name
+    color: #333
+    font-size: 15px
+    font-size: 0.9375rem
+    font-weight: normal
+    margin-top: -0.15em
+    margin-right: 35px
+    overflow-x: hidden
+    text-overflow: ellipsis
+  .ico-avatar, .status, .permissions
+    margin-bottom: 10px
+    margin-bottom: 0.625rem
+  .ico-owner-badge
+    background-position: 50% 50%
+    height: 12px
+    vertical-align: baseline
+    width: 14px
+
+.permissions, .status
+  font-size: 13px
+  font-size: 0.8125rem
+
+.person input.is-icon
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  background-color: #fff
+  border: none
+  cursor: pointer
+
+.enhanced
+  .person .btn-submit
+    position: absolute
+    left: -1000em
+  .delete-person, .edit-person, .add-person
+    background-position: 100% 0
+    height: 25px
+    margin: 0
+    opacity: 0.8
+    padding: 0
+    position: absolute
+    right: 0
+    top: 0
+    width: 30px
+
+.delete-person
+  &:hover, &:focus
+    opacity: 1
+
+.add-person
+  &:hover, &:focus
+    opacity: 1
+
+.enhanced .person
+  .permissions, .delete-person, .msg-reinvite
+    display: none
+  .choose-role
+    display: block
+
+.touch
+  .choose-role .ico-hover-help, .manage .ico-hover-help
+    display: none
+
+.person.editing
+  .permissions, .delete-person, .msg-reinvite
+    display: block
+  .status, .edit-person, .add-person
+    display: none
+
+.msg-reinvite
+  color: #666
+  font-size: 13px
+  font-size: 0.8125rem
+  line-height: 1.38461538461538461538
+  margin: 0
+  position: absolute
+  right: 0
+  top: 0
+  text-align: right
+  width: 70px
+  span
+    text-align: left
+  .is-icon
+    height: 13px
+    vertical-align: middle
+    width: 13px
+  a
+    display: block
+    color: #999
+    text-decoration: underline
+    &:hover, &:focus
+      color: #555
+      text-decoration: none
+
+.add-new-member
+  border-bottom: 1px solid #DDD
+  margin-bottom: 1em
+  fieldset, .text, .btn
+    font-size: 16px
+    font-size: 1rem
+  .email, .btn
+    position: absolute
+    top: 0
+  .text, .btn
+    padding: 0.4em
+  fieldset
+    position: relative
+    height: 3em
+  .email
+    left: 0
+    right: 4.5em
+  .text
+    margin-top: 0
+    width: 100%
+  .btn
+    right: 0
+    width: 3em
+
+.permissions strong
+  color: #fff
+
+.choose-role
+  margin-bottom: 1em
+  .grey-label
+    color: #666
+
+.permissions input
+  &:first-child
+    position: absolute
+    left: -1000em
+  + span
+    background: #EBEBEB
+    border: 1px solid #DBDBDB
+    border-radius: 0.2em
+    color: #999
+    padding: 0.05em 0.3em
+    cursor: pointer
+  &:checked + span
+    background: #999
+    border-color: #666
+    color: #fff
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4)
+    -moz-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4)
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4)
+
+.sub-menu-panel .people-pane
+  border-right: 3px solid gray
+
+.new-comment
+  margin: 1em 0 0
+  zoom: 1
+  &:before
+    clear: both
+    content: ""
+    display: table
+  &:after
+    clear: both
+    content: ""
+    display: table
+    clear: both
+  .by
+    display: none
+    float: left
+    width: 47px
+  img
+    width: 32px
+  .text
+    font-size: 16px
+    font-size: 1rem
+    line-height: 1.5
+    margin-bottom: 0.5em
+    margin-left: 0
+    min-height: 34px
+    padding-left: 0.5em
+
+@media screen and (min-width: 37.5em)
+  .new-comment .by
+    display: block
+
+@media screen and (min-width: 37.5em)
+  .new-comment fieldset
+    margin-left: 48px
+    margin-right: 0
+
+.comment-shim
+  font-size: 16px
+  font-size: 1rem
+  line-height: 1.5
+  margin-bottom: 0.5em
+  margin-left: 0
+  min-height: 34px
+  padding-left: 0.5em
+
+.new-comment
+  .text
+    display: block
+    padding-top: 0.2em
+    width: 100%
+    &:focus
+      min-height: 77px
+  .display
+    .text, .comment-shim
+      min-height: 77px
+  .text:focus
+    -webkit-box-shadow: 0 0 3px 3px #88b2d8
+    -moz-box-shadow: 0 0 3px 3px #88b2d8
+    box-shadow: 0 0 3px 3px #88b2d8
+    outline: none
+  .submit
+    clear: both
+
+@media screen and (min-width: 37.5em)
+  .new-comment .submit
+    clear: none
+    float: right
+
+.enhanced .new-comment .more
+  max-height: 0
+  opacity: 0
+  overflow: hidden
+  -webkit-transition: max-height 0.1s,opacity 0.4s
+  -moz-transition: max-height 0.1s,opacity 0.4s
+  -o-transition: max-height 0.1s,opacity 0.4s
+  transition: max-height 0.1s,opacity 0.4s
+
+.new-comment .display .more
+  max-height: 1000px
+  opacity: 1
+  overflow: visible
+
+.markdown-hints
+  font-size: 14px
+  font-size: 0.875rem
+  zoom: 1
+  .head
+    font-size: 14px
+    font-size: 0.875rem
+    zoom: 1
+  &:before, &:after
+    clear: both
+    content: ""
+    display: table
+  .head
+    &:before, &:after
+      clear: both
+      content: ""
+      display: table
+    border-bottom: 1px solid #B0B0B1
+    margin-bottom: 1em
+  h1, .head a
+    width: 48%
+  h1
+    float: left
+    font-size: 18px
+    font-size: 1.125rem
+    padding-bottom: 0.5em
+  .head a
+    float: right
+    font-size: 12px
+    font-size: 0.75rem
+    margin-top: 0.5em
+    text-align: right
+    text-decoration: underline
+    &:hover, &:focus
+      text-decoration: none
+  display: block
+  div, ol, ul
+    display: block
+  li
+    display: block
+    line-height: 1.1
+  p, li, p
+    line-height: 1.1
+
+.md-ref-heds code
+  display: inline-block
+  text-align: right
+  width: 2em
+
+.markdown-hints .sect
+  border-bottom: 1px solid #E2E2E3
+  margin-bottom: 1em
+  padding-bottom: 1em
+
+.content .markdown-hints code
+  color: #39C
+  font-weight: bold
+  padding: 0 0.1em
+
+[data-overlay-type=markdown-reference] .modal
+  max-width: 34em
+  .content
+    padding-left: 4.5%
+    padding-right: 4.5%
+
+.doc-label
+  background: #47A3D1
+  position: fixed
+  left: 0.75em
+  top: -3em
+  bottom: -3em
+  width: 3px
+  z-index: 1
+  em
+    background-color: #fff
+    background-position: 0 5px
+    margin-left: -3px
+    margin-top: -10px
+    padding: 5px 0
+    position: absolute
+    top: 50%
+    height: 68px
+    width: 10px
+
+@media screen and (min-width: 55em)
+  .doc-label
+    margin-left: 20px
+    left: auto
+  .drawer-open .doc-label em
+    background-color: #fff
+
+@media screen and (min-width: 65em)
+  .doc-label
+    margin-left: -20px
+  .drawer-open .doc-label
+    margin-left: 20px
+  .doc-label em, .drawer-open .doc-label em
+    background-color: #FCFCFC
+
+@media screen and (min-width: 100em)
+  .drawer-open .doc-label
+    margin-left: -20px
+
+.tmpl-doc .ed-footer
+  display: none
+  hr
+    display: none
+
+.ed-outer
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  top: 0
+  -webkit-transition: top 0.5s
+  -moz-transition: top 0.5s
+  -o-transition: top 0.5s
+  transition: top 0.5s
+  z-index: 1
+
+.ed-messages
+  background: #000
+  overflow: hidden
+  position: relative
+  z-index: 20
+  .msg-block
+    background: inherit
+    border-bottom: 1px solid #EEE
+    border-bottom-color: rgba(255, 255, 255, 0.2)
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    -ms-border-radius: 0
+    -o-border-radius: 0
+    border-radius: 0
+    clear: none
+    color: #CCC
+    font-size: 14px
+    font-size: 0.875rem
+    margin: 0
+    padding: 1em 5em 1px 1em
+    position: relative
+    -webkit-transition: margin 0.5s
+    -moz-transition: margin 0.5s
+    -o-transition: margin 0.5s
+    transition: margin 0.5s
+  .status-error, .status-info, .status-success
+    border-bottom: 1px solid #333
+    border-bottom-color: rgba(0, 0, 0, 0.2)
+  .status-info, .status-alert
+    color: #EEE
+  .status-success
+    color: #fff
+  .msg p
+    margin-bottom: 1em
+  a, strong
+    color: #fff
+  a
+    text-decoration: underline
+    &:hover, &:focus
+      opacity: 0.8
+    &.btn-simple
+      color: #999
+      text-decoration: none
+      &:hover, &:focus
+        opacity: 1
+        color: #ccc
+  .ico-avatar
+    border-color: #CCC
+    border-color: rgba(255, 255, 255, 0.4)
+    margin-right: 4px
+    margin-top: -1px
+    vertical-align: top
+  .msg-close
+    background-position: 50% 50%
+    height: 3.5em
+    opacity: 0.4
+    position: absolute
+    right: 0
+    text-indent: -1000em
+    top: 0
+    -webkit-transition: opacity 0.2s
+    -moz-transition: opacity 0.2s
+    -o-transition: opacity 0.2s
+    transition: opacity 0.2s
+    width: 4em
+    &:hover, &:focus
+      opacity: 1
+  .ui-loading
+    display: inline-block
+    width: 16px
+    height: 16px
+    span
+      display: inline-block
+      width: 16px
+      height: 16px
+      position: absolute
+      left: 0
+      margin: 0
+      top: 0
+    background: inherit
+    position: relative
+    top: 0.15em
+
+body.has-alert
+  padding-top: 4em
+
+.msg
+  position: relative
+  clear: both
+  p
+    margin-bottom: 0
+  a
+    color: #fff
+    text-decoration: underline
+    -webkit-transition: color 0.1s
+    -moz-transition: color 0.1s
+    -o-transition: color 0.1s
+    transition: color 0.1s
+    &:visited
+      color: #fff
+      text-decoration: underline
+      -webkit-transition: color 0.1s
+      -moz-transition: color 0.1s
+      -o-transition: color 0.1s
+      transition: color 0.1s
+
+.status-info a
+  color: #248BA6
+  &:visited
+    color: #248BA6
+
+.msg a
+  &:hover, &:active
+    color: #111
+
+.msg-block, .msg-text
+  font-size: 13px
+  font-size: 0.8125rem
+
+.msg-block
+  background: #FCF8E3
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  -ms-border-radius: 4px
+  -o-border-radius: 4px
+  border-radius: 4px
+  color: #C09853
+  line-height: 1.3846153846
+  margin-bottom: 1em
+  padding: 0.5em
+
+.closeable
+  padding-right: 4em
+  cursor: pointer
+  .close
+    background-position: 50% 50%
+    height: 22px
+    opacity: 0.4
+    padding: 0.2em 0.4em
+    position: absolute
+    right: 0
+    text-indent: -1000em
+    top: 0
+    width: 20px
+  &:hover .close, .close:hover
+    opacity: 0.8
+
+.msg-full
+  -webkit-border-radius: 0
+  -moz-border-radius: 0
+  -ms-border-radius: 0
+  -o-border-radius: 0
+  border-radius: 0
+  left: 0
+  padding: 0.55em 0
+  position: absolute
+  text-align: center
+  top: 0
+  width: 100%
+  z-index: 1000
+
+.fixed-supported .msg-full
+  position: fixed
+
+.msg-full .close
+  padding: 0.2em 1em
+
+.status-error
+  color: #dd4b39
+  label
+    font-weight: bold
+  &.msg-block
+    background: #dd4b39
+    color: #fff
+
+.status-success
+  color: #fff
+  &.msg-block
+    background: #88b716
+
+.status-info
+  color: #1B687C
+  &.msg-block
+    background: #D3EFF6
+
+.status-alert.msg-block
+  background: #3d9ecf
+
+.onboard-bg
+  width: 100%
+  height: 100%
+  z-index: 100
+  position: absolute
+  background-color: rgba(255, 255, 255, 0.9)
+  -webkit-transition: opacity 0.1s linear
+  -moz-transition: opacity 0.1s linear
+  -o-transition: opacity 0.1s linear
+  transition: opacity 0.1s linear
+  &.hidden
+    display: block
+    opacity: 0
+    pointer-events: none
+
+.onboard-full-page
+  top: 0
+  left: 0
+
+.onboard-full-page-text
+  position: absolute
+  left: 0
+  top: 0
+  margin: 4.25em 0 0 3.75em
+  width: 50%
+  font-size: 1em
+  color: #4d4d4d
+
+.onboard-arrow:after
+  content: ""
+  height: 77px
+  width: 73px
+  position: absolute
+  top: -51px
+  left: -68px
+  z-index: 10
+  display: block
+  z-index: 500
+
+.onboard-markdown-cheatsheet .onboard-arrow
+  left: 1.25em
+
+.onboard-gear-cheatsheet .onboard-arrow
+  margin-left: 47px
+  &:after
+    left: -55px
+
+.onboard-versions .onboard-arrow
+  margin-left: 44px
+  &:after
+    left: -52px
+
+@media screen and (min-width: 37.5em)
+  .onboard-gear-arrow
+    margin-left: 44px
+    &:after
+      left: -52px
+
+@media screen and (min-width: 50em)
+  .onboard-full-page-text
+    width: 25%
+
+@media screen and (min-width: 75em)
+  .onboard-full-page-text
+    width: 15%
+
+.onboard-tip-text
+  width: 75%
+  margin-left: auto
+  margin-right: auto
+  margin-top: 2em
+  color: #4d4d4d
+  font-size: 16px
+  font-size: 1rem
+
+.empty-discussions .onboard-discussion-bg
+  background-color: #ffffff
+  background-color: #fff
+
+.onboard-discussion-bg
+  position: absolute
+  top: 39px
+  bottom: 0
+  height: auto
+
+.onboard-discussion-text
+  width: 50%
+
+@media screen and (min-width: 50em)
+  .onboard-discussion-bg
+    &:after
+      content: ""
+      height: 90px
+      width: 65px
+      position: absolute
+      top: -10px
+      right: 20px
+      z-index: 10
+    top: 60px
+  .onboard-discussion-text
+    width: 67%
+    margin-left: 7.5%
+
+@media screen and (min-width: 75em)
+  .onboard-discussion-text
+    width: 60%
+    margin-left: 7.5%
+
+.discuss-lg-screen
+  display: none
+
+.discuss-sm-screen .ico-hover-inline-add-discuss
+  position: relative
+  top: 3px
+
+@media screen and (min-width: 50em)
+  .discuss-lg-screen
+    display: block
+  .discuss-sm-screen
+    display: none
+
+.ed-messages .doc-control-status
+  line-height: 1.8462
+  padding: 0.77em 5em 0.77px 1em
+  p
+    margin-bottom: 0.785em
+
+.doc-control-status
+  .ico-avatar
+    margin-top: 2px
+  cite
+    color: #fff
+    font-style: normal
+    font-weight: 600
+  .description
+    margin-right: 1em
+  .actions
+    display: inline-block
+
+.preview-padding
+  padding-top: 1em
+  margin: 0 auto
+  max-width: 36em
+
+@media screen and (min-width: 37.5em)
+  .preview-padding
+    padding-top: 4em
+
+.preview-text
+  h1
+    font-size: 1.8em
+  h2
+    font-size: 1.5em
+  h3
+    font-size: 1.3em
+  h4
+    font-size: 1.2em
+  h5
+    font-size: 1.1em
+  h6
+    font-size: 100%
+  a
+    color: #3D9ECF
+    text-decoration: underline
+    &:visited
+      color: #3D9ECF
+      text-decoration: underline
+    &:hover, &:focus, &:active
+      color: #246E93
+  ul
+    padding-left: 2em
+    list-style-type: disc
+  ol
+    padding-left: 2em
+    list-style-type: decimal
+  blockquote
+    padding-left: 1em
+    color: #777
+    border-left: 4px solid #ccc
+  hr
+    margin: 2em 0 2.2em
+    background-color: #ccc
+    position: static
+    width: initial
+    overflow: initial
+    left: initial
+    top: initial
+    border: none
+    height: 1px
+  pre
+    margin: 2em auto
+  code
+    color: #666
+    font: normal 0.9em Menlo, Consolas, Inconsolata, "Lucida Console", Monaco, Courier, monospace
+  pre code
+    background: #eee
+    padding: 1em
+    white-space: pre-wrap
+    overflow: auto
+    display: block
+    border-left: 4px solid #999
+
+.outline
+  margin-bottom: 1em
+  .token:first-child
+    padding: 3px
+    background-color: #e6e6e6
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    -ms-border-radius: 3px
+    -o-border-radius: 3px
+    border-radius: 3px
+
+.discussion-container
+  position: absolute
+  width: 20px
+  a
+    padding: 10px
+    background-position: 4px 4px
+    &:hover
+      background-position: 4px -96px

@@ -1,0 +1,85 @@
+<script>
+var todoApp = angular.module('todoApp', ['restangular']);
+
+todoApp.config(function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('/api/v1');
+
+    RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
+      // This is a get for a list
+      var newResponse;
+      if (operation === "getList") {
+        // Here we're returning an Array which has one special property metadata with our extra information
+        newResponse = response.data;
+        // newResponse.metadata = response.data.meta;
+      } else {
+        // This is an element
+        newResponse = response.data;
+      }
+      return newResponse;
+    });
+});
+
+todoApp.controller('TodoController', function($scope, Restangular) {
+    $scope.todos = [];
+    $scope.loaded = false;
+
+    var Todo = Restangular.all('todo');
+
+    Todo.getList().then(function(todos) { 
+        $scope.loaded = true; 
+        $scope.todos = todos;
+    });
+
+    $scope.addTodo = function(title) {
+        if (title) {
+            Todo.post({'title': title }).then(function (todo) {
+                $scope.newTodoTitle = '';
+                if (todo)
+                    $scope.todos.push(todo);
+            }, function (err) {
+                return alert(err.data.message || "an error occurred");
+            });
+        }
+    }
+
+    $scope.changeCompleted = function(todo) {
+        todo.put().then(null, function(err) {
+            return alert(err.data.message || (err.errors && err.errors.completed) || "an error occurred");
+        });
+    }
+
+    $scope.removeCompletedItems = function() {
+        $scope.todos.forEach(function(todo) {
+            if (!todo.completed)
+                return;
+
+            todo.remove().then(function() {
+                $scope.todos = _.without($scope.todos, todo);
+            }, function(err) {
+                return alert(err.data.message || (err.errors && err.errors.completed) || "an error occurred");
+            })
+        });
+    }
+});
+
+</script>
+
+  <div class="container" ng-controller="TodoController" ng-cloak>
+    <h1>Todos</h1>
+    <p id="empty" ng-hide="todos.length || !loaded">You don't have any todos! Add one now:</p>
+    <ul id="todos" class="list-unstyled">
+      <li ng-repeat="todo in todos">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="todo.completed" ng-change="changeCompleted(todo)" />
+          {{todo.title}}
+        </label>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <input id="todo-title" class="form-control" type="text" ng-model="newTodoTitle" />
+      <button id="add-btn" class="btn btn-success" ng-click="addTodo(newTodoTitle)">Add</button>
+    </form>
+    <p>
+      <a href id="remove-completed-btn" ng-click="removeCompletedItems()">Remove completed items</a>
+    </p>
+  </div>
