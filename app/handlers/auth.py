@@ -1,53 +1,63 @@
 import tornado.escape
 from .base import BaseHandler
 from ..route import route
+from ..models import User
 
 @route("/api/v1/auth")
 class AuthApiHandler(BaseHandler):
-    def post(self):
-        data = tornado.escape.json_decode(self.request.body) 
-        email  = data.get('email', None)
-        passwd = data.get('password', None)
+    def register_handler(self):
+        username = self.get_param('params', {}).get('username')
+        email    = self.get_param('email', None)
+        password = self.get_param('password', None)
+
+        if not username or not email or not password:
+            self.finish_err("Missing argument - username, email or password")
+            return
+
+        users = User.find(email=email)
+        if users:
+            self.finish_err("Existing User")
+            return
+
+        user = User.create(username=username, email=email, password=password)
+        token = self.login(user)
+
+        self.finish_data({'token':token})
+
+    def login_handler(self):
+        email  = self.get_param('email', None)
+        passwd = self.get_param('password', None)
+        token  = self.get_param('token', None)
 
         # TODO - validate
+        user = None
+        if token:
+            user = self.get_current_user(token=token)
+            if not user:
+                # Invalid token - expire
+                self.finish_data()
+                return
+        elif not email or not passwd:
+            self.finish_err("Missing email or password")
+            return
+        else:
+            users = User.find(email=email)
+            if not users:
+                self.finish_err("Email/Password doesn't match")
+                return
+            user = users[0]
+            if not user.validate(passwd):
+                self.finish_err("Email/Password doesn't match")
+                return
 
-        self.finish({'status':'ok', 'data': { 'token' : '123' }})
+        token = self.login(user)
 
-    def delete(self):
-        self.finish({})
-
-@route("/auth/logout")
-class LogoutHandler(BaseHandler):
-    def get(self):
-        self.login(None)
-        self.redirect('/')
-
-@route("/auth/login")
-class LoginHandler(BaseHandler):
-    def get(self):
-        email = self.get_argument('email','')
-        next = self.get_argument('next','/')
-
-        self.render("auth/login.html", error=None, next=next, email=email)
+        self.finish_data({'token':token})
 
     def post(self):
-        next   = self.get_argument('next','/')
-        email  = self.get_argument('email')
-        passwd = self.get_argument('password')
+        if self.get_argument('register', False):
+            return self.register_handler()
+        self.login_handler()
 
-        user = None
-
-        try:
-            #auth = EmailAuth.get(EmailAuth.email==email)
-            if auth.verify_password(passwd):
-                user = auth.user
-        except EmailAuth.DoesNotExist:
-            pass
-
-        if user:
-            self.logger.debug("Authentication success for email=%s" % email)
-            self.login(user)
-            self.redirect(next)
-        else:
-            self.logger.info("Authentication failed for email=%s" % email)
-            self.render("auth/login.html", error=None, next=next, email=email)
+    def delete(self):
+        self.finish_data({})

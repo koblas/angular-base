@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var app = angular.module('geartrackerApp', ['restangular', 'ui.router']);
+var app = angular.module('geartrackerApp', ['restangular', 'ui.router', 'ngCookies']);
 
 require('./common/services');
 require('./modules/main');
@@ -46,26 +46,93 @@ app.run(function($rootScope, $state, $location, AuthService) {
 },{"./common/services":2,"./modules/auth":3,"./modules/main":4,"./modules/todo":5}],2:[function(require,module,exports){
 'use strict';
 
-angular.module('geartrackerApp').service('AuthService',
-    function () {
-        this.authenticated = false;
-        this.name = null;
+angular.module('geartrackerApp').service('AuthService', ['Restangular', '$q', '$cookies', '$state',
+    function (Restangular, $q, $cookies, $state) {
+        var Auth = Restangular.all('auth');
+        var auth_cookie = 'user_auth';
+        var self = this;
+        
+        self.authenticated = false;
+        self.name = null;
+
+        ///
+        //  If the auth cookie is around - use it
+        //
+        if ($cookies[auth_cookie]) {
+            this.authenticated = true;
+
+            Auth.post({token:$cookies[auth_cookie]}).then(function (auth) {
+                if (auth && auth.token) {
+                    // Token is good, set the authentication headers
+                    Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
+                } else {
+                    // If the token is "bad" e.g. you're no longer a valid user, cleanup
+                    delete $cookies[auth_cookie];
+                    self.authenticated = false;
+                    $state.transitionTo("index");
+                }
+            });
+        }
+
         return {
             isAuthenticated: function() {
-                return this.authenticated;
+                return self.authenticated;
             },
-            getName: function() {
-                return this.name;
+
+            ///
+            //  Login a user by email + password - return a promise
+            //
+            // TODO - better error messages on the result
+            //
+            login: function(email, password) {
+                var deferred = $q.defer();
+
+                return Auth.post({email:email, password:password}).then(function (auth) {
+                    if (auth.token) {
+                        self.authenticated = true;
+
+                        $cookies[auth_cookie] = auth.token;
+                        Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
+
+                        deferred.resolve("ok");
+                    } else {
+                        deferred.reject("unknown");
+                    }
+                }, function(err) {
+                    deferred.reject(err.data.emsg);
+                });
+
+                return deferred.promise;
             },
-            login: function() {
-                this.authenticated = true;
-            },
+
             logout: function() {
-                this.authenticated = false;
+                self.authenticated = false;
+                delete $cookies[auth_cookie];
+                Restangular.setDefaultHeaders({Authorization: 'Basic ' + 'INVALID'})
+            },
+
+            register: function(email, password, params) {
+                var deferred = $q.defer();
+
+                Auth.post({email:email, password:password, params:params}, {register:true}).then(function (auth) {
+                    if (auth.token) {
+                        self.authenticated = true;
+
+                        $cookies[auth_cookie] = auth.token;
+                        Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
+                        deferred.resolve("ok");
+                    } else {
+                        deferred.reject("unknown");
+                    }
+                }, function(err) {
+                    deferred.reject(err.data.emsg);
+                });
+
+                return deferred.promise;
             }
-        }
+        };
     }
-);
+]);
 
 },{}],3:[function(require,module,exports){
 'use strict';
@@ -75,13 +142,18 @@ var app = angular.module('geartrackerApp');
 app.config(function($stateProvider) {
     // States
     $stateProvider
+        .state('register', {
+            url: "/auth/register?next",
+            templateUrl: "/static/partials/auth/register.html",
+            controller: "RegisterController",
+            authenticate: false
+        })
         .state('login', {
             url: "/auth/login?next",
-            templateUrl: "/static/partials/login.html",
+            templateUrl: "/static/partials/auth/login.html",
             controller: "LoginController",
             authenticate: false
-        });
-    $stateProvider
+        })
         .state('logout', {
             url: "/auth/logout",
             templateUrl: "/static/partials/logout.html",
@@ -90,9 +162,7 @@ app.config(function($stateProvider) {
         });
 });
 
-app.controller('LoginController', ['$scope', '$location', 'Restangular', 'AuthService', '$state', function($scope, $location, Restangular, AuthService, $stateProvider) {
-    var Auth = Restangular.all('auth');
-
+app.controller('LoginController', ['$scope', '$location', 'AuthService', '$state', function($scope, $location,  AuthService, $stateProvider) {
     $scope.email = "";
     $scope.error = "";
     $scope.next  = $stateProvider.params.next || '/';
@@ -107,13 +177,39 @@ app.controller('LoginController', ['$scope', '$location', 'Restangular', 'AuthSe
             return;
         }
 
-        Auth.post({email:$scope.email, password:$scope.password}).then(function (auth) {
-            if (auth.token) {
-                AuthService.login();
-                // $stateProvider.transitionTo('todo');
-                $location.path($scope.next);
-            }
+        AuthService.login($scope.email, $scope.password).then(function() {
+            $location.path($scope.next);
         }, function(err) {
+            console.log("Auth Error");
+        });
+    }
+}])
+
+app.controller('RegisterController', ['$scope', '$location', 'AuthService', '$state', function($scope, $location, AuthService, $stateProvider) {
+    $scope.password = "";
+    $scope.username = "";
+    $scope.email = "";
+    $scope.error = "";
+    $scope.next  = $stateProvider.params.next || '/';
+
+    $scope.register = function() {
+        if (!$scope.email) {
+            $scope.error = "Invalid Email Address";
+            return;
+        }
+        if (!$scope.username) {
+            $scope.error = "Invalid Username";
+            return;
+        }
+        if (!$scope.password) {
+            $scope.error = "Invalid Password";
+            return;
+        }
+
+        AuthService.register($scope.email, $scope.password, { username: $scope.username }).then(function() {
+            $location.path($scope.next);
+        }, function(err) {
+            $scope.error = err;
         });
     }
 }])
@@ -140,11 +236,15 @@ app.config(function($stateProvider) {
         });
 });
 
-angular.module('geartrackerApp').controller('IndexController', function($scope, Restangular) {
+app.controller('IndexController', function($scope, Restangular) {
 });
 
-angular.module('geartrackerApp').controller('MainController', function($scope, Restangular, AuthService) {
+app.controller('MainController', function($scope, AuthService, $location) {
     $scope.auth = AuthService;
+    $scope.logout = function() {
+        AuthService.logout();
+        $location.path('/');
+    }
 });
 
 },{}],5:[function(require,module,exports){

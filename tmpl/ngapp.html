@@ -5,6 +5,7 @@
 
   <script type="text/javascript" src="/static/vendor/underscore.js"></script>
   <script type="text/javascript" src="/static/vendor/angular-ui-router.js"></script>
+  <script type="text/javascript" src="/static/vendor/angular-cookies.js"></script>
   <script type="text/javascript" src="/static/vendor/restangular.min.js"></script>
 
   <script src="/static/bootstrap/js/bootstrap.min.js"></script>
@@ -37,7 +38,8 @@
       </ul>
       <div class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-          <li ng-if="auth.isAuthenticated()"><a href="#/auth/logout">Logout</a></li>
+          <li ng-if="auth.isAuthenticated()"><a ng-click="logout()">Logout</a></li>
+          <li ng-if="!auth.isAuthenticated()"><a href="#/auth/register">Register</a></li>
           <li ng-if="!auth.isAuthenticated()"><a href="#/auth/login">Login</a></li>
         </ul>
       </div>

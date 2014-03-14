@@ -5,13 +5,18 @@ var app = angular.module('geartrackerApp');
 app.config(function($stateProvider) {
     // States
     $stateProvider
+        .state('register', {
+            url: "/auth/register?next",
+            templateUrl: "/static/partials/auth/register.html",
+            controller: "RegisterController",
+            authenticate: false
+        })
         .state('login', {
             url: "/auth/login?next",
-            templateUrl: "/static/partials/login.html",
+            templateUrl: "/static/partials/auth/login.html",
             controller: "LoginController",
             authenticate: false
-        });
-    $stateProvider
+        })
         .state('logout', {
             url: "/auth/logout",
             templateUrl: "/static/partials/logout.html",
@@ -20,9 +25,7 @@ app.config(function($stateProvider) {
         });
 });
 
-app.controller('LoginController', ['$scope', '$location', 'Restangular', 'AuthService', '$state', function($scope, $location, Restangular, AuthService, $stateProvider) {
-    var Auth = Restangular.all('auth');
-
+app.controller('LoginController', ['$scope', '$location', 'AuthService', '$state', function($scope, $location,  AuthService, $stateProvider) {
     $scope.email = "";
     $scope.error = "";
     $scope.next  = $stateProvider.params.next || '/';
@@ -37,13 +40,39 @@ app.controller('LoginController', ['$scope', '$location', 'Restangular', 'AuthSe
             return;
         }
 
-        Auth.post({email:$scope.email, password:$scope.password}).then(function (auth) {
-            if (auth.token) {
-                AuthService.login();
-                // $stateProvider.transitionTo('todo');
-                $location.path($scope.next);
-            }
+        AuthService.login($scope.email, $scope.password).then(function() {
+            $location.path($scope.next);
         }, function(err) {
+            console.log("Auth Error");
+        });
+    }
+}])
+
+app.controller('RegisterController', ['$scope', '$location', 'AuthService', '$state', function($scope, $location, AuthService, $stateProvider) {
+    $scope.password = "";
+    $scope.username = "";
+    $scope.email = "";
+    $scope.error = "";
+    $scope.next  = $stateProvider.params.next || '/';
+
+    $scope.register = function() {
+        if (!$scope.email) {
+            $scope.error = "Invalid Email Address";
+            return;
+        }
+        if (!$scope.username) {
+            $scope.error = "Invalid Username";
+            return;
+        }
+        if (!$scope.password) {
+            $scope.error = "Invalid Password";
+            return;
+        }
+
+        AuthService.register($scope.email, $scope.password, { username: $scope.username }).then(function() {
+            $location.path($scope.next);
+        }, function(err) {
+            $scope.error = err;
         });
     }
 }])

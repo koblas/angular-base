@@ -1,105 +1,48 @@
 import json
 import tornado.escape
+from tornado.web import authenticated
 from ..base import BaseHandler
 from ...route import route
+from ...models import Todo
 
-class Todo(dict):
-    MAX_ID = 0
-    TODOS = []
-
-    def __init__(self, title=None, completed=False):
-        self['id'] = self._next_id()
-        self['completed'] = completed
-        self['title'] = title
-
-    @classmethod
-    def _next_id(cls):
-        cls.MAX_ID += 1
-        return cls.MAX_ID
-
-    @classmethod
-    def get(cls, id):
-        for t in cls.TODOS:
-            if t['id'] == id:
-                return t
-        return None
-
-    @classmethod
-    def find(cls, **params):
-        todos = cls.TODOS
-        if 'completed' in params:
-            todos = [t for t in todos if t['completed'] == params['completed']]
-        return todos
-
-    @classmethod
-    def create(cls, **params):
-        todo = cls(title=params.get('title',''), completed=params.get('completed', False))
-        cls.TODOS.append(todo)
-        return todo
-
-    def remove(self):
-        for idx, t in enumerate(self.TODOS):
-            if t['id'] == id:
-                del self.TODOS[idx]
-                break
-        return None
-        
-
-@route("/api/v1/todo/?(?P<id>\d+)?")
+@route("/api/v1/todo/?(?P<id>[a-zA-Z0-9_-]+)?")
 class TodoHandler(BaseHandler):
-    MAX_ID = 0
-    TODOS = [ ]
-
+    @authenticated
     def get(self, id=None):
         if id:
-            self.finish({
-                'status': 'ok',
-                'data' : Todo.get(int(id))
-            })
+            self.finish_data(Todo.get(id))
         else:
             params = {}
             if self.get_argument('completed', None):
                 params['completed'] = (self.get_argument('completed') == 'true')
                 
-            self.finish({
-                'status': 'ok',
-                'data' : Todo.find(**params)
-            })
+            self.finish_data(Todo.find(**params))
 
+    @authenticated
     def post(self, id=None):
-        data = tornado.escape.json_decode(self.request.body) 
+        title = self.get_param('title')
 
-        if data and data['title']:
-            self.finish({
-                'status': 'ok',
-                'data' : Todo.create(title=data['title'])
-            })
+        if title:
+            self.finish_data(Todo.create(title=title))
         else:
-            self.set_status(404)
-            self.finish({
-                'status': 'err',
-                'message': 'Empty Title'
-            });
+            self.finish_err('Empty Title')
 
+    @authenticated
     def put(self, id=None):
         data = tornado.escape.json_decode(self.request.body) 
-        todo = Todo.get(int(id))
+        todo = Todo.get(id)
             
         if todo:
-            if 'completed' in data:
-                todo['completed'] = data['completed']
-            if 'title' in data:
-                todo['title'] = data['title']
+            if 'completed' in self.parameters:
+                todo['completed'] = self.get_param('completed')
+            if 'title' in self.parameters:
+                todo['title'] = self.get_param('title')
 
-        self.finish({
-            'status': 'ok',
-            'data' : todo
-        })
+        self.finish_data(todo)
 
+    @authenticated
     def delete(self, id=None):
-        todo = Todo.get(int(id))
+        todo = Todo.get(id)
         todo.remove()
 
-        self.finish({
-            'status': 'ok',
-        })
+        self.finish_data()

@@ -4,6 +4,8 @@
 # Grunt
 node_modules/**
 
+__pycache__
+
 *.py[co]
 
 # Packages

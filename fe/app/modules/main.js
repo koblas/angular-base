@@ -19,9 +19,13 @@ app.config(function($stateProvider) {
         });
 });
 
-angular.module('geartrackerApp').controller('IndexController', function($scope, Restangular) {
+app.controller('IndexController', function($scope, Restangular) {
 });
 
-angular.module('geartrackerApp').controller('MainController', function($scope, Restangular, AuthService) {
+app.controller('MainController', function($scope, AuthService, $location) {
     $scope.auth = AuthService;
+    $scope.logout = function() {
+        AuthService.logout();
+        $location.path('/');
+    }
 });

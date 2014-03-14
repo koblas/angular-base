@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('geartrackerApp', ['restangular', 'ui.router']);
+var app = angular.module('geartrackerApp', ['restangular', 'ui.router', 'ngCookies']);
 
 require('./common/services');
 require('./modules/main');
