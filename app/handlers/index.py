@@ -9,14 +9,8 @@ class IndexHandler(BaseHandler):
         self.render("ngapp.html", ngapp='geartracker')
 
 @route("/(todo|login)")
-class IndexHandler(BaseHandler):
+class ApplicationHandler(BaseHandler):
     def get(self, page):
         #self.render("index.html")
         self.redirect('/#%s' % page)
         #self.render("ngapp.html", ngapp='geartracker')
-
-@route("/xxtodo")
-class TodoHandler(BaseHandler):
-    @authenticated
-    def get(self):
-        self.render("ngapp.html", ngapp='todo')

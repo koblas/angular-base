@@ -19,7 +19,9 @@ class AuthApiHandler(BaseHandler):
             self.finish_err("Existing User")
             return
 
-        user = User.create(username=username, email=email, password=password)
+        user = User(username=username, email=email)
+        user.set_password(password)
+        user.save()
         token = self.login(user)
 
         self.finish_data({'token':token})

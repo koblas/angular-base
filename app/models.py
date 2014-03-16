@@ -1,53 +1,44 @@
-import uuid
+from .simple_model import Model, TextField, BooleanField, PrimaryKeyField
+import logging
 
-class SimpleModel(dict):
-    def __init__(self, **kwargs):
-        for k, v in kwargs.items():
-            if k not in self.FIELDS:
-                raise AttributeError("Bad argument: %s" % k)
-            self[k] = v
+logger = logging.getLogger(__name__)
 
-        self.id = self._next_id()
-        self['id'] = self.id
+#
+#  Pretend we have good passwords, but it's a demo.
+#
+try:
+    import bcrypt
 
-    @classmethod
-    def _next_id(cls):
-        return str(uuid.uuid4())
+    def hashpw(password, hashed):
+        return bcrypt.hashpw(password, hashed)
+    def gensalt():
+        return bcrypt.gensalt()
+except:
+    logger.warning("No Bcrypt - using cleartext passwords")
 
-    @classmethod
-    def get(cls, id):
-        for t in cls.ITEMS:
-            if t.id == id:
-                return t
+    def hashpw(password, hashed):
+        return password
+    def gensalt():
         return None
 
-    @classmethod
-    def find(cls, **params):
-        items = cls.ITEMS
-        for k, v in params.items():
-            items = [t for t in items if t[k] == params[k]]
-        return items
 
-    @classmethod
-    def create(cls, **params):
-        item = cls(**params)
-        cls.ITEMS.append(item)
-        return item
+#
+#  Model classes
+#
 
-    def remove(self):
-        for idx, t in enumerate(self.ITEMS):
-            if t.id == id:
-                del self.ITEMS[idx]
-                break
-        return None
-
-class User(SimpleModel):
-    ITEMS  = []
-    FIELDS = ('username', 'email', 'password')
-
+class User(Model):
+    id       = PrimaryKeyField()
+    username = TextField()
+    email    = TextField()
+    password = TextField()
+        
     def validate(self, password):
-        return self['password'] == password
+        return hashpw(password, self.password) == self.password
 
-class Todo(SimpleModel):
-    ITEMS  = []
-    FIELDS = ('title', 'completed')
+    def set_password(self, passwd):
+        self.password = hashpw(passwd, gensalt())
+
+class Todo(Model):
+    id        = PrimaryKeyField()
+    title     = TextField()
+    completed = BooleanField()
