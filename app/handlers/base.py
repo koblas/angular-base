@@ -1,6 +1,6 @@
 import tornado.escape
 from tornado.web import RequestHandler
-from ..models import User
+from ..models import User, Model
 
 class AuthMixin(object):
     COOKIE = 'fxgx'
@@ -42,7 +42,7 @@ class BaseHandler(AuthMixin, RequestHandler):
     @property
     def logger(self):
         if not hasattr(self, '_logger'):
-            self._logger = CustomAdapter(logging.getLogger(self.__class__.__module__), self)
+            self._logger = logging.getLogger(self.__class__.__module__)
         return self._logger
 
     @property
@@ -58,6 +58,10 @@ class BaseHandler(AuthMixin, RequestHandler):
         return v
 
     def finish_data(self, data=None):
+        if isinstance(data, list) and data and isinstance(data[0], Model):
+            data = [d.to_dict() for d in data]
+        elif isinstance(data, Model):
+            data = data.to_dict()
         self.finish({'status': 'ok', 'data': data})
 
     def finish_err(self, message):

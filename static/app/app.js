@@ -142,20 +142,25 @@ var app = angular.module('geartrackerApp');
 app.config(function($stateProvider) {
     // States
     $stateProvider
-        .state('register', {
-            url: "/auth/register?next",
+        .state('auth', {
+            abstract: true,
+            url: "/auth",
+            template: '<ui-view/>'
+        })
+        .state('auth.register', {
+            url: "/register?next",
             templateUrl: "/static/partials/auth/register.html",
             controller: "RegisterController",
             authenticate: false
         })
-        .state('login', {
-            url: "/auth/login?next",
+        .state('auth.login', {
+            url: "/login?next",
             templateUrl: "/static/partials/auth/login.html",
             controller: "LoginController",
             authenticate: false
         })
-        .state('logout', {
-            url: "/auth/logout",
+        .state('auth.logout', {
+            url: "/logout",
             templateUrl: "/static/partials/logout.html",
             controller: "LogoutController",
             authenticate: false
@@ -236,8 +241,11 @@ app.config(function($stateProvider) {
         });
 });
 
-app.controller('IndexController', function($scope, Restangular) {
-});
+app.controller('IndexController', ['$scope', '$state', 'AuthService', function($scope, $state, AuthService) {
+    if (AuthService.isAuthenticated()) {
+        $state.go('dashboard')
+    }
+}]);
 
 app.controller('MainController', function($scope, AuthService, $location) {
     $scope.auth = AuthService;
@@ -254,6 +262,12 @@ var app = angular.module('geartrackerApp');
 
 app.config(function($stateProvider) {
     $stateProvider
+        .state('dashboard', {
+            url: '/dash',
+            templateUrl: '/static/partials/dashboard.html',
+            controller: "DashboardController",
+            authenticate: true
+        })
         .state('todo', {
             url: '/todo',
             templateUrl: '/static/partials/todo.html',
@@ -261,6 +275,9 @@ app.config(function($stateProvider) {
             authenticate: true
         });
 });
+
+app.controller('DashboardController', function($scope, Restangular) {
+})
 
 app.controller('TodoController', function($scope, Restangular) {
     $scope.todos = [];

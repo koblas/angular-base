@@ -19,8 +19,11 @@ app.config(function($stateProvider) {
         });
 });
 
-app.controller('IndexController', function($scope, Restangular) {
-});
+app.controller('IndexController', ['$scope', '$state', 'AuthService', function($scope, $state, AuthService) {
+    if (AuthService.isAuthenticated()) {
+        $state.go('dashboard')
+    }
+}]);
 
 app.controller('MainController', function($scope, AuthService, $location) {
     $scope.auth = AuthService;

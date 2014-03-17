@@ -19,6 +19,12 @@ __all__ = [
 #
 #
 #
+class DoesNotExist(Exception): pass
+class MultipleObjectsReturned(Exception): pass
+
+#
+#
+#
 class FieldDescriptor(object):
     """ A FieldDescriptor is what's places on the instantiated object """
 
@@ -81,6 +87,14 @@ class Backend(object):
     def append(self, item):
         self._items.append(item)
         self.save()
+
+    def remove(self, key):
+        """ Remove a specific ID from the storage and update """
+        for idx, t in enumerate(self):
+            if t._id == key:
+                del self._items[idx]
+                break
+        self.save()
         
     def _load(self):
         if os.path.exists(self.path):
@@ -94,18 +108,11 @@ class Backend(object):
                     for item in items or []:
                         self._items.append(self._cls(**item))
 
-    def remove(self, key):
-        for idx, t in enumerate(self):
-            if t.id == key:
-                del self._items[idx]
-                break
-        self.save()
-
     def save(self):
         with open(self.path, 'w') as stream:
             if self.format == 'json':
                 for item in self._items:
-                    stream.write(json.dumps(item))
+                    stream.write(json.dumps(item._data))
                     stream.write('\n')
             elif self.format == 'yaml':
                 stream.write(yaml.dump([{k:v for k,v in item._data.items()} for item in self._items], default_flow_style=False))
@@ -140,6 +147,12 @@ class BaseModel(type):
             if isinstance(v, PrimaryKeyField):
                 cls._pk_field = name
 
+        exc_name = '%sDoesNotExist' % cls.__name__
+        cls.DoesNotExist = type(exc_name, (DoesNotExist,), {})
+
+        exc_name = '%sMultipleObjectsReturned' % cls.__name__
+        cls.MultipleObjectsReturned = type(exc_name, (MultipleObjectsReturned,), {})
+
         return cls
 
 class Model(with_metaclass(BaseModel, base=object)):
@@ -149,28 +162,30 @@ class Model(with_metaclass(BaseModel, base=object)):
 
     def __init__(self, **kwargs):
         self._data = {}
-        self.id = None
+        self._id = None
 
         for k, v in kwargs.items():
             if k not in self._fields:
                 raise AttributeError("Bad argument: %s" % k)
             self._data[k] = v
             if k == self._pk_field:
-                self.id = v
+                self._id = v
 
     @classmethod
     def _next_id(cls):
         return str(uuid.uuid4())
 
     @classmethod
-    def get(cls, id):
-        for t in cls._meta.backend:
-            if t.id == id:
-                return t
-        return None
+    def get(cls, **params):
+        v = cls.filter(**params)
+        if not v:
+            raise cls.DoesNotExist()
+        if len(v) > 1:
+            raise cls.MultipleObjectsReturned()
+        return v[0]
 
     @classmethod
-    def find(cls, **params):
+    def filter(cls, **params):
         items = list(cls._meta.backend)
         for k, v in params.items():
             items = [item for item in items if item._data[k] == params[k]]
@@ -183,19 +198,19 @@ class Model(with_metaclass(BaseModel, base=object)):
         return item
 
     def remove(self):
-        self._meta.backend.remove(self.id)
+        self._meta.backend.remove(self._id)
 
     def save(self):
-        if self.id is None:
-            self.id = self._next_id()
-            self._data['id'] = self.id
+        if self._id is None:
+            self._data['id'] = self._id = self._next_id()
             self._meta.backend.append(self)
         else:
             self._meta.backend.save()
 
     def __repr__(self):
-        return "<%s[%s] %s>" % (self.__class__.__name__, self.id, 
+        return "<%s[%s] %s>" % (self.__class__.__name__, self._id, 
                                 " ".join(["%s=%r" % (k, self._data[k]) for k in self._fields if k != self._pk_field]))
 
-    def serialize(self):
+    def to_dict(self):
+        """ Return a dict() representation of the data - this is for output serialization """
         return self._data

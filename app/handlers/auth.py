@@ -14,7 +14,7 @@ class AuthApiHandler(BaseHandler):
             self.finish_err("Missing argument - username, email or password")
             return
 
-        users = User.find(email=email)
+        users = User.filter(email=email)
         if users:
             self.finish_err("Existing User")
             return
@@ -43,7 +43,7 @@ class AuthApiHandler(BaseHandler):
             self.finish_err("Missing email or password")
             return
         else:
-            users = User.find(email=email)
+            users = User.filter(email=email)
             if not users:
                 self.finish_err("Email/Password doesn't match")
                 return

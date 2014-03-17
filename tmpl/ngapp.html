@@ -32,24 +32,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav" ng-if="auth.isAuthenticated()">
-        <li><a class="active" href="/user">User</a></li>
-        <li><a class="active" href="/crawl">Crawl</a></li>
-        <li><a class="active" href="/channel">Channel</a></li>
+        <li><a class="active" href="#/todo">Todo</a></li>
       </ul>
       <div class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
           <li ng-if="auth.isAuthenticated()"><a ng-click="logout()">Logout</a></li>
-          <li ng-if="!auth.isAuthenticated()"><a href="#/auth/register">Register</a></li>
-          <li ng-if="!auth.isAuthenticated()"><a href="#/auth/login">Login</a></li>
+          <li ng-if="!auth.isAuthenticated()"><a ui-sref="auth.register">Register</a></li>
+          <li ng-if="!auth.isAuthenticated()"><a ui-sref="auth.login">Login</a></li>
         </ul>
       </div>
       <div class="col-xs-5 col-sm-4 pull-right" ng-if="auth.isAuthenticated()">
+        <!--
         <form class="navbar-form" role="search" method="POST" action="/search">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="User/Channel/Video" name="term" id="search"/>
+            <input type="text" class="form-control" placeholder="Search Here" name="term" id="search"/>
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
           </div>
         </form>
+        -->
       </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -8,18 +8,17 @@ logger = logging.getLogger(__name__)
 #
 try:
     import bcrypt
-
-    def hashpw(password, hashed):
-        return bcrypt.hashpw(password, hashed)
-    def gensalt():
-        return bcrypt.gensalt()
 except:
     logger.warning("No Bcrypt - using cleartext passwords")
 
-    def hashpw(password, hashed):
-        return password
-    def gensalt():
-        return None
+    class bcrypt:
+        @staticmethod
+        def hashpw(password, hashed):
+            return password
+
+        @staticmethod
+        def gensalt():
+            return None
 
 
 #
@@ -33,12 +32,13 @@ class User(Model):
     password = TextField()
         
     def validate(self, password):
-        return hashpw(password, self.password) == self.password
+        return bcrypt.hashpw(password, self.password) == self.password
 
     def set_password(self, passwd):
-        self.password = hashpw(passwd, gensalt())
+        self.password = bcrypt.hashpw(passwd, bcrypt.gensalt())
 
 class Todo(Model):
     id        = PrimaryKeyField()
     title     = TextField()
+    user_id   = TextField()
     completed = BooleanField()

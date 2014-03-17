@@ -4,6 +4,12 @@ var app = angular.module('geartrackerApp');
 
 app.config(function($stateProvider) {
     $stateProvider
+        .state('dashboard', {
+            url: '/dash',
+            templateUrl: '/static/partials/dashboard.html',
+            controller: "DashboardController",
+            authenticate: true
+        })
         .state('todo', {
             url: '/todo',
             templateUrl: '/static/partials/todo.html',
@@ -11,6 +17,9 @@ app.config(function($stateProvider) {
             authenticate: true
         });
 });
+
+app.controller('DashboardController', function($scope, Restangular) {
+})
 
 app.controller('TodoController', function($scope, Restangular) {
     $scope.todos = [];

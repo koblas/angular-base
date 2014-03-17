@@ -5,20 +5,25 @@ var app = angular.module('geartrackerApp');
 app.config(function($stateProvider) {
     // States
     $stateProvider
-        .state('register', {
-            url: "/auth/register?next",
+        .state('auth', {
+            abstract: true,
+            url: "/auth",
+            template: '<ui-view/>'
+        })
+        .state('auth.register', {
+            url: "/register?next",
             templateUrl: "/static/partials/auth/register.html",
             controller: "RegisterController",
             authenticate: false
         })
-        .state('login', {
-            url: "/auth/login?next",
+        .state('auth.login', {
+            url: "/login?next",
             templateUrl: "/static/partials/auth/login.html",
             controller: "LoginController",
             authenticate: false
         })
-        .state('logout', {
-            url: "/auth/logout",
+        .state('auth.logout', {
+            url: "/logout",
             templateUrl: "/static/partials/logout.html",
             controller: "LogoutController",
             authenticate: false

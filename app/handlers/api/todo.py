@@ -10,26 +10,34 @@ class TodoHandler(BaseHandler):
     @authenticated
     def get(self, id=None):
         if id:
-            self.finish_data(Todo.get(id).serialize())
+            todo = Todo.get(id=id)
+            if todo.user_id != self.current_user.id:
+                self.finish_err("Not your TODO")
+                return
+            self.finish_data(todo)
         else:
-            params = {}
+            params = { 'user_id' : self.current_user.id }
             if self.get_argument('completed', None):
                 params['completed'] = (self.get_argument('completed') == 'true')
                 
-            self.finish_data([t.serialize() for t in Todo.find(**params)])
+            self.finish_data(Todo.filter(**params))
 
     @authenticated
     def post(self, id=None):
         title = self.get_param('title')
 
         if title:
-            self.finish_data(Todo.create(title=title, completed=False).serialize())
+            self.finish_data(Todo.create(title=title, completed=False, user_id=self.current_user.id))
         else:
             self.finish_err('Empty Title')
 
     @authenticated
     def put(self, id=None):
-        todo = Todo.get(id)
+        todo = Todo.get(id=id)
+
+        if todo.user_id != self.current_user.id:
+            self.finish_err("Not your TODO")
+            return
             
         if todo:
             if 'completed' in self.parameters:
@@ -38,11 +46,12 @@ class TodoHandler(BaseHandler):
                 todo.title = self.get_param('title')
             todo.save()
 
-        self.finish_data(todo.serialize())
+        self.finish_data(todo)
 
     @authenticated
     def delete(self, id=None):
-        todo = Todo.get(id)
-        todo.remove()
+        todo = Todo.get(id=id)
+        if todo.user_id == self.current_user.id:
+            todo.remove()
 
         self.finish_data()
