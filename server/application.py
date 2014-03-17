@@ -52,7 +52,7 @@ class Application(tornado.web.Application):
             if k.endswith('_path'):
                 settings[k] = settings[k].replace(
                     '__path__',
-                    os.path.dirname(__file__)
+                    os.path.join(os.path.dirname(__file__), '..')
                 )
 
         return settings
