@@ -18,6 +18,7 @@ There is an interesting model abstraction for flat files in app/simple_model.py 
 
 ## TODO
 
+* Page header should be a ui-view rather than part of ngapp.html
 * Add some docstrings to the Python code
 * unittest harness for python
 * unittest for angular
