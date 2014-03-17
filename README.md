@@ -11,6 +11,16 @@ Ideas that are incorporated:
     https://github.com/mgonto/restangular
 * Promise based auth
 
+
+## Running
+
+The contents of ``client/`` directory are managed by grunt - so the quick thing to do is:
+
+    $ Grunt watch
+    $ ./main.py
+
+*Note:* Grunt uses browserify
+
 ## Notable things
 
 There is an interesting model abstraction for flat files in app/simple_model.py - need to figure out the docs
