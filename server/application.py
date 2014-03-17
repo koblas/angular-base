@@ -1,5 +1,5 @@
 import tornado.web
-import app.handlers
+import server.handlers
 from .route import route
 import logging
 import os

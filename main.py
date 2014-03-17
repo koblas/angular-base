@@ -18,7 +18,7 @@ import tornado.web
 import tornado.auth
 import tornado.autoreload
 import tornado.options
-from app.application import Application
+from server.application import Application
 
 
 import os

@@ -3,14 +3,14 @@ module.exports = function(grunt) {
     browserify: {
       js: {
         // A single entry point for our app
-        src: 'fe/app/app.js',
+        src: 'client/app/app.js',
         // Compile to a single file to add a script tag for in your HTML
         dest: 'static/app/app.js',
       },
     },
     watch: {
       js: {
-          files: 'fe/**',
+          files: 'client/**',
           tasks: ['browserify', 'copy'],
           options: {
               spawn: false
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       all: {
         // This copies all the html and css into the dist/ folder
         expand: true,
-        cwd: 'fe/',
+        cwd: 'client/',
         src: ['**/*.html', '**/*.css', 'vendor/**', 'bootstrap/**'],
         dest: 'static/',
       },
