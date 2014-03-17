@@ -1,8 +1,7 @@
 %YAML 1.2
 ---
-port: 8888
-
 settings:
+    port: 8888
     cookie_secret: your_cookie_secret
     static_path: __path__/static
     template_path: __path__/tmpl

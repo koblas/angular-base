@@ -9,7 +9,6 @@ __version__ = 0.1
 __config__ = 'settings.yaml'
 
 import optparse
-import yaml
 
 import logging
 import tornado.httpserver
@@ -34,39 +33,18 @@ if __name__ == '__main__':
 
     options = tornado.options.options
     
-    try:
-        f = open(__config__, 'r')
-        config = yaml.load(f)
-        f.close()
-    except IOError:
-        print('Invalid or missing config file %s' % __config__)
-    
-    # if no settings, we go away
-    if 'settings' not in config:
-        print('No default configuration found')
-        sys.exit(1)
-    
-    if options.version and options.version in config['extra_settings']:
-        settings = dict(
-            config['settings'],
-            **config['extra_settings'][options.version]
-        )
-    else:
-        settings = config['settings']
+    params = { }
+    env = None
 
+    if options.version:
+        env = options.version
     if options.debug:
-        settings['debug'] = options.debug
+        params['debug'] = options.debug
     if options.user:
-        settings['current_user'] = options.user
+        params['current_user'] = options.user
 
-    for k,v in settings.items():
-        if k.endswith('_path'):
-            settings[k] = settings[k].replace(
-                '__path__',
-                os.path.dirname(__file__)
-            )
-    
-    server = tornado.httpserver.HTTPServer(Application(settings))
-    server.listen(config['port'])
-    logging.info("Server started on %d" % config['port'])
+    app = Application(env, params=params)
+    server = tornado.httpserver.HTTPServer(app)
+    server.listen(app.settings.get('port',8000))
+    logging.info("Server started on %d" % app.settings.get('port',8000))
     tornado.ioloop.IOLoop.instance().start()
