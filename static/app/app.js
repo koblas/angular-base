@@ -237,7 +237,7 @@ app.config(function($stateProvider) {
             url: '/',
             templateUrl: '/static/partials/index.html',
             controller: "IndexController",
-            authenticate: false
+            authenticate: false,
         });
 });
 
