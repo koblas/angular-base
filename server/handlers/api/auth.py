@@ -1,7 +1,7 @@
 import tornado.escape
-from .base import BaseHandler
-from ..route import route
-from ..models import User
+from ..base import BaseHandler
+from ...route import route
+from ...models import User
 
 @route("/api/v1/auth")
 class AuthApiHandler(BaseHandler):
