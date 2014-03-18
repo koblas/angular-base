@@ -1,7 +1,8 @@
 # Learning Angular
 
 Fundamentally this is a project I'm working on to learn agular without a whole ton of legacy.  Though I'm also thinking
-it's useful to understand the bits and pieces to make a meaningful and useful application.
+it's useful to understand the bits and pieces to make a meaningful and useful application.  *Note*: This is written in python3
+though it should run in 2.7 (nothing should prevent it)
 
 Ideas that are incorporated:
 
