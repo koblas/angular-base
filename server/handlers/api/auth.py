@@ -6,6 +6,9 @@ from ...models import User
 @route("/api/v1/auth")
 class AuthApiHandler(BaseHandler):
     def register_handler(self):
+        """
+          Handle user registration
+        """
         username = self.get_param('params', {}).get('username')
         email    = self.get_param('email', None)
         password = self.get_param('password', None)
@@ -27,6 +30,9 @@ class AuthApiHandler(BaseHandler):
         self.finish_data({'token':token})
 
     def login_handler(self):
+        """
+          Handle user login
+        """
         email  = self.get_param('email', None)
         passwd = self.get_param('password', None)
         token  = self.get_param('token', None)
@@ -57,6 +63,10 @@ class AuthApiHandler(BaseHandler):
         self.finish_data({'token':token})
 
     def post(self):
+        """
+          Kinda janky - if "register" is present then it's a user-registration rather than login.
+          A hack but it works.
+        """
         if self.get_argument('register', False):
             return self.register_handler()
         self.login_handler()
