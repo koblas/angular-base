@@ -1,8 +1,6 @@
-'use strict';
+app = angular.module('geartrackerApp');
 
-var app = angular.module('geartrackerApp');
-
-app.config(function($stateProvider) {
+app.config ($stateProvider) ->
     $stateProvider
         .state('index_', {
             url: '',
@@ -17,18 +15,13 @@ app.config(function($stateProvider) {
             controller: "IndexController",
             authenticate: false,
         });
-});
 
-app.controller('IndexController', ['$scope', '$state', 'AuthService', function($scope, $state, AuthService) {
-    if (AuthService.isAuthenticated()) {
+app.controller 'IndexController', ($scope, $state, AuthService) ->
+    if AuthService.isAuthenticated()
         $state.go('dashboard')
-    }
-}]);
 
-app.controller('MainController', function($scope, AuthService, $location) {
+app.controller 'MainController', ($scope, AuthService, $location) ->
     $scope.auth = AuthService;
-    $scope.logout = function() {
+    $scope.logout = () ->
         AuthService.logout();
         $location.path('/');
-    }
-});

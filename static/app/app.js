@@ -1,325 +1,314 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+var app;
 
-var app = angular.module('geartrackerApp', ['restangular', 'ui.router', 'ngCookies']);
+app = angular.module('geartrackerApp', ['restangular', 'ui.router', 'ngCookies']);
 
 require('./common/services');
+
 require('./modules/main');
+
 require('./modules/todo');
+
 require('./modules/auth');
 
 app.config(function(RestangularProvider, $stateProvider, $urlRouterProvider) {
-    RestangularProvider.setBaseUrl('/api/v1');
-
-    RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
-      // This is a get for a list
-      var newResponse;
-      if (operation === "getList") {
-        // Here we're returning an Array which has one special property metadata with our extra information
-        newResponse = response.data;
-        // newResponse.metadata = response.data.meta;
-      } else {
-        // This is an element
-        newResponse = response.data;
-      }
-      return newResponse;
-    });
-
-    //  Unmatched URL state
-    $urlRouterProvider.otherwise("/");
+  RestangularProvider.setBaseUrl('/api/v1');
+  RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
+    var newResponse;
+    if (operation === "getList") {
+      return newResponse = response.data;
+    } else {
+      return newResponse = response.data;
+    }
+  });
+  return $urlRouterProvider.otherwise("/");
 });
 
-//
-//  Authentication requirement handler
-//
 app.run(function($rootScope, $state, $location, AuthService) {
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-        if (toState.authenticate && !AuthService.isAuthenticated()) {
-            // User isn’t authenticated
-            var href = $state.href(toState, toParams);
-            $state.transitionTo("login", { next: $location.path() });
-            event.preventDefault(); 
-        }
-    });
+  return $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+    var href;
+    if (toState.authenticate && !AuthService.isAuthenticated()) {
+      href = $state.href(toState, toParams);
+      $state.transitionTo("login", {
+        next: $location.path()
+      });
+      return event.preventDefault();
+    }
+  });
 });
+
 
 },{"./common/services":2,"./modules/auth":3,"./modules/main":4,"./modules/todo":5}],2:[function(require,module,exports){
-'use strict';
+var app;
 
-angular.module('geartrackerApp').service('AuthService', ['Restangular', '$q', '$cookies', '$state',
-    function (Restangular, $q, $cookies, $state) {
-        var Auth = Restangular.all('auth');
-        var auth_cookie = 'user_auth';
-        var self = this;
-        
+app = angular.module('geartrackerApp');
+
+app.service('AuthService', function(Restangular, $q, $cookies, $state) {
+  var Auth, auth_cookie, self;
+  Auth = Restangular.all('auth');
+  auth_cookie = 'user_auth';
+  self = this;
+  self.authenticated = false;
+  self.name = null;
+  if ($cookies[auth_cookie]) {
+    this.authenticated = true;
+    Auth.post({
+      token: $cookies[auth_cookie]
+    }).then(function(auth) {
+      if (auth && auth.token) {
+        return Restangular.setDefaultHeaders({
+          Authorization: 'Basic ' + auth.token
+        });
+      } else {
+        delete $cookies[auth_cookie];
         self.authenticated = false;
-        self.name = null;
-
-        ///
-        //  If the auth cookie is around - use it
-        //
-        if ($cookies[auth_cookie]) {
-            this.authenticated = true;
-
-            Auth.post({token:$cookies[auth_cookie]}).then(function (auth) {
-                if (auth && auth.token) {
-                    // Token is good, set the authentication headers
-                    Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
-                } else {
-                    // If the token is "bad" e.g. you're no longer a valid user, cleanup
-                    delete $cookies[auth_cookie];
-                    self.authenticated = false;
-                    $state.transitionTo("index");
-                }
-            });
+        return $state.transitionTo("index");
+      }
+    });
+  }
+  return {
+    isAuthenticated: function() {
+      return self.authenticated;
+    },
+    login: function(email, password) {
+      var deferred;
+      deferred = $q.defer();
+      Auth.post({
+        email: email,
+        password: password
+      }).then(function(auth) {
+        if (auth.token) {
+          self.authenticated = true;
+          $cookies[auth_cookie] = auth.token;
+          Restangular.setDefaultHeaders({
+            Authorization: 'Basic ' + auth.token
+          });
+          return deferred.resolve("ok");
+        } else {
+          return deferred.reject("unknown");
         }
-
-        return {
-            isAuthenticated: function() {
-                return self.authenticated;
-            },
-
-            ///
-            //  Login a user by email + password - return a promise
-            //
-            // TODO - better error messages on the result
-            //
-            login: function(email, password) {
-                var deferred = $q.defer();
-
-                return Auth.post({email:email, password:password}).then(function (auth) {
-                    if (auth.token) {
-                        self.authenticated = true;
-
-                        $cookies[auth_cookie] = auth.token;
-                        Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
-
-                        deferred.resolve("ok");
-                    } else {
-                        deferred.reject("unknown");
-                    }
-                }, function(err) {
-                    deferred.reject(err.data.emsg);
-                });
-
-                return deferred.promise;
-            },
-
-            logout: function() {
-                self.authenticated = false;
-                delete $cookies[auth_cookie];
-                Restangular.setDefaultHeaders({Authorization: 'Basic ' + 'INVALID'})
-            },
-
-            register: function(email, password, params) {
-                var deferred = $q.defer();
-
-                Auth.post({email:email, password:password, params:params}, {register:true}).then(function (auth) {
-                    if (auth.token) {
-                        self.authenticated = true;
-
-                        $cookies[auth_cookie] = auth.token;
-                        Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
-                        deferred.resolve("ok");
-                    } else {
-                        deferred.reject("unknown");
-                    }
-                }, function(err) {
-                    deferred.reject(err.data.emsg);
-                });
-
-                return deferred.promise;
-            }
-        };
+      }, function(err) {
+        return deferred.reject(err.data.emsg);
+      });
+      return deferred.promise;
+    },
+    logout: function() {
+      self.authenticated = false;
+      delete $cookies[auth_cookie];
+      return Restangular.setDefaultHeaders({
+        Authorization: 'Basic ' + 'INVALID'
+      });
+    },
+    register: function(email, password, params) {
+      var deferred;
+      deferred = $q.defer();
+      Auth.post({
+        email: email,
+        password: password,
+        params: params
+      }, {
+        register: true
+      }).then(function(auth) {
+        if (auth.token) {
+          self.authenticated = true;
+          $cookies[auth_cookie] = auth.token;
+          Restangular.setDefaultHeaders({
+            Authorization: 'Basic ' + auth.token
+          });
+          return deferred.resolve("ok");
+        } else {
+          return deferred.reject("unknown");
+        }
+      }, function(err) {
+        return deferred.reject(err.data.emsg);
+      });
+      return deferred.promise;
     }
-]);
+  };
+});
+
 
 },{}],3:[function(require,module,exports){
-'use strict';
+var app;
 
-var app = angular.module('geartrackerApp');
+app = angular.module('geartrackerApp');
 
 app.config(function($stateProvider) {
-    // States
-    $stateProvider
-        .state('auth', {
-            abstract: true,
-            url: "/auth",
-            template: '<ui-view/>'
-        })
-        .state('auth.register', {
-            url: "/register?next",
-            templateUrl: "/static/partials/auth/register.html",
-            controller: "RegisterController",
-            authenticate: false
-        })
-        .state('auth.login', {
-            url: "/login?next",
-            templateUrl: "/static/partials/auth/login.html",
-            controller: "LoginController",
-            authenticate: false
-        })
-        .state('auth.logout', {
-            url: "/logout",
-            templateUrl: "/static/partials/logout.html",
-            controller: "LogoutController",
-            authenticate: false
-        });
+  return $stateProvider.state('auth', {
+    abstract: true,
+    url: "/auth",
+    template: '<ui-view/>'
+  }).state('auth.register', {
+    url: "/register?next",
+    templateUrl: "/static/partials/auth/register.html",
+    controller: "RegisterController",
+    authenticate: false
+  }).state('auth.login', {
+    url: "/login?next",
+    templateUrl: "/static/partials/auth/login.html",
+    controller: "LoginController",
+    authenticate: false
+  }).state('auth.logout', {
+    url: "/logout",
+    templateUrl: "/static/partials/logout.html",
+    controller: "LogoutController",
+    authenticate: false
+  });
 });
 
-app.controller('LoginController', ['$scope', '$location', 'AuthService', '$state', function($scope, $location,  AuthService, $stateProvider) {
-    $scope.email = "";
-    $scope.error = "";
-    $scope.next  = $stateProvider.params.next || '/';
-
-    $scope.login = function() {
-        if (!$scope.email) {
-            $scope.error = "Invalid Email Address";
-            return;
-        }
-        if (!$scope.password) {
-            $scope.error = "Invalid Password";
-            return;
-        }
-
-        AuthService.login($scope.email, $scope.password).then(function() {
-            $location.path($scope.next);
-        }, function(err) {
-            console.log("Auth Error");
-        });
+app.controller('LoginController', function($scope, $location, AuthService, $stateParams) {
+  var _ref;
+  $scope.email = "";
+  $scope.error = "";
+  $scope.next = ((_ref = $stateParams.params) != null ? _ref.next : void 0) || '/';
+  return $scope.login = function() {
+    if (!$scope.email) {
+      $scope.error = "Invalid Email Address";
+      return;
     }
-}])
-
-app.controller('RegisterController', ['$scope', '$location', 'AuthService', '$state', function($scope, $location, AuthService, $stateProvider) {
-    $scope.password = "";
-    $scope.username = "";
-    $scope.email = "";
-    $scope.error = "";
-    $scope.next  = $stateProvider.params.next || '/';
-
-    $scope.register = function() {
-        if (!$scope.email) {
-            $scope.error = "Invalid Email Address";
-            return;
-        }
-        if (!$scope.username) {
-            $scope.error = "Invalid Username";
-            return;
-        }
-        if (!$scope.password) {
-            $scope.error = "Invalid Password";
-            return;
-        }
-
-        AuthService.register($scope.email, $scope.password, { username: $scope.username }).then(function() {
-            $location.path($scope.next);
-        }, function(err) {
-            $scope.error = err;
-        });
+    if (!$scope.password) {
+      $scope.error = "Invalid Password";
+      return;
     }
-}])
+    return AuthService.login($scope.email, $scope.password).then(function() {
+      return $location.path($scope.next);
+    })["catch"](function(err) {
+      return console.log("Auth Error", err);
+    });
+  };
+});
+
+app.controller('RegisterController', function($scope, $location, AuthService, $stateParams) {
+  var _ref;
+  $scope.password = "";
+  $scope.username = "";
+  $scope.email = "";
+  $scope.error = "";
+  $scope.next = ((_ref = $stateParams.params) != null ? _ref.next : void 0) || '/';
+  return $scope.register = function() {
+    if (!$scope.email) {
+      $scope.error = "Invalid Email Address";
+      return;
+    }
+    if (!$scope.username) {
+      $scope.error = "Invalid Username";
+      return;
+    }
+    if (!$scope.password) {
+      $scope.error = "Invalid Password";
+      return;
+    }
+    return AuthService.register($scope.email, $scope.password, {
+      username: $scope.username
+    }).then(function() {
+      return $location.path($scope.next);
+    })["catch"](function(err) {
+      return $scope.error = err;
+    });
+  };
+});
+
 
 },{}],4:[function(require,module,exports){
-'use strict';
+var app;
 
-var app = angular.module('geartrackerApp');
+app = angular.module('geartrackerApp');
 
 app.config(function($stateProvider) {
-    $stateProvider
-        .state('index_', {
-            url: '',
-            templateUrl: '/static/partials/index.html',
-            controller: "IndexController",
-            authenticate: false
-        });
-    $stateProvider
-        .state('index', {
-            url: '/',
-            templateUrl: '/static/partials/index.html',
-            controller: "IndexController",
-            authenticate: false,
-        });
+  $stateProvider.state('index_', {
+    url: '',
+    templateUrl: '/static/partials/index.html',
+    controller: "IndexController",
+    authenticate: false
+  });
+  return $stateProvider.state('index', {
+    url: '/',
+    templateUrl: '/static/partials/index.html',
+    controller: "IndexController",
+    authenticate: false
+  });
 });
 
-app.controller('IndexController', ['$scope', '$state', 'AuthService', function($scope, $state, AuthService) {
-    if (AuthService.isAuthenticated()) {
-        $state.go('dashboard')
-    }
-}]);
+app.controller('IndexController', function($scope, $state, AuthService) {
+  if (AuthService.isAuthenticated()) {
+    return $state.go('dashboard');
+  }
+});
 
 app.controller('MainController', function($scope, AuthService, $location) {
-    $scope.auth = AuthService;
-    $scope.logout = function() {
-        AuthService.logout();
-        $location.path('/');
-    }
+  $scope.auth = AuthService;
+  return $scope.logout = function() {
+    AuthService.logout();
+    return $location.path('/');
+  };
 });
 
-},{}],5:[function(require,module,exports){
-'use strict';
 
-var app = angular.module('geartrackerApp');
+},{}],5:[function(require,module,exports){
+var app;
+
+app = angular.module('geartrackerApp');
 
 app.config(function($stateProvider) {
-    $stateProvider
-        .state('dashboard', {
-            url: '/dash',
-            templateUrl: '/static/partials/dashboard.html',
-            controller: "DashboardController",
-            authenticate: true
-        })
-        .state('todo', {
-            url: '/todo',
-            templateUrl: '/static/partials/todo.html',
-            controller: "TodoController",
-            authenticate: true
-        });
+  return $stateProvider.state('dashboard', {
+    url: '/dash',
+    templateUrl: '/static/partials/dashboard.html',
+    controller: "DashboardController",
+    authenticate: true
+  }).state('todo', {
+    url: '/todo',
+    templateUrl: '/static/partials/todo.html',
+    controller: "TodoController",
+    authenticate: true
+  });
 });
 
 app.controller('DashboardController', function($scope, Restangular) {
-})
-
-app.controller('TodoController', function($scope, Restangular) {
-    $scope.todos = [];
-    $scope.loaded = false;
-
-    var Todo = Restangular.all('todo');
-
-    Todo.getList().then(function(todos) { 
-        $scope.loaded = true; 
-        $scope.todos = todos;
-    });
-
-    $scope.addTodo = function(title) {
-        if (title) {
-            Todo.post({'title': title }).then(function (todo) {
-                $scope.newTodoTitle = '';
-                if (todo)
-                    $scope.todos.push(todo);
-            }, function (err) {
-                return alert(err.data.message || "an error occurred");
-            });
-        }
-    }
-
-    $scope.changeCompleted = function(todo) {
-        todo.put().then(null, function(err) {
-            return alert(err.data.message || (err.errors && err.errors.completed) || "an error occurred");
-        });
-    }
-
-    $scope.removeCompletedItems = function() {
-        $scope.todos.forEach(function(todo) {
-            if (!todo.completed)
-                return;
-
-            todo.remove().then(function() {
-                $scope.todos = _.without($scope.todos, todo);
-            }, function(err) {
-                return alert(err.data.message || (err.errors && err.errors.completed) || "an error occurred");
-            })
-        });
-    }
+  return true;
 });
 
+app.controller('TodoController', function($scope, Restangular) {
+  var Todo;
+  $scope.todos = [];
+  $scope.loaded = false;
+  Todo = Restangular.all('todo');
+  Todo.getList().then(function(todos) {
+    $scope.loaded = true;
+    return $scope.todos = todos;
+  });
+  $scope.addTodo = function(title) {
+    if (title) {
+      return Todo.post({
+        'title': title
+      }).then(function(todo) {
+        $scope.newTodoTitle = '';
+        if (todo) {
+          return $scope.todos.push(todo);
+        }
+      }, function(err) {
+        return alert(err.data.message || "an error occurred");
+      });
+    }
+  };
+  $scope.changeCompleted = function(todo) {
+    return todo.put().then(null, function(err) {
+      return alert(err.data.message || (err.errors && err.errors.completed) || "an error occurred");
+    });
+  };
+  return $scope.removeCompletedItems = function() {
+    return $scope.todos.forEach(function(todo) {
+      if (!todo.completed) {
+        return;
+      }
+      return todo.remove().then(function() {
+        return $scope.todos = _.without($scope.todos, todo);
+      }, function(err) {
+        return alert(err.data.message || (err.errors && err.errors.completed) || "an error occurred");
+      });
+    });
+  };
+});
+
+
 },{}]},{},[1])
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ2VuZXJhdGVkLmpzIiwic291cmNlcyI6WyIvVXNlcnMva29ibGFzL3JlcG9zL2VkaXQvbm9kZV9tb2R1bGVzL2dydW50LWJyb3dzZXJpZnkvbm9kZV9tb2R1bGVzL2Jyb3dzZXJpZnkvbm9kZV9tb2R1bGVzL2Jyb3dzZXItcGFjay9fcHJlbHVkZS5qcyIsIi9Vc2Vycy9rb2JsYXMvcmVwb3MvZWRpdC9jbGllbnQvYXBwL2FwcC5jb2ZmZWUiLCIvVXNlcnMva29ibGFzL3JlcG9zL2VkaXQvY2xpZW50L2FwcC9jb21tb24vc2VydmljZXMuY29mZmVlIiwiL1VzZXJzL2tvYmxhcy9yZXBvcy9lZGl0L2NsaWVudC9hcHAvbW9kdWxlcy9hdXRoLmNvZmZlZSIsIi9Vc2Vycy9rb2JsYXMvcmVwb3MvZWRpdC9jbGllbnQvYXBwL21vZHVsZXMvbWFpbi5jb2ZmZWUiLCIvVXNlcnMva29ibGFzL3JlcG9zL2VkaXQvY2xpZW50L2FwcC9tb2R1bGVzL3RvZG8uY29mZmVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FDQUEsSUFBQSxHQUFBOztBQUFBLEdBQUEsR0FBTSxPQUFPLENBQUMsTUFBUixDQUFlLGdCQUFmLEVBQWlDLENBQUMsYUFBRCxFQUFnQixXQUFoQixFQUE2QixXQUE3QixDQUFqQyxDQUFOLENBQUE7O0FBQUEsT0FFQSxDQUFRLG1CQUFSLENBRkEsQ0FBQTs7QUFBQSxPQUdBLENBQVEsZ0JBQVIsQ0FIQSxDQUFBOztBQUFBLE9BSUEsQ0FBUSxnQkFBUixDQUpBLENBQUE7O0FBQUEsT0FLQSxDQUFRLGdCQUFSLENBTEEsQ0FBQTs7QUFBQSxHQU9HLENBQUMsTUFBSixDQUFXLFNBQUMsbUJBQUQsRUFBc0IsY0FBdEIsRUFBc0Msa0JBQXRDLEdBQUE7QUFDUCxFQUFBLG1CQUFtQixDQUFDLFVBQXBCLENBQStCLFNBQS9CLENBQUEsQ0FBQTtBQUFBLEVBRUEsbUJBQW1CLENBQUMsb0JBQXBCLENBQXlDLFNBQUMsUUFBRCxFQUFXLFNBQVgsRUFBc0IsSUFB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SSxDQUFDLE9BQVQsSUFBb0IsQ0FBQyxHQUFHLENBQUMsTUFBSixJQUFjLEdBQUcsQ0FBQyxNQUFNLENBQUMsU0FBMUIsQ0FBcEIsSUFBNEQsbUJBQWxFLENBQVAsQ0FEa0I7SUFBQSxDQUF0QixFQURxQjtFQUFBLENBdEJ6QixDQUFBO1NBMkJBLE1BQU0sQ0FBQyxvQkFBUCxHQUE4QixTQUFBLEdBQUE7V0FDMUIsTUFBTSxDQUFDLEtBQUssQ0FBQyxPQUFiLENBQXFCLFNBQUMsSUFBRCxHQUFBO0FBQ2pCLE1BQUEsSUFBSSxDQUFBLElBQUssQ0FBQyxTQUFWO0FBQ0ksY0FBQSxDQURKO09BQUE7YUFHQSxJQUFJLENBQUMsTUFBTCxDQUFBLENBQWEsQ0FBQyxJQUFkLENBQW1CLFNBQUEsR0FBQTtlQUNmLE1BQU0sQ0FBQyxLQUFQLEdBQWUsQ0FBQyxDQUFDLE9BQUYsQ0FBVSxNQUFNLENBQUMsS0FBakIsRUFBd0IsSUFBeEIsRUFEQTtNQUFBLENBQW5CLEVBRUUsU0FBQyxHQUFELEdBQUE7QUFDRSxlQUFPLEtBQUEsQ0FBTSxHQUFHLENBQUMsSUFBSSxDQUFDLE9BQVQsSUFBb0IsQ0FBQyxHQUFHLENBQUMsTUFBSixJQUFjLEdBQUcsQ0FBQyxNQUFNLENBQUMsU0FBMUIsQ0FBcEIsSUFBNEQsbUJBQWxFLENBQVAsQ0FERjtNQUFBLENBRkYsRUFKaUI7SUFBQSxDQUFyQixFQUQwQjtFQUFBLEVBNUJEO0FBQUEsQ0FBakMsQ0FuQkEsQ0FBQSIsInNvdXJjZXNDb250ZW50IjpbIihmdW5jdGlvbiBlKHQsbixyKXtmdW5jdGlvbiBzKG8sdSl7aWYoIW5bb10pe2lmKCF0W29dKXt2YXIgYT10eXBlb2YgcmVxdWlyZT09XCJmdW5jdGlvblwiJiZyZXF1aXJlO2lmKCF1JiZhKXJldHVybiBhKG8sITApO2lmKGkpcmV0dXJuIGkobywhMCk7dGhyb3cgbmV3IEVycm9yKFwiQ2Fubm90IGZpbmQgbW9kdWxlICdcIitvK1wiJ1wiKX12YXIgZj1uW29dPXtleHBvcnRzOnt9fTt0W29dWzBdLmNhbGwoZi5leHBvcnRzLGZ1bmN0aW9uKGUpe3ZhciBuPXRbb11bMV1bZV07cmV0dXJuIHMobj9uOmUpfSxmLGYuZXhwb3J0cyxlLHQsbixyKX1yZXR1cm4gbltvXS5leHBvcnRzfXZhciBpPXR5cGVvZiByZXF1aXJlPT1cImZ1bmN0aW9uXCImJnJlcXVpcmU7Zm9yKHZhciBvPTA7bzxyLmxlbmd0aDtvKyspcyhyW29dKTtyZXR1cm4gc30pIiwiYXBwID0gYW5ndWxhci5tb2R1bGUgJ2dlYXJ0cmFja2VyQXBwJywgWydyZXN0YW5ndWxhcicsICd1aS5yb3V0ZXInLCAnbmdDb29raWVzJ11cblxucmVxdWlyZSgnLi9jb21tb24vc2VydmljZXMnKVxucmVxdWlyZSgnLi9tb2R1bGVzL21haW4nKVxucmVxdWlyZSgnLi9tb2R1bGVzL3RvZG8nKVxucmVxdWlyZSgnLi9tb2R1bGVzL2F1dGgnKVxuXG5hcHAuY29uZmlnIChSZXN0YW5ndWxhclByb3ZpZGVyLCAkc3RhdGVQcm92aWRlciwgJHVybFJvdXRlclByb3ZpZGVyKSAtPlxuICAgIFJlc3Rhbmd1bGFyUHJvdmlkZXIuc2V0QmFzZVVybCgnL2FwaS92MScpXG5cbiAgICBSZXN0YW5ndWxhclByb3ZpZGVyLnNldFJlc3BvbnNlRXh0cmFjdG9yIChyZXNwb25zZSwgb3BlcmF0aW9uLCB3aGF0LCB1cmwpIC0+XG4gICAgICAgICAgICAjICBUaGlzIGlzIGEgZ2V0IGZvciBhIGxpc3RcbiAgICAgICAgICAgIGlmIG9wZXJhdGlvbiBpcyBcImdldExpc3RcIiBcbiAgICAgICAgICAgICAgICAjICBIZXJlIHdlJ3JlIHJldHVybmluZyBhbiBBcnJheSB3aGljaCBoYXMgb25lIHNwZWNpYWwgcHJvcGVydHkgbWV0YWRhdGEgd2l0aCBvdXIgZXh0cmEgaW5mb3JtYXRpb25cbiAgICAgICAgICAgICAgICBuZXdSZXNwb25zZSA9IHJlc3BvbnNlLmRhdGFcbiAgICAgICAgICAgIGVsc2UgXG4gICAgICAgICAgICAgICAgIyAgVGhpcyBpcyBhbiBlbGVtZW50XG4gICAgICAgICAgICAgICAgbmV3UmVzcG9uc2UgPSByZXNwb25zZS5kYXRhXG5cbiAgICAjICBVbm1hdGNoZWQgVVJMIHN0YXRlXG4gICAgJHVybFJvdXRlclByb3ZpZGVyLm90aGVyd2lzZShcIi9cIilcblxuYXBwLnJ1biAoJHJvb3RTY29wZSwgJHN0YXRlLCAkbG9jYXRpb24sIEF1dGhTZXJ2aWNlKSAtPlxuICAgICRyb290U2NvcGUuJG9uIFwiJHN0YXRlQ2hhbmdlU3RhcnRcIiwgKGV2ZW50LCB0b1N0YXRlLCB0b1BhcmFtcywgZnJvbVN0YXRlLCBmcm9tUGFyYW1zKSAtPlxuICAgICAgICBpZiB0b1N0YXRlLmF1dGhlbnRpY2F0ZSAmJiAhQXV0aFNlcnZpY2UuaXNBdXRoZW50aWNhdGVkKClcbiAgICAgICAgICAgICMgIFVzZXIgaXNu4oCZdCBhdXRoZW50aWNhdGVkXG4gICAgICAgICAgICBocmVmID0gJHN0YXRlLmhyZWYodG9TdGF0ZSwgdG9QYXJhbXMpXG4gICAgICAgICAgICAkc3RhdGUudHJhbnNpdGlvblRvKFwibG9naW5cIiwgeyBuZXh0OiAkbG9jYXRpb24ucGF0aCgpIH0pXG4gICAgICAgICAgICBldmVudC5wcmV2ZW50RGVmYXVsdCgpO1xuIiwiYXBwID0gYW5ndWxhci5tb2R1bGUoJ2dlYXJ0cmFja2VyQXBwJylcblxuYXBwLnNlcnZpY2UgJ0F1dGhTZXJ2aWNlJywgKFJlc3Rhbmd1bGFyLCAkcSwgJGNvb2tpZXMsICRzdGF0ZSkgLT5cbiAgICBBdXRoID0gUmVzdGFuZ3VsYXIuYWxsKCdhdXRoJylcbiAgICBhdXRoX2Nvb2tpZSA9ICd1c2VyX2F1dGgnXG4gICAgc2VsZiA9IHRoaXNcbiAgICBcbiAgICBzZWxmLmF1dGhlbnRpY2F0ZWQgPSBmYWxzZVxuICAgIHNlbGYubmFtZSA9IG51bGxcblxuICAgICNcbiAgICAjICBJZiB0aGUgYXV0aCBjb29raWUgaXMgYXJvdW5kIC0gdXNlIGl0XG4gICAgI1xuICAgIGlmICgkY29va2llc1thdXRoX2Nvb2tpZV0pIFxuICAgICAgICB0aGlzLmF1dGhlbnRpY2F0ZWQgPSB0cnVlXG5cbiAgICAgICAgQXV0aC5wb3N0KHt0b2tlbjokY29va2llc1thdXRoX2Nvb2tpZV19KS50aGVuIChhdXRoKSAtPlxuICAgICAgICAgICAgaWYgKGF1dGggJiYgYXV0aC50b2tlbikgXG4gICAgICAgICAgICAgICAgIyAgVG9rZW4gaXMgZ29vZCwgc2V0IHRoZSBhdXRoZW50aWNhdGlvbiBoZWFkZXJzXG4gICAgICAgICAgICAgICAgUmVzdGFuZ3VsYXIuc2V0RGVmYXVsdEhlYWRlcnMoe0F1dGhvcml6YXRpb246ICdCYXNpYyAnICsgYXV0aC50b2tlbn0pXG4gICAgICAgICAgICBlbHNlIFxuICAgICAgICAgICAgICAgICMgIElmIHRoZSB0b2tlbiBpcyBcImJhZFwiIGUuZy4geW91J3JlIG5vIGxvbmdlciBhIHZhbGlkIHVzZXIsIGNsZWFudXBcbiAgICAgICAgICAgICAgICBkZWxldGUgJGNvb2tpZXNbYXV0aF9jb29raWVdXG4gICAgICAgICAgICAgICAgc2VsZi5hdXRoZW50aWNhdGVkID0gZmFsc2VcbiAgICAgICAgICAgICAgICAkc3RhdGUudHJhbnNpdGlvblRvKFwiaW5kZXhcIilcblxuICAgIHJldHVybiB7XG4gICAgICAgIGlzQXV0aGVudGljYXRlZDogKCkgLT4gc2VsZi5hdXRoZW50aWNhdGVkXG5cbiAgICAgICAgI1xuICAgICAgICAjICBMb2dpbiBhIHVzZXIgYnkgZW1haWwgKyBwYXNzd29yZCAtIHJldHVybiBhIHByb21pc2VcbiAgICAgICAgIyBcbiAgICAgICAgIyAgVE9ETyAtIGJldHRlciBlcnJvciBtZXNzYWdlcyBvbiB0aGUgcmVzdWx0XG4gICAgICAgICNcbiAgICAgICAgbG9naW46IChlbWFpbCwgcGFzc3dvcmQpIC0+XG4gICAgICAgICAgICBkZWZlcnJlZCA9ICRxLmRlZmVyKClcblxuICAgICAgICAgICAgQXV0aC5wb3N0KHtlbWFpbDplbWFpbCwgcGFzc3dvcmQ6cGFzc3dvcmR9KS50aGVuIChhdXRoKSAtPlxuICAgICAgICAgICAgICAgIGlmIGF1dGgudG9rZW5cbiAgICAgICAgICAgICAgICAgICAgc2VsZi5hdXRoZW50aWNhdGVkID0gdHJ1ZVxuXG4gICAgICAgICAgICAgICAgICAgICRjb29raWVzW2F1dGhfY29va2llXSA9IGF1dGgudG9rZW5cbiAgICAgICAgICAgICAgICAgICAgUmVzdGFuZ3VsYXIuc2V0RGVmYXVsdEhlYWRlcnMoe0F1dGhvcml6YXRpb246ICdCYXNpYyAnICsgYXV0aC50b2tlbn0pXG5cbiAgICAgICAgICAgICAgICAgICAgZGVmZXJyZWQucmVzb2x2ZShcIm9rXCIpXG4gICAgICAgICAgICAgICAgZWxzZVxuICAgICAgICAgICAgICAgICAgICBkZWZlcnJlZC5yZWplY3QoXCJ1bmtub3duXCIpXG4gICAgICAgICAgICAsIChlcnIpIC0+XG4gICAgICAgICAgICAgICAgZGVmZXJyZWQucmVqZWN0KGVyci5kYXRhLmVtc2cpXG5cbiAgICAgICAgICAgIGRlZmVycmVkLnByb21pc2VcblxuICAgICAgICBsb2dvdXQ6ICgpIC0+XG4gICAgICAgICAgICBzZWxmLmF1dGhlbnRpY2F0ZWQgPSBmYWxzZVxuICAgICAgICAgICAgZGVsZXRlICRjb29raWVzW2F1dGhfY29va2llXVxuICAgICAgICAgICAgUmVzdGFuZ3VsYXIuc2V0RGVmYXVsdEhlYWRlcnMoe0F1dGhvcml6YXRpb246ICdCYXNpYyAnICsgJ0lOVkFMSUQnfSlcblxuICAgICAgICByZWdpc3RlcjogKGVtYWlsLCBwYXNzd29yZCwgcGFyYW1zKSAtPlxuICAgICAgICAgICAgZGVmZXJyZWQgPSAkcS5kZWZlcigpXG5cbiAgICAgICAgICAgIEF1dGgucG9zdCh7ZW1haWw6ZW1haWwsIHBhc3N3b3JkOnBhc3N3b3JkLCBwYXJhbXM6cGFyYW1zfSwge3JlZ2lzdGVyOnRydWV9KS50aGVuIChhdXRoKSAtPlxuICAgICAgICAgICAgICAgIGlmIGF1dGgudG9rZW5cbiAgICAgICAgICAgICAgICAgICAgc2VsZi5hdXRoZW50aWNhdGVkID0gdHJ1ZVxuXG4gICAgICAgICAgICAgICAgICAgICRjb29raWVzW2F1dGhfY29va2llXSA9IGF1dGgudG9rZW5cbiAgICAgICAgICAgICAgICAgICAgUmVzdGFuZ3VsYXIuc2V0RGVmYXVsdEhlYWRlcnMoe0F1dGhvcml6YXRpb246ICdCYXNpYyAnICsgYXV0aC50b2tlbn0pXG4gICAgICAgICAgICAgICAgICAgIGRlZmVycmVkLnJlc29sdmUoXCJva1wiKVxuICAgICAgICAgICAgICAgIGVsc2VcbiAgICAgICAgICAgICAgICAgICAgZGVmZXJyZWQucmVqZWN0KFwidW5rbm93blwiKVxuICAgICAgICAgICAgLCAoZXJyKSAtPlxuICAgICAgICAgICAgICAgIGRlZmVycmVkLnJlamVjdChlcnIuZGF0YS5lbXNnKVxuXG4gICAgICAgICAgICBkZWZlcnJlZC5wcm9taXNlXG4gICAgfVxuIiwiYXBwID0gYW5ndWxhci5tb2R1bGUoJ2dlYXJ0cmFja2VyQXBwJylcblxuYXBwLmNvbmZpZyAoJHN0YXRlUHJvdmlkZXIpIC0+XG4gICAgIyAgU3RhdGVzXG4gICAgJHN0YXRlUHJvdmlkZXJcbiAgICAgICAgLnN0YXRlKCdhdXRoJywge1xuICAgICAgICAgICAgYWJzdHJhY3Q6IHRydWUsXG4gICAgICAgICAgICB1cmw6IFwiL2F1dGhcIixcbiAgICAgICAgICAgIHRlbXBsYXRlOiAnPHVpLXZpZXcvPidcbiAgICAgICAgfSlcbiAgICAgICAgLnN0YXRlKCdhdXRoLnJlZ2lzdGVyJywge1xuICAgICAgICAgICAgdXJsOiBcIi9yZWdpc3Rlcj9uZXh0XCIsXG4gICAgICAgICAgICB0ZW1wbGF0ZVVybDogXCIvc3RhdGljL3BhcnRpYWxzL2F1dGgvcmVnaXN0ZXIuaHRtbFwiLFxuICAgICAgICAgICAgY29udHJvbGxlcjogXCJSZWdpc3RlckNvbnRyb2xsZXJcIixcbiAgICAgICAgICAgIGF1dGhlbnRpY2F0ZTogZmFsc2VcbiAgICAgICAgfSlcbiAgICAgICAgLnN0YXRlKCdhdXRoLmxvZ2luJywge1xuICAgICAgICAgICAgdXJsOiBcIi9sb2dpbj9uZXh0XCIsXG4gICAgICAgICAgICB0ZW1wbGF0ZVVybDogXCIvc3RhdGljL3BhcnRpYWxzL2F1dGgvbG9naW4uaHRtbFwiLFxuICAgICAgICAgICAgY29udHJvbGxlcjogXCJMb2dpbkNvbnRyb2xsZXJcIixcbiAgICAgICAgICAgIGF1dGhlbnRpY2F0ZTogZmFsc2VcbiAgICAgICAgfSlcbiAgICAgICAgLnN0YXRlKCdhdXRoLmxvZ291dCcsIHtcbiAgICAgICAgICAgIHVybDogXCIvbG9nb3V0XCIsXG4gICAgICAgICAgICB0ZW1wbGF0ZVVybDogXCIvc3RhdGljL3BhcnRpYWxzL2xvZ291dC5odG1sXCIsXG4gICAgICAgICAgICBjb250cm9sbGVyOiBcIkxvZ291dENvbnRyb2xsZXJcIixcbiAgICAgICAgICAgIGF1dGhlbnRpY2F0ZTogZmFsc2VcbiAgICAgICAgfSlcblxuYXBwLmNvbnRyb2xsZXIgJ0xvZ2luQ29udHJvbGxlcicsICgkc2NvcGUsICRsb2NhdGlvbiwgIEF1dGhTZXJ2aWNlLCAkc3RhdGVQYXJhbXMpIC0+XG4gICAgJHNjb3BlLmVtYWlsID0gXCJcIlxuICAgICRzY29wZS5lcnJvciA9IFwiXCJcbiAgICAkc2NvcGUubmV4dCAgPSAkc3RhdGVQYXJhbXMucGFyYW1zPy5uZXh0IHx8ICcvJ1xuXG4gICAgJHNjb3BlLmxvZ2luID0gKCkgLT5cbiAgICAgICAgaWYgISRzY29wZS5lbWFpbFxuICAgICAgICAgICAgJHNjb3BlLmVycm9yID0gXCJJbnZhbGlkIEVtYWlsIEFkZHJlc3NcIlxuICAgICAgICAgICAgcmV0dXJuXG5cbiAgICAgICAgaWYgISRzY29wZS5wYXNzd29yZFxuICAgICAgICAgICAgJHNjb3BlLmVycm9yID0gXCJJbnZhbGlkIFBhc3N3b3JkXCJcbiAgICAgICAgICAgIHJldHVyblxuXG4gICAgICAgIEF1dGhTZXJ2aWNlLmxvZ2luKCRzY29wZS5lbWFpbCwgJHNjb3BlLnBhc3N3b3JkKVxuICAgICAgICAgICAgLnRoZW4gKCkgLT4gJGxvY2F0aW9uLnBhdGgoJHNjb3BlLm5leHQpXG4gICAgICAgICAgICAuY2F0Y2ggKGVycikgLT4gY29uc29sZS5sb2coXCJBdXRoIEVycm9yXCIsIGVycilcblxuYXBwLmNvbnRyb2xsZXIgJ1JlZ2lzdGVyQ29udHJvbGxlcicsICgkc2NvcGUsICRsb2NhdGlvbiwgQXV0aFNlcnZpY2UsICRzdGF0ZVBhcmFtcykgLT5cbiAgICAkc2NvcGUucGFzc3dvcmQgPSBcIlwiXG4gICAgJHNjb3BlLnVzZXJuYW1lID0gXCJcIlxuICAgICRzY29wZS5lbWFpbCA9IFwiXCJcbiAgICAkc2NvcGUuZXJyb3IgPSBcIlwiXG4gICAgJHNjb3BlLm5leHQgID0gJHN0YXRlUGFyYW1zLnBhcmFtcz8ubmV4dCB8fCAnLydcblxuICAgICRzY29wZS5yZWdpc3RlciA9ICgpIC0+XG4gICAgICAgIGlmICEkc2NvcGUuZW1haWxcbiAgICAgICAgICAgICRzY29wZS5lcnJvciA9IFwiSW52YWxpZCBFbWFpbCBBZGRyZXNzXCJcbiAgICAgICAgICAgIHJldHVyblxuICAgICAgICBpZiAhJHNjb3BlLnVzZXJuYW1lXG4gICAgICAgICAgICAkc2NvcGUuZXJyb3IgPSBcIkludmFsaWQgVXNlcm5hbWVcIlxuICAgICAgICAgICAgcmV0dXJuXG4gICAgICAgIGlmICEkc2NvcGUucGFzc3dvcmRcbiAgICAgICAgICAgICRzY29wZS5lcnJvciA9IFwiSW52YWxpZCBQYXNzd29yZFwiXG4gICAgICAgICAgICByZXR1cm5cblxuICAgICAgICBBdXRoU2VydmljZS5yZWdpc3Rlcigkc2NvcGUuZW1haWwsICRzY29wZS5wYXNzd29yZCwgeyB1c2VybmFtZTogJHNjb3BlLnVzZXJuYW1lIH0pXG4gICAgICAgICAgICAudGhlbiAoKSAtPiAkbG9jYXRpb24ucGF0aCgkc2NvcGUubmV4dClcbiAgICAgICAgICAgIC5jYXRjaCAoZXJyKSAtPiAkc2NvcGUuZXJyb3IgPSBlcnJcbiIsImFwcCA9IGFuZ3VsYXIubW9kdWxlKCdnZWFydHJhY2tlckFwcCcpO1xuXG5hcHAuY29uZmlnICgkc3RhdGVQcm92aWRlcikgLT5cbiAgICAkc3RhdGVQcm92aWRlclxuICAgICAgICAuc3RhdGUoJ2luZGV4XycsIHtcbiAgICAgICAgICAgIHVybDogJycsXG4gICAgICAgICAgICB0ZW1wbGF0ZVVybDogJy9zdGF0aWMvcGFydGlhbHMvaW5kZXguaHRtbCcsXG4gICAgICAgICAgICBjb250cm9sbGVyOiBcIkluZGV4Q29udHJvbGxlclwiLFxuICAgICAgICAgICAgYXV0aGVudGljYXRlOiBmYWxzZVxuICAgICAgICB9KTtcbiAgICAkc3RhdGVQcm92aWRlclxuICAgICAgICAuc3RhdGUoJ2luZGV4Jywge1xuICAgICAgICAgICAgdXJsOiAnLycsXG4gICAgICAgICAgICB0ZW1wbGF0ZVVybDogJy9zdGF0aWMvcGFydGlhbHMvaW5kZXguaHRtbCcsXG4gICAgICAgICAgICBjb250cm9sbGVyOiBcIkluZGV4Q29udHJvbGxlclwiLFxuICAgICAgICAgICAgYXV0aGVudGljYXRlOiBmYWxzZSxcbiAgICAgICAgfSk7XG5cbmFwcC5jb250cm9sbGVyICdJbmRleENvbnRyb2xsZXInLCAoJHNjb3BlLCAkc3RhdGUsIEF1dGhTZXJ2aWNlKSAtPlxuICAgIGlmIEF1dGhTZXJ2aWNlLmlzQXV0aGVudGljYXRlZCgpXG4gICAgICAgICRzdGF0ZS5nbygnZGFzaGJvYXJkJylcblxuYXBwLmNvbnRyb2xsZXIgJ01haW5Db250cm9sbGVyJywgKCRzY29wZSwgQXV0aFNlcnZpY2UsICRsb2NhdGlvbikgLT5cbiAgICAkc2NvcGUuYXV0aCA9IEF1dGhTZXJ2aWNlO1xuICAgICRzY29wZS5sb2dvdXQgPSAoKSAtPlxuICAgICAgICBBdXRoU2VydmljZS5sb2dvdXQoKTtcbiAgICAgICAgJGxvY2F0aW9uLnBhdGgoJy8nKTtcbiIsImFwcCA9IGFuZ3VsYXIubW9kdWxlKCdnZWFydHJhY2tlckFwcCcpO1xuXG5hcHAuY29uZmlnICgkc3RhdGVQcm92aWRlcikgLT5cbiAgICAkc3RhdGVQcm92aWRlclxuICAgICAgICAuc3RhdGUoJ2Rhc2hib2FyZCcsIHtcbiAgICAgICAgICAgIHVybDogJy9kYXNoJyxcbiAgICAgICAgICAgIHRlbXBsYXRlVXJsOiAnL3N0YXRpYy9wYXJ0aWFscy9kYXNoYm9hcmQuaHRtbCcsXG4gICAgICAgICAgICBjb250cm9sbGVyOiBcIkRhc2hib2FyZENvbnRyb2xsZXJcIixcbiAgICAgICAgICAgIGF1dGhlbnRpY2F0ZTogdHJ1ZVxuICAgICAgICB9KVxuICAgICAgICAuc3RhdGUoJ3RvZG8nLCB7XG4gICAgICAgICAgICB1cmw6ICcvdG9kbycsXG4gICAgICAgICAgICB0ZW1wbGF0ZVVybDogJy9zdGF0aWMvcGFydGlhbHMvdG9kby5odG1sJyxcbiAgICAgICAgICAgIGNvbnRyb2xsZXI6IFwiVG9kb0NvbnRyb2xsZXJcIixcbiAgICAgICAgICAgIGF1dGhlbnRpY2F0ZTogdHJ1ZVxuICAgICAgICB9KTtcblxuYXBwLmNvbnRyb2xsZXIgJ0Rhc2hib2FyZENvbnRyb2xsZXInLCAoJHNjb3BlLCBSZXN0YW5ndWxhcikgLT4gdHJ1ZVxuXG5hcHAuY29udHJvbGxlciAnVG9kb0NvbnRyb2xsZXInLCAoJHNjb3BlLCBSZXN0YW5ndWxhcikgLT5cbiAgICAkc2NvcGUudG9kb3MgPSBbXTtcbiAgICAkc2NvcGUubG9hZGVkID0gZmFsc2U7XG5cbiAgICBUb2RvID0gUmVzdGFuZ3VsYXIuYWxsKCd0b2RvJylcblxuICAgIFRvZG8uZ2V0TGlzdCgpLnRoZW4oXG4gICAgICAgICh0b2RvcykgLT5cbiAgICAgICAgICAgICRzY29wZS5sb2FkZWQgPSB0cnVlXG4gICAgICAgICAgICAkc2NvcGUudG9kb3MgPSB0b2Rvc1xuICAgIClcblxuICAgICRzY29wZS5hZGRUb2RvID0gKHRpdGxlKSAtPlxuICAgICAgICAgICAgaWYgKHRpdGxlKVxuICAgICAgICAgICAgICAgIFRvZG8ucG9zdCh7J3RpdGxlJzogdGl0bGUgfSkudGhlbihcbiAgICAgICAgICAgICAgICAgICAgKHRvZG8pIC0+XG4gICAgICAgICAgICAgICAgICAgICAgICAkc2NvcGUubmV3VG9kb1RpdGxlID0gJyc7XG4gICAgICAgICAgICAgICAgICAgICAgICBpZiAodG9kbylcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAkc2NvcGUudG9kb3MucHVzaCh0b2RvKTtcbiAgICAgICAgICAgICAgICAgICAgLCAoZXJyKSAtPlxuICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGFsZXJ0KGVyci5kYXRhLm1lc3NhZ2UgfHwgXCJhbiBlcnJvciBvY2N1cnJlZFwiKTtcbiAgICAgICAgICAgICAgICApXG5cbiAgICAkc2NvcGUuY2hhbmdlQ29tcGxldGVkID0gKHRvZG8pIC0+XG4gICAgICAgIHRvZG8ucHV0KCkudGhlbihudWxsLCAoZXJyKSAtPlxuICAgICAgICAgICAgcmV0dXJuIGFsZXJ0KGVyci5kYXRhLm1lc3NhZ2UgfHwgKGVyci5lcnJvcnMgJiYgZXJyLmVycm9ycy5jb21wbGV0ZWQpIHx8IFwiYW4gZXJyb3Igb2NjdXJyZWRcIik7XG4gICAgICAgIClcblxuICAgICRzY29wZS5yZW1vdmVDb21wbGV0ZWRJdGVtcyA9ICgpIC0+XG4gICAgICAgICRzY29wZS50b2Rvcy5mb3JFYWNoKCh0b2RvKSAtPlxuICAgICAgICAgICAgaWYgKCF0b2RvLmNvbXBsZXRlZClcbiAgICAgICAgICAgICAgICByZXR1cm47XG5cbiAgICAgICAgICAgIHRvZG8ucmVtb3ZlKCkudGhlbigoKSAtPlxuICAgICAgICAgICAgICAgICRzY29wZS50b2RvcyA9IF8ud2l0aG91dCgkc2NvcGUudG9kb3MsIHRvZG8pO1xuICAgICAgICAgICAgLCAoZXJyKSAtPlxuICAgICAgICAgICAgICAgIHJldHVybiBhbGVydChlcnIuZGF0YS5tZXNzYWdlIHx8IChlcnIuZXJyb3JzICYmIGVyci5lcnJvcnMuY29tcGxldGVkKSB8fCBcImFuIGVycm9yIG9jY3VycmVkXCIpO1xuICAgICAgICAgICAgKVxuICAgICAgICApXG4iXX0=

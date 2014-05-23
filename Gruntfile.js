@@ -1,9 +1,16 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     browserify: {
+      options: {
+        transform: ['coffeeify'],
+        extensions: ['.coffee'],
+        debug: true,
+        bundleOptions: {
+        }
+      },
       js: {
         // A single entry point for our app
-        src: 'client/app/app.js',
+        src: 'client/app/app.coffee',
         // Compile to a single file to add a script tag for in your HTML
         dest: 'static/app/app.js',
       },
@@ -15,7 +22,7 @@ module.exports = function(grunt) {
           options: {
               spawn: false
           }
-      }
+      },
     },
     copy: {
       all: {
@@ -30,6 +37,7 @@ module.exports = function(grunt) {
 
   // Load the npm installed tasks
   grunt.loadNpmTasks('grunt-browserify');
+  // grunt.loadNpmTasks('grunt-ngmin');
   // grunt.loadNpmTasks('grunt-watchify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
