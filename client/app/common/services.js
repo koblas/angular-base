@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('geartrackerApp').service('AuthService', ['Restangular', '$q', '$cookies', '$state',
+var app = angular.module('geartrackerApp');
+
+app.service('AuthService', ['Restangular', '$q', '$cookies', '$state',
     function (Restangular, $q, $cookies, $state) {
         var Auth = Restangular.all('auth');
         var auth_cookie = 'user_auth';
