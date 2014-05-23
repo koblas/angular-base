@@ -1,9 +1,9 @@
 app = angular.module 'geartrackerApp', ['restangular', 'ui.router', 'ngCookies']
 
-require('./common/services')
-require('./modules/main')
-require('./modules/todo')
-require('./modules/auth')
+require('./services/auth')
+require('./controllers/main')
+require('./controllers/todo')
+require('./controllers/auth')
 
 app.config (RestangularProvider, $stateProvider, $urlRouterProvider) ->
     RestangularProvider.setBaseUrl('/api/v1')
