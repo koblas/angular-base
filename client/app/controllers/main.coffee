@@ -1,24 +1,28 @@
-app = angular.module('geartrackerApp');
+app = angular.module('iqvine');
 
 app.config ($stateProvider) ->
     $stateProvider
-        .state('index_', {
+        .state('app.index_', {
             url: '',
-            templateUrl: '/static/partials/index.html',
-            controller: "IndexController",
-            authenticate: false
+            views:
+                'content@app':
+                    template: require('../../partials/index.html')
+                    controller: "IndexController"
+                    authenticate: false
         });
     $stateProvider
-        .state('index', {
+        .state('app.index', {
             url: '/',
-            templateUrl: '/static/partials/index.html',
-            controller: "IndexController",
-            authenticate: false,
+            views:
+                'content@app':
+                    template: require('../../partials/index.html')
+                    controller: "IndexController"
+                    authenticate: false
         });
 
 app.controller 'IndexController', ($scope, $state, AuthService) ->
     if AuthService.isAuthenticated()
-        $state.go('dashboard')
+        $state.go('app.dashboard')
 
 app.controller 'MainController', ($scope, AuthService, $location) ->
     $scope.auth = AuthService;

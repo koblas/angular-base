@@ -1,18 +1,22 @@
-app = angular.module('geartrackerApp');
+app = angular.module('iqvine');
 
 app.config ($stateProvider) ->
     $stateProvider
-        .state('dashboard', {
-            url: '/dash',
-            templateUrl: '/static/partials/dashboard.html',
-            controller: "DashboardController",
-            authenticate: true
+        .state('app.dashboard', {
+            url: '/dash'
+            views:
+                'content@app':
+                    template: require('../../partials/dashboard.html')
+                    controller: "DashboardController"
+                    authenticate: true
         })
-        .state('todo', {
-            url: '/todo',
-            templateUrl: '/static/partials/todo.html',
-            controller: "TodoController",
-            authenticate: true
+        .state('app.todo', {
+            url: '/todo'
+            views:
+                'content@app':
+                    template: require('../../partials/todo.html')
+                    controller: "TodoController"
+                    authenticate: true
         });
 
 app.controller 'DashboardController', ($scope, Restangular) -> true

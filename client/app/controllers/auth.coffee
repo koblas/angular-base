@@ -1,30 +1,37 @@
-app = angular.module('geartrackerApp')
+app = angular.module('iqvine')
 
 app.config ($stateProvider) ->
     #  States
     $stateProvider
-        .state('auth', {
-            abstract: true,
-            url: "/auth",
+        .state('app.auth', {
+            abstract: true
+            url: "/auth"
             template: '<ui-view/>'
         })
-        .state('auth.register', {
-            url: "/register?next",
-            templateUrl: "/static/partials/auth/register.html",
-            controller: "RegisterController",
-            authenticate: false
+        .state('app.auth.register', {
+            url: "/register?next"
+            views:
+                'content@app':
+                    template: require("../../partials/auth/register.html")
+                    controller: "RegisterController"
+                    authenticate: false
         })
-        .state('auth.login', {
-            url: "/login?next",
-            templateUrl: "/static/partials/auth/login.html",
-            controller: "LoginController",
-            authenticate: false
+        .state('app.auth.login', {
+            url: "/login?next"
+            views:
+                'content@app':
+                    template: require("../../partials/auth/login.html")
+                    controller: "LoginController"
+                    authenticate: false
         })
-        .state('auth.logout', {
-            url: "/logout",
-            templateUrl: "/static/partials/logout.html",
-            controller: "LogoutController",
-            authenticate: false
+        .state('app.auth.logout', {
+            url: "/logout"
+            # template: require("../../partials/auth/logout.html")
+            views:
+                'content@app':
+                    template: "<div></div>"
+                    controller: "LogoutController"
+                    authenticate: false
         })
 
 app.controller 'LoginController', ($scope, $location,  AuthService, $stateParams) ->

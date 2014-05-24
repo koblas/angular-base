@@ -8,4 +8,4 @@ class IndexHandler(BaseHandler):
         if page:
             self.redirect('/#%s' % page)
         else:
-            self.render("ngapp.html", ngapp='geartracker')
+            self.render("ngapp.html")

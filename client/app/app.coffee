@@ -1,10 +1,32 @@
-app = angular.module 'geartrackerApp', ['restangular', 'ui.router', 'ngCookies']
+app = angular.module 'iqvine', ['restangular', 'ui.router', 'ngCookies']
+
+angular.element(document).ready () -> angular.bootstrap(document, ['iqvine'])
 
 require('./services/auth')
 require('./controllers/main')
 require('./controllers/todo')
 require('./controllers/auth')
 
+#
+#  Set the layout
+#
+app.config ($stateProvider) ->
+    $stateProvider
+        .state('app',
+            url: ''
+            abstract: true
+            views:
+                container:
+                    template: require('../partials/layout.html')
+                footer:
+                    template: require('../partials/footer.html')
+                header:
+                    template: require('../partials/header.html')
+        )
+
+#
+#  Restanuglar setup
+#
 app.config (RestangularProvider, $stateProvider, $urlRouterProvider) ->
     RestangularProvider.setBaseUrl('/api/v1')
 
@@ -26,4 +48,4 @@ app.run ($rootScope, $state, $location, AuthService) ->
             #  User isn’t authenticated
             href = $state.href(toState, toParams)
             $state.transitionTo("login", { next: $location.path() })
-            event.preventDefault();
+            event.preventDefault()

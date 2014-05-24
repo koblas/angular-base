@@ -1,4 +1,4 @@
-app = angular.module('geartrackerApp')
+app = angular.module('iqvine')
 
 app.service 'AuthService', (Restangular, $q, $cookies, $state) ->
     Auth = Restangular.all('auth')

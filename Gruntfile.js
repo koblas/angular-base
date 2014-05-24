@@ -2,11 +2,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     browserify: {
       options: {
-        transform: ['coffeeify'],
+        transform: ['coffeeify', 'partialify'],
         extensions: ['.coffee'],
         debug: true,
-        bundleOptions: {
-        }
       },
       js: {
         // A single entry point for our app
@@ -29,7 +27,7 @@ module.exports = function(grunt) {
         // This copies all the html and css into the dist/ folder
         expand: true,
         cwd: 'client/',
-        src: ['**/*.html', '**/*.css', 'vendor/**', 'bootstrap/**'],
+        src: ['**/*.css', 'vendor/**', 'bootstrap/**'],
         dest: 'static/',
       },
     },
