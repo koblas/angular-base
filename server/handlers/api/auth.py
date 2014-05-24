@@ -42,7 +42,7 @@ class AuthApiHandler(BaseHandler):
         if token:
             user = self.get_current_user(token=token)
             if not user:
-                # Invalid token - expire
+                #  TODO: Invalid token - expire
                 self.finish_data()
                 return
         elif not email or not passwd:

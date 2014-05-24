@@ -56,3 +56,6 @@ preload_cache.json
 #Grunt
 /static/dist
 /static/node_modules
+/db/
+/docs/
+/static/

@@ -1,13 +1,13 @@
 import json
 import tornado.escape
 from tornado.web import authenticated
-from ..base import BaseHandler
+from ..base import BaseHandler, api_authenticated
 from ...route import route
 from ...models import Todo
 
 @route("/api/v1/todo/?(?P<id>[a-zA-Z0-9_-]+)?")
 class TodoHandler(BaseHandler):
-    @authenticated
+    @api_authenticated
     def get(self, id=None):
         if id:
             todo = Todo.get(id=id)
@@ -22,7 +22,7 @@ class TodoHandler(BaseHandler):
                 
             self.finish_data(Todo.filter(**params))
 
-    @authenticated
+    @api_authenticated
     def post(self, id=None):
         title = self.get_param('title')
 
@@ -31,7 +31,7 @@ class TodoHandler(BaseHandler):
         else:
             self.finish_err('Empty Title')
 
-    @authenticated
+    @api_authenticated
     def put(self, id=None):
         todo = Todo.get(id=id)
 

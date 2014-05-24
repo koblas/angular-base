@@ -1,4 +1,4 @@
-app = angular.module 'iqvine', ['restangular', 'ui.router', 'ngCookies']
+app = angular.module 'iqvine', ['restangular', 'ui.router', 'ngCookies', 'ui.bootstrap']
 
 angular.element(document).ready () -> angular.bootstrap(document, ['iqvine'])
 

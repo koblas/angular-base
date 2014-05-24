@@ -1,5 +1,6 @@
+import functools
 import tornado.escape
-from tornado.web import RequestHandler
+from tornado.web import RequestHandler, HTTPError
 from ..models import User, Model
 
 class AuthMixin(object):
@@ -15,18 +16,24 @@ class AuthMixin(object):
     def get_current_user(self, token=None):
         """Implementation for current_user property"""
         if 'current_user' in self.application.settings:
-            return True
+            return self.application.settings['current_user']
 
         if token is None:
             hdr = self.request.headers.get('Authorization', None)
-            if not hdr:
-                return None
+            if hdr:
+                parts = hdr.split(' ')
+                if len(parts) != 2 or parts[0] != 'Basic':
+                    return None
 
-            parts = hdr.split(' ')
-            if len(parts) != 2 or parts[0] != 'Basic':
-                return None
+                token = parts[1]
 
-            token = parts[1]
+        if not token:
+            #  FIXME: Use the user_auth cookie - should handle via some promises in Angular
+            try:
+                import urllib.parse
+                token = urllib.parse.unquote(self.get_cookie('user_auth'))
+            except:
+                pass
 
         guid = self.get_secure_cookie(self.COOKIE, token)
         if guid:
@@ -34,6 +41,7 @@ class AuthMixin(object):
                 return User.get(id=guid.decode('utf-8'))
             except User.DoesNotExist:
                 pass
+        print("FAIL")
         return None
 
 class BaseHandler(AuthMixin, RequestHandler):
@@ -67,3 +75,16 @@ class BaseHandler(AuthMixin, RequestHandler):
     def finish_err(self, message):
         self.set_status(404)
         self.finish({'status': 'err', 'emsg': message})
+
+def api_authenticated(method):
+    """Decorate methods with this to require that the user be logged in.
+
+    If the user is not logged in, they will be redirected to the configured
+    `login url <RequestHandler.get_login_url>`.
+    """
+    @functools.wraps(method)
+    def wrapper(self, *args, **kwargs):
+        if not self.current_user:
+            raise HTTPError(403)
+        return method(self, *args, **kwargs)
+    return wrapper
