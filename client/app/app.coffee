@@ -21,6 +21,7 @@ app.config ($stateProvider) ->
                 footer:
                     template: require('../partials/footer.html')
                 header:
+                    controller: 'HeaderController'
                     template: require('../partials/header.html')
         )
 

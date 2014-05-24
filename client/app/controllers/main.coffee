@@ -24,7 +24,7 @@ app.controller 'IndexController', ($scope, $state, AuthService) ->
     if AuthService.isAuthenticated()
         $state.go('app.dashboard')
 
-app.controller 'MainController', ($scope, AuthService, $location) ->
+app.controller 'HeaderController', ($scope, AuthService, $location) ->
     $scope.auth = AuthService;
     $scope.logout = () ->
         AuthService.logout();
