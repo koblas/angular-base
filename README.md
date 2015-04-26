@@ -34,8 +34,6 @@ There is an interesting model abstraction for flat files in app/simple_model.py 
 * unittest harness for python
 * unittest for angular
 * Cleanup the default templates - maybe a bit more functional
-* Use a token refresh mechansim if auth expires...
-
 
 ## TODO - simple_model.py
 
