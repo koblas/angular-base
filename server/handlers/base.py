@@ -41,7 +41,6 @@ class AuthMixin(object):
                 return User.get(id=guid.decode('utf-8'))
             except User.DoesNotExist:
                 pass
-        print("FAIL")
         return None
 
 class BaseHandler(AuthMixin, RequestHandler):
