@@ -1,17 +1,18 @@
 # Learning Angular
 
-Fundamentally this is a project I'm working on to learn agular without a whole ton of legacy.  Though I'm also thinking
-it's useful to understand the bits and pieces to make a meaningful and useful application.  *Note*: This is written in python3
-though it should run in 2.7 (nothing should prevent it)
+Fundamentally this is a project I'm working on to learn agular
+without a whole ton of legacy - last big angular project was the
+entire Tubular application from Backbone to AngularJS (that was a
+lot of legacy).  Though I'm also thinking it's useful to understand
+the bits and pieces to make a meaningful and useful application.
+*Note*: This is written in python3 though it should run in 2.7
+(nothing should prevent it)
 
 Ideas that are incorporated:
 
-* Using the Authorized HTTP rather than raw cookies for authentication 
-    http://www.frederiknakstad.com/2013/01/21/authentication-in-single-page-applications-with-angular-js/
 * Restangular - Used meta data wrapped response
     https://github.com/mgonto/restangular
 * Promise based auth
-
 
 ## Running
 
@@ -24,8 +25,9 @@ The contents of ``client/`` directory are managed by grunt - so the quick thing 
 
 ## Notable things
 
-There is an interesting model abstraction for flat files in app/simple_model.py - need to figure out the docs
-
+There is an interesting model abstraction for flat files in
+app/simple_model.py - need to figure out the docs, or maybe find a
+better replacement
 
 ## TODO
 
@@ -34,6 +36,7 @@ There is an interesting model abstraction for flat files in app/simple_model.py 
 * unittest harness for python
 * unittest for angular
 * Cleanup the default templates - maybe a bit more functional
+* Bower based installed for grunt/angular components
 
 ## TODO - simple_model.py
 
