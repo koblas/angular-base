@@ -16,10 +16,7 @@ app.service 'AuthService', (Restangular, $q, $cookies, $state) ->
 
         Auth.post({token:$cookies[auth_cookie]})
             .then (auth) ->
-                if (auth && auth.token) 
-                    #  Token is good, set the authentication headers
-                    Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
-                else 
+                if (!auth && !auth.token) 
                     #  If the token is "bad" e.g. you're no longer a valid user, cleanup
                     delete $cookies[auth_cookie]
                     self.authenticated = false
@@ -42,7 +39,6 @@ app.service 'AuthService', (Restangular, $q, $cookies, $state) ->
                         self.authenticated = true
 
                         $cookies[auth_cookie] = auth.token
-                        Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
 
                         deferred.resolve("ok")
                     else
@@ -56,7 +52,6 @@ app.service 'AuthService', (Restangular, $q, $cookies, $state) ->
         logout: () ->
             self.authenticated = false
             delete $cookies[auth_cookie]
-            Restangular.setDefaultHeaders({Authorization: 'Basic ' + 'INVALID'})
 
         register: (email, password, params) ->
             deferred = $q.defer()
@@ -67,11 +62,10 @@ app.service 'AuthService', (Restangular, $q, $cookies, $state) ->
                         self.authenticated = true
 
                         $cookies[auth_cookie] = auth.token
-                        Restangular.setDefaultHeaders({Authorization: 'Basic ' + auth.token})
                         deferred.resolve("ok")
                     else
                         deferred.reject("unknown")
-                .catch(err) ->
+                .catch (err) ->
                     deferred.reject(err.data.emsg)
 
             deferred.promise
