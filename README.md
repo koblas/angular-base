@@ -1,4 +1,4 @@
-# Learning Angular
+# Angular Playground
 
 Fundamentally this is a project I'm working on to learn agular
 without a whole ton of legacy - last big angular project was the
